@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/DropdownOption.json",
+  "title": "DropdownOption",
+  "oneOf": [
+    {
+      "type": "string",
+      "title": "SimpleOption",
+      "description": "Simple string option"
+    },
+    {
+      "type": "object",
+      "title": "DetailedOption",
+      "description": "Detailed option object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Option display name"
+        },
+        "api_id": {
+          "type": "string",
+          "description": "Unique identifier for the option"
+        },
+        "is_other": {
+          "type": "boolean",
+          "description": "Whether this is the special \"Other\" option",
+          "default": false
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  ],
+  "description": "A dropdown option - either a simple string or a detailed object with name and optional api_id"
+}

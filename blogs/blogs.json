@@ -1,0 +1,10 @@
+{
+  "aid": "signwell",
+  "name": "SignWell Blog",
+  "description": "Resources and blog posts from the SignWell team covering e-signature workflows, document management, compliance, and API integration guides.",
+  "url": "https://www.signwell.com/resources/",
+  "rss": "https://www.signwell.com/resources/feed/",
+  "confirmed": true,
+  "last_checked": "2026-06-13",
+  "posts": []
+}

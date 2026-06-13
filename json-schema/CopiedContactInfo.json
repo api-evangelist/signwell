@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CopiedContactInfo.json",
+  "title": "CopiedContactInfo",
+  "type": "object",
+  "description": "Copied contact information",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Contact ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Contact name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email"
+    }
+  },
+  "required": [
+    "email"
+  ]
+}

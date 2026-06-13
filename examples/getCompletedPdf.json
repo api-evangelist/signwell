@@ -1,0 +1,36 @@
+{
+  "operationId": "getCompletedPdf",
+  "method": "GET",
+  "path": "/api/v1/documents/{id}/completed_pdf",
+  "summary": "Completed PDF",
+  "description": "Gets a completed document PDF or ZIP file. Supply the unique document ID from either a document creation request or document page URL.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "url_only",
+      "in": "query",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "audit_page",
+      "in": "query",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "file_format",
+      "in": "query",
+      "required": false,
+      "description": ""
+    }
+  ]
+}

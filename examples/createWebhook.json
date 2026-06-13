@@ -1,0 +1,33 @@
+{
+  "operationId": "createWebhook",
+  "method": "POST",
+  "path": "/api/v1/hooks",
+  "summary": "Create Webhook",
+  "description": "Register a callback URL that we will post document events to.",
+  "tags": [
+    "Webhooks"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "callback_url": {
+          "type": "string",
+          "format": "url",
+          "description": "URL that we will post document events to.",
+          "example": "https://example.com/webhook"
+        },
+        "api_application_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for the API Application."
+        }
+      },
+      "required": [
+        "callback_url"
+      ]
+    }
+  }
+}

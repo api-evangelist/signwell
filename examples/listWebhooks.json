@@ -1,0 +1,11 @@
+{
+  "operationId": "listWebhooks",
+  "method": "GET",
+  "path": "/api/v1/hooks",
+  "summary": "List Webhooks",
+  "description": "List all the webhooks in the account.",
+  "tags": [
+    "Webhooks"
+  ],
+  "parameters": []
+}

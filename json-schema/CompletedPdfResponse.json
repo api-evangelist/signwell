@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CompletedPdfResponse.json",
+  "title": "CompletedPdfResponse",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/CompletedPdfUrlResponse"
+    },
+    {
+      "$ref": "#/components/schemas/CompletedPdfBinaryResponse"
+    },
+    {
+      "$ref": "#/components/schemas/CompletedPdfZipResponse"
+    }
+  ]
+}

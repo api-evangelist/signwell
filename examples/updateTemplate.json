@@ -1,0 +1,24 @@
+{
+  "operationId": "updateTemplate",
+  "method": "PUT",
+  "path": "/api/v1/document_templates/{id}",
+  "summary": "Update Template",
+  "description": "Updates an existing template.",
+  "tags": [
+    "Template"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/DocumentTemplateUpdateRequest"
+    }
+  }
+}

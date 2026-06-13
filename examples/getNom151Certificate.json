@@ -1,0 +1,30 @@
+{
+  "operationId": "getNom151Certificate",
+  "method": "GET",
+  "path": "/api/v1/documents/{id}/nom151_certificate",
+  "summary": "MX \u2013 NOM-151 Certificate",
+  "description": "Download NOM-151 certificate for a completed document. Returns a ZIP file, download URL, or raw certificate data based on query parameters.",
+  "tags": [
+    "Regional"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "url_only",
+      "in": "query",
+      "required": false,
+      "description": "If true, returns JSON with download URL instead of downloading the file"
+    },
+    {
+      "name": "object_only",
+      "in": "query",
+      "required": false,
+      "description": ""
+    }
+  ]
+}

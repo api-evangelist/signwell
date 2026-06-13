@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/IncludeAuditPage.json",
+  "title": "IncludeAuditPage",
+  "type": "boolean",
+  "default": true,
+  "description": "Whether to include the audit page as part of the document. Defaults to `true`"
+}

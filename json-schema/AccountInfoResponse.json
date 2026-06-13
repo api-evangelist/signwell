@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/AccountInfoResponse.json",
+  "title": "AccountInfoResponse",
+  "type": "object",
+  "description": "Account or workspace information",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "plan_tier": {
+      "type": "string"
+    },
+    "active_templates": {
+      "type": "integer"
+    },
+    "can_create_template": {
+      "type": "boolean"
+    },
+    "can_create_tracking_document": {
+      "type": "boolean"
+    },
+    "can_create_completion_document": {
+      "type": "boolean"
+    },
+    "active_users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "has_google_registration": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email"
+        ]
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "date_format": {
+          "type": "string"
+        },
+        "days_until_links_expire": {
+          "type": "integer"
+        },
+        "disable_apply_everywhere": {
+          "type": "boolean"
+        },
+        "disable_apply_everywhere_effective": {
+          "type": "boolean"
+        },
+        "disable_drawn_signatures": {
+          "type": "boolean"
+        },
+        "disable_typed_signatures": {
+          "type": "boolean"
+        },
+        "disable_uploaded_signatures": {
+          "type": "boolean"
+        },
+        "enable_redirect": {
+          "type": "boolean"
+        },
+        "hide_document_id_in_audit": {
+          "type": "boolean"
+        },
+        "mute_branding": {
+          "type": "boolean"
+        },
+        "redirect_url": {
+          "type": "string",
+          "nullable": true
+        },
+        "separate_audit_pdf": {
+          "type": "boolean"
+        },
+        "separate_completed_file": {
+          "type": "boolean"
+        },
+        "enable_nom151_compliance": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "plan_tier"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "operationId": "deleteWebhook",
+  "method": "DELETE",
+  "path": "/api/v1/hooks/{id}",
+  "summary": "Delete Webhook",
+  "description": "Deletes a registered callback URL that we are posting document events to.",
+  "tags": [
+    "Webhooks"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ]
+}

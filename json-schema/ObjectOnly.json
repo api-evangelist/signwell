@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/ObjectOnly.json",
+  "title": "ObjectOnly",
+  "type": "boolean",
+  "default": false,
+  "description": "If true, returns raw NOM-151 constancia certificate object as JSON instead of a zip file or URL."
+}

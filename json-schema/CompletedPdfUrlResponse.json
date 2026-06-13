@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CompletedPdfUrlResponse.json",
+  "title": "CompletedPdfUrlResponse",
+  "type": "object",
+  "description": "JSON response containing the URL to the completed PDF file (returned when url_only=true)",
+  "properties": {
+    "file_url": {
+      "type": "string",
+      "format": "url",
+      "description": "URL to download the completed document"
+    }
+  },
+  "required": [
+    "file_url"
+  ]
+}

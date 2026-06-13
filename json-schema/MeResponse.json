@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/MeResponse.json",
+  "title": "MeResponse",
+  "type": "object",
+  "description": "Account information associated with the API key",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Membership ID"
+    },
+    "role": {
+      "type": "string",
+      "description": "Role within the account (e.g. owner, admin, member)"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "user": {
+      "type": "object",
+      "description": "The authenticated user",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "has_google_registration": {
+          "type": "boolean"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "sales_document": {
+              "type": "boolean"
+            },
+            "time_zone": {
+              "type": "string"
+            },
+            "smart_fields": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email"
+      ]
+    },
+    "account": {
+      "$ref": "#/components/schemas/AccountInfoResponse"
+    },
+    "workspace": {
+      "$ref": "#/components/schemas/AccountInfoResponse"
+    },
+    "contact": {
+      "type": "object",
+      "description": "The contact record for the authenticated user",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "name": {
+          "type": "string"
+        },
+        "company_name": {
+          "type": "string",
+          "nullable": true
+        },
+        "phone_number": {
+          "type": "string",
+          "nullable": true
+        },
+        "alt_phone_number": {
+          "type": "string",
+          "nullable": true
+        },
+        "website": {
+          "type": "string",
+          "nullable": true
+        },
+        "initials": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "name"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "role",
+    "user",
+    "account",
+    "workspace",
+    "contact"
+  ]
+}

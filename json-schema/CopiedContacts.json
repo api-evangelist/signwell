@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CopiedContacts.json",
+  "title": "CopiedContacts",
+  "type": "array",
+  "description": "Copied contacts are emailed the final document once it has been completed by all recipients.",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the copied contact."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email for the copied contact."
+      }
+    },
+    "required": [
+      "email"
+    ]
+  }
+}

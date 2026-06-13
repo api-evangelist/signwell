@@ -1,0 +1,11 @@
+{
+  "operationId": "getMe",
+  "method": "GET",
+  "path": "/api/v1/me",
+  "summary": "Get credentials",
+  "description": "Retrieves the account information associated with the API key being used.",
+  "tags": [
+    "Me"
+  ],
+  "parameters": []
+}

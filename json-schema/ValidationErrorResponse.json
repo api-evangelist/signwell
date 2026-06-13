@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/ValidationErrorResponse.json",
+  "title": "ValidationErrorResponse",
+  "type": "object",
+  "description": "Validation error response. The errors object contains field-specific error details with dynamic keys.",
+  "properties": {
+    "errors": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors."
+    }
+  },
+  "required": [
+    "errors"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/LabelInfo.json",
+  "title": "LabelInfo",
+  "type": "object",
+  "description": "Label information",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Label ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Label name"
+    }
+  }
+}

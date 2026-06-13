@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CheckboxGroupInfo.json",
+  "title": "CheckboxGroupInfo",
+  "type": "object",
+  "description": "Checkbox group configuration",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Checkbox group ID"
+    },
+    "group_name": {
+      "type": "string",
+      "nullable": true,
+      "description": "Name of the checkbox group"
+    },
+    "recipient_id": {
+      "type": "string",
+      "nullable": true,
+      "description": "Recipient ID associated with the group"
+    },
+    "checkbox_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of checkboxes in this group"
+    },
+    "validation": {
+      "$ref": "#/components/schemas/CheckboxValidation",
+      "nullable": true
+    },
+    "required": {
+      "type": "boolean",
+      "description": "Whether at least one checkbox must be checked"
+    },
+    "min_value": {
+      "type": "integer",
+      "description": "Minimum number of checkboxes to check"
+    },
+    "max_value": {
+      "type": "integer",
+      "description": "Maximum number of checkboxes to check"
+    },
+    "exact_value": {
+      "type": "integer",
+      "description": "Exact number of checkboxes that must be checked"
+    }
+  },
+  "required": [
+    "id",
+    "checkbox_ids",
+    "required"
+  ]
+}

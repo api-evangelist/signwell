@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/FieldType.json",
+  "title": "FieldType",
+  "type": "string",
+  "enum": [
+    "initials",
+    "signature",
+    "checkbox",
+    "date",
+    "select",
+    "text",
+    "dropdown",
+    "autofill_company",
+    "autofill_email",
+    "autofill_first_name",
+    "autofill_last_name",
+    "autofill_name",
+    "autofill_phone",
+    "autofill_title",
+    "autofill_date_signed"
+  ],
+  "description": "Type of signing field"
+}

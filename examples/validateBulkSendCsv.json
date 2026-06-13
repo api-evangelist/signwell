@@ -1,0 +1,17 @@
+{
+  "operationId": "validateBulkSendCsv",
+  "method": "POST",
+  "path": "/api/v1/bulk_sends/validate_csv",
+  "summary": "Validate Bulk Send CSV",
+  "description": "Validates a Bulk Send CSV file before creating the Bulk Send. It will check the structure of the CSV and the data it contains, and return any errors found.",
+  "tags": [
+    "Bulk Send"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/BulkSendCsvRequest"
+    }
+  }
+}

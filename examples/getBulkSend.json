@@ -1,0 +1,18 @@
+{
+  "operationId": "getBulkSend",
+  "method": "GET",
+  "path": "/api/v1/bulk_sends/{id}",
+  "summary": "Get Bulk Send",
+  "description": "Returns information about the Bulk Send.",
+  "tags": [
+    "Bulk Send"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ]
+}

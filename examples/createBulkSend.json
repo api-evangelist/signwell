@@ -1,0 +1,17 @@
+{
+  "operationId": "createBulkSend",
+  "method": "POST",
+  "path": "/api/v1/bulk_sends",
+  "summary": "Create Bulk Send",
+  "description": "Creates a bulk send, and it validates the CSV file before creating the bulk send.",
+  "tags": [
+    "Bulk Send"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/CreateBulkSendRequest"
+    }
+  }
+}

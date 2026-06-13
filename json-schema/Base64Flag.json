@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/Base64Flag.json",
+  "title": "Base64Flag",
+  "type": "boolean",
+  "description": "When true, returns the CSV as a base64-encoded string in a JSON response instead of a binary file download."
+}

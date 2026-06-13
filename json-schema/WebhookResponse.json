@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/WebhookResponse.json",
+  "title": "WebhookResponse",
+  "type": "object",
+  "description": "Webhook subscription",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "callback_url": {
+      "type": "string",
+      "format": "url"
+    },
+    "api_application_id": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    }
+  },
+  "required": [
+    "id",
+    "callback_url"
+  ]
+}

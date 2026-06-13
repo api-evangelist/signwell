@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/Nom151UrlResponse.json",
+  "title": "Nom151UrlResponse",
+  "type": "object",
+  "description": "NOM-151 download URL returned when url_only=true",
+  "properties": {
+    "file_url": {
+      "type": "string",
+      "format": "url",
+      "description": "Public URL to download the certificate ZIP file"
+    }
+  },
+  "required": [
+    "file_url"
+  ]
+}

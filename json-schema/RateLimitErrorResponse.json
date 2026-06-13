@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/RateLimitErrorResponse.json",
+  "title": "RateLimitErrorResponse",
+  "type": "object",
+  "description": "Rate limit exceeded error response (HTTP 429)",
+  "properties": {
+    "error": {
+      "type": "string",
+      "description": "Rate limit error message indicating the limit and reset time"
+    }
+  },
+  "required": [
+    "error"
+  ]
+}

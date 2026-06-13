@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/TemplateIds.json",
+  "title": "TemplateIds",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "format": "uuid"
+  },
+  "description": "Unique identifiers for a list of templates."
+}

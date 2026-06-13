@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/ApiApplicationResponse.json",
+  "title": "ApiApplicationResponse",
+  "type": "object",
+  "description": "API application details",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "callback_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "account_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email"
+      ]
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "button_text_color": {
+          "type": "string",
+          "nullable": true
+        },
+        "buttons_border_radius": {
+          "type": "integer"
+        },
+        "custom_logo_file": {
+          "type": "string",
+          "nullable": true
+        },
+        "link_text_color": {
+          "type": "string",
+          "nullable": true
+        },
+        "primary_color": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

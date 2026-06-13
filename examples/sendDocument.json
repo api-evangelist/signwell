@@ -1,0 +1,24 @@
+{
+  "operationId": "sendDocument",
+  "method": "POST",
+  "path": "/api/v1/documents/{id}/send",
+  "summary": "Update and Send Document",
+  "description": "Updates a draft document and sends it to be signed by recipients.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/UpdateDocumentAndSendRequest"
+    }
+  }
+}

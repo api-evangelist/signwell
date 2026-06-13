@@ -1,0 +1,24 @@
+{
+  "operationId": "getBulkSendCsvTemplate",
+  "method": "GET",
+  "path": "/api/v1/bulk_sends/csv_template",
+  "summary": "Get Bulk Send CSV Template",
+  "description": "Fetches a CSV template that corresponds to the provided document template IDs. CSV templates are blank CSV files that have columns containing required and optional data that can be sent when creating a bulk send. Fields can be referenced by the field label. Example: [placeholder name]_[field label] could be something like customer_address or signer_company_name (if 'Customer' and 'Signer' were placeholder names for templates set up in SignWell).",
+  "tags": [
+    "Bulk Send"
+  ],
+  "parameters": [
+    {
+      "name": "template_ids[]",
+      "in": "query",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "base64",
+      "in": "query",
+      "required": false,
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "operationId": "createDocumentFromTemplate",
+  "method": "POST",
+  "path": "/api/v1/document_templates/documents",
+  "summary": "Create Document from Template",
+  "description": "Creates and optionally sends a new document for signing. If `draft` is set to true the document will not be sent.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/DocumentFromTemplateRequest"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/UrlOnly.json",
+  "title": "UrlOnly",
+  "type": "boolean",
+  "default": false,
+  "description": "Whether to return the URL of the completed PDF or the actual PDF content. Defaults to `false`."
+}

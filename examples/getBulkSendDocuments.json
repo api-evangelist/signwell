@@ -1,0 +1,30 @@
+{
+  "operationId": "getBulkSendDocuments",
+  "method": "GET",
+  "path": "/api/v1/bulk_sends/{id}/documents",
+  "summary": "Get Bulk Send Documents",
+  "description": "Returns information about the Bulk Send.",
+  "tags": [
+    "Bulk Send"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "page",
+      "in": "query",
+      "required": false,
+      "description": ""
+    }
+  ]
+}

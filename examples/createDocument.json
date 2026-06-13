@@ -1,0 +1,17 @@
+{
+  "operationId": "createDocument",
+  "method": "POST",
+  "path": "/api/v1/documents",
+  "summary": "Create Document",
+  "description": "Creates and optionally sends a new document for signing. If `draft` is set to true the document will not be sent.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/DocumentRequest"
+    }
+  }
+}

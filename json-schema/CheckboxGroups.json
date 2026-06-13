@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CheckboxGroups.json",
+  "title": "CheckboxGroups",
+  "type": "array",
+  "description": "Checkbox fields that are placed on a document can be grouped with selection requirements. At least 2 checkbox fields in an array of fields must be assigned to the same recipient.",
+  "items": {
+    "type": "object",
+    "properties": {
+      "group_name": {
+        "type": "string",
+        "description": "A unique identifier for the checkbox group."
+      },
+      "recipient_id": {
+        "type": "string",
+        "description": "The recipient ID associated with the checkbox group."
+      },
+      "checkbox_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "A unique identifier for each checkbox in a group. ID must match the api_id of the checkbox field."
+        }
+      },
+      "validation": {
+        "$ref": "#/components/schemas/CheckboxValidation",
+        "description": "Set requirements for the group of one or multiple selections by the recipient. Defaults to minimum. Validation values: minimum, maximum, exact, range."
+      },
+      "required": {
+        "type": "boolean",
+        "default": false,
+        "description": "Whether the group must be completed by the recipient. Defaults to false."
+      },
+      "min_value": {
+        "type": "integer",
+        "description": "The minimum number of checkboxes that must be checked in the group. (Only for validation: minimum and range)"
+      },
+      "max_value": {
+        "type": "integer",
+        "description": "The maximum number of checkboxes that can be checked in the group. (Only for validation: maximum and range)"
+      },
+      "exact_value": {
+        "type": "integer",
+        "description": "The exact number of checkboxes that must be checked in the group. (Only for validation: exact)"
+      }
+    },
+    "required": [
+      "group_name",
+      "recipient_id",
+      "checkbox_ids"
+    ]
+  }
+}

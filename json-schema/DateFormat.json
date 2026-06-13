@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/DateFormat.json",
+  "title": "DateFormat",
+  "type": "string",
+  "enum": [
+    "MM/DD/YYYY",
+    "DD/MM/YYYY",
+    "YYYY/MM/DD",
+    "Month DD, YYYY",
+    "MM/DD/YYYY hh:mm:ss a"
+  ],
+  "description": "Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY"
+}

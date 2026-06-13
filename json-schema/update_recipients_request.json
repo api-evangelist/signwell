@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/update_recipients_request.json",
+  "title": "update_recipients_request",
+  "type": "object",
+  "properties": {
+    "recipients": {
+      "$ref": "#/components/schemas/update_recipients_map"
+    }
+  },
+  "required": [
+    "recipients"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/BulkSendListResponse.json",
+  "title": "BulkSendListResponse",
+  "type": "object",
+  "description": "List of bulk sends with pagination",
+  "properties": {
+    "bulk_sends": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BulkSendListItem"
+      }
+    },
+    "current_page": {
+      "type": "integer"
+    },
+    "next_page": {
+      "type": "integer",
+      "nullable": true
+    },
+    "previous_page": {
+      "type": "integer",
+      "nullable": true
+    },
+    "total_count": {
+      "type": "integer"
+    },
+    "total_pages": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "bulk_sends",
+    "current_page",
+    "total_count",
+    "total_pages"
+  ]
+}

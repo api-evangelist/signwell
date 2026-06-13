@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/PaginationMeta.json",
+  "title": "PaginationMeta",
+  "type": "object",
+  "description": "Pagination metadata for list responses",
+  "properties": {
+    "current_page": {
+      "type": "integer",
+      "description": "Current page number"
+    },
+    "next_page": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Next page number, null if on last page"
+    },
+    "previous_page": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Previous page number, null if on first page"
+    },
+    "total_count": {
+      "type": "integer",
+      "description": "Total number of records"
+    },
+    "total_pages": {
+      "type": "integer",
+      "description": "Total number of pages"
+    }
+  },
+  "required": [
+    "current_page",
+    "total_count",
+    "total_pages"
+  ]
+}

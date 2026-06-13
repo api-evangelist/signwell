@@ -1,0 +1,24 @@
+{
+  "operationId": "sendReminder",
+  "method": "POST",
+  "path": "/api/v1/documents/{id}/remind",
+  "summary": "Send Reminder",
+  "description": "Sends a reminder email to recipients that have not signed yet.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/SendReminderRequest"
+    }
+  }
+}

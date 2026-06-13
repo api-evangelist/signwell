@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/DocumentListResponse.json",
+  "title": "DocumentListResponse",
+  "type": "object",
+  "description": "List of documents with pagination",
+  "properties": {
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DocumentResponse"
+      }
+    },
+    "current_page": {
+      "type": "integer"
+    },
+    "next_page": {
+      "type": "integer",
+      "nullable": true
+    },
+    "previous_page": {
+      "type": "integer",
+      "nullable": true
+    },
+    "total_count": {
+      "type": "integer"
+    },
+    "total_pages": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "documents",
+    "current_page",
+    "total_count",
+    "total_pages"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/ReminderRecipients.json",
+  "title": "ReminderRecipients",
+  "type": "array",
+  "description": "Optional list if recipients within the document to send a reminder email to. If none are specified, all recipients that have not signed yet will receive a reminder email.",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Recipient's name (required if multiple recipients share the same email)."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Recipient's email address."
+      }
+    }
+  }
+}

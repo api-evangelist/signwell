@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/AttachmentRequestInfo.json",
+  "title": "AttachmentRequestInfo",
+  "type": "object",
+  "description": "Attachment request information",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the attachment request"
+    },
+    "url": {
+      "type": "string",
+      "format": "url",
+      "description": "URL of the uploaded attachment (when available)"
+    },
+    "required": {
+      "type": "boolean",
+      "description": "Whether the attachment is required"
+    }
+  },
+  "required": [
+    "name",
+    "required"
+  ]
+}

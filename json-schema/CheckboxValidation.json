@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CheckboxValidation.json",
+  "title": "CheckboxValidation",
+  "type": "string",
+  "enum": [
+    "minimum",
+    "maximum",
+    "range",
+    "exact"
+  ],
+  "description": "Validation rule for checkbox groups"
+}

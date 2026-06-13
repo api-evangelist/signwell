@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/FileInfo.json",
+  "title": "FileInfo",
+  "type": "object",
+  "description": "File information",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "File name"
+    },
+    "pages_number": {
+      "type": "integer",
+      "description": "Number of pages in the file"
+    }
+  },
+  "required": [
+    "name",
+    "pages_number"
+  ]
+}

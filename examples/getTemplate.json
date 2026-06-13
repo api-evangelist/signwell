@@ -1,0 +1,18 @@
+{
+  "operationId": "getTemplate",
+  "method": "GET",
+  "path": "/api/v1/document_templates/{id}",
+  "summary": "Get Template",
+  "description": "Returns a template and all associated template data. Supply the unique template ID from either a Create Template request or template page URL.",
+  "tags": [
+    "Template"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ]
+}

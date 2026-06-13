@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/CopiedPlaceholders.json",
+  "title": "CopiedPlaceholders",
+  "type": "array",
+  "description": "Copied placeholders are emailed the final document once it has been completed by all recipients.",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the placeholder."
+      },
+      "preassigned_recipient_name": {
+        "type": "string",
+        "description": "In some cases, it may be necessary to pre-fill the name and email for a placeholder because it will always be the same person for all documents created from this template. This sets the name."
+      },
+      "preassigned_recipient_email": {
+        "type": "string",
+        "format": "email",
+        "description": "In some cases, it may be necessary to pre-fill the name and email for a placeholder because it will always be the same person for all documents created from this template. This sets the email."
+      }
+    },
+    "required": [
+      "name"
+    ]
+  }
+}

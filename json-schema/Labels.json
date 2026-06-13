@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/Labels.json",
+  "title": "Labels",
+  "type": "array",
+  "description": "Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell. A document can have multiple labels.",
+  "items": {
+    "$ref": "#/components/schemas/LabelRequest"
+  }
+}

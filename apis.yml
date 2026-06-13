@@ -42,6 +42,14 @@ apis:
         url: https://developers.signwell.com/reference/getting-started-with-your-api-1
       - type: OpenAPI
         url: https://developers.signwell.com/llms.txt
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/openapi/signwell-signwell-api-openapi.yml
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
+      - type: JSONLDContext
+        url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+      - type: Vocabulary
+        url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
 common:
   - type: Website
     url: https://www.signwell.com/
@@ -53,6 +61,10 @@ common:
     url: https://www.linkedin.com/company/signwellapp
   - type: Blog
     url: https://www.signwell.com/resources/
+  - type: BlogRSS
+    url: https://www.signwell.com/resources/feed/
+  - type: Blogs
+    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/blogs/blogs.json
   - type: Pricing
     url: https://www.signwell.com/api-pricing/
   - type: StatusPage

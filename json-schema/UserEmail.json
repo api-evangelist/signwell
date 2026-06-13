@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/UserEmail.json",
+  "title": "UserEmail",
+  "type": "string",
+  "format": "email",
+  "description": "The email address of the user that sent the Bulk Send. Must have the `admin` or `manager` role to view Bulk Sends of other users. Defaults to the user that the API key belongs to."
+}

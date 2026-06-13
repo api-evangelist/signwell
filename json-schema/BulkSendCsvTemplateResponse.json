@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/BulkSendCsvTemplateResponse.json",
+  "title": "BulkSendCsvTemplateResponse",
+  "type": "object",
+  "description": "Base64-encoded CSV template",
+  "properties": {
+    "data": {
+      "type": "string",
+      "format": "byte",
+      "description": "Base64-encoded CSV content"
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

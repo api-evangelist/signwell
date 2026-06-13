@@ -1,0 +1,18 @@
+{
+  "operationId": "getDocument",
+  "method": "GET",
+  "path": "/api/v1/documents/{id}",
+  "summary": "Get Document",
+  "description": "Returns a document and all associated document data. Supply the unique document ID from either a document creation request or Document page URL.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ]
+}

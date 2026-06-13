@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/FileFormat.json",
+  "title": "FileFormat",
+  "type": "string",
+  "enum": [
+    "pdf",
+    "zip"
+  ],
+  "description": "Format of the file to be downloaded. Supported formats are 'pdf' and 'zip'."
+}

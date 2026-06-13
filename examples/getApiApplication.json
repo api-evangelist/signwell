@@ -1,0 +1,18 @@
+{
+  "operationId": "getApiApplication",
+  "method": "GET",
+  "path": "/api/v1/api_applications/{id}",
+  "summary": "Get API Application",
+  "description": "Gets the details of a specific API Application within an account. Supply the unique Application ID from either the Create API Application response or the API Application edit page.",
+  "tags": [
+    "API Application"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/Page.json",
+  "title": "Page",
+  "type": "integer",
+  "minimum": 1,
+  "default": 1,
+  "description": "The page number for pagination. Defaults to the first page."
+}

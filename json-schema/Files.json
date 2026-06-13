@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/Files.json",
+  "title": "Files",
+  "type": "array",
+  "description": "Document files can be uploaded by specifying a file URL or base64 string. Either `file_url` or `file_base64` must be present (not both). Valid file types are: .pdf, .doc, .docx, .pages, .ppt, .pptx, .key, .xls, .xlsx, .numbers, .jpg, .jpeg, .png, .tiff, .tif, .webp, .html, and .htm",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the file that will be uploaded."
+      },
+      "file_url": {
+        "type": "string",
+        "format": "url",
+        "description": "Publicly available URL of the file to be uploaded."
+      },
+      "file_base64": {
+        "type": "string",
+        "format": "byte",
+        "description": "A RFC 4648 base64 string of the file to be uploaded."
+      }
+    },
+    "required": [
+      "name"
+    ]
+  }
+}

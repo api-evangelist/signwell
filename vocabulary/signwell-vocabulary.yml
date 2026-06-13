@@ -1,0 +1,657 @@
+aid: signwell
+description: Domain vocabulary extracted from the SignWell Developer API OpenAPI specification.
+name: SignWell API Vocabulary
+operations:
+- description: Returns a paginated list of documents for the authenticated account.
+  label: List Documents
+  method: GET
+  path: /api/v1/documents
+  tags:
+  - Document
+  term: listDocuments
+  type: operation
+- description: Creates and optionally sends a new document for signing. If `draft`
+    is set to true the document will not be sent.
+  label: Create Document
+  method: POST
+  path: /api/v1/documents
+  tags:
+  - Document
+  term: createDocument
+  type: operation
+- description: Returns a document and all associated document data. Supply the unique
+    document ID from either a document creation request or Document page URL.
+  label: Get Document
+  method: GET
+  path: /api/v1/documents/{id}
+  tags:
+  - Document
+  term: getDocument
+  type: operation
+- description: Deletes a document. Deleting a document will also cancel document signing
+    (if in progress).  Supply the unique document ID from either a Create Document
+    request or document page URL.
+  label: Delete Document
+  method: DELETE
+  path: /api/v1/documents/{id}
+  tags:
+  - Document
+  term: deleteDocument
+  type: operation
+- description: Creates and optionally sends a new document for signing. If `draft`
+    is set to true the document will not be sent.
+  label: Create Document from Template
+  method: POST
+  path: /api/v1/document_templates/documents
+  tags:
+  - Document
+  term: createDocumentFromTemplate
+  type: operation
+- description: Updates a draft document and sends it to be signed by recipients.
+  label: Update and Send Document
+  method: POST
+  path: /api/v1/documents/{id}/send
+  tags:
+  - Document
+  term: sendDocument
+  type: operation
+- description: 'Updates one or more recipients on a document that has already been
+    sent. Only recipients who have not started signing may be updated. Recipient IDs
+    must be retrieved from the Get Document response. Allowed document statuses: sent,
+    viewed, pending, bounced. For non-embedded documents, updated recipients will
+    receive a new notification email. For embedded signing documents, email behavior
+    follows each recipient''s send_email setting.'
+  label: Update Recipients
+  method: PATCH
+  path: /api/v1/documents/{id}/recipients
+  tags:
+  - Document
+  term: updateRecipients
+  type: operation
+- description: Sends a reminder email to recipients that have not signed yet.
+  label: Send Reminder
+  method: POST
+  path: /api/v1/documents/{id}/remind
+  tags:
+  - Document
+  term: sendReminder
+  type: operation
+- description: Gets a completed document PDF or ZIP file. Supply the unique document
+    ID from either a document creation request or document page URL.
+  label: Completed PDF
+  method: GET
+  path: /api/v1/documents/{id}/completed_pdf
+  tags:
+  - Document
+  term: getCompletedPdf
+  type: operation
+- description: Returns a paginated list of templates for the authenticated account.
+  label: List Templates
+  method: GET
+  path: /api/v1/document_templates
+  tags:
+  - Template
+  term: listTemplates
+  type: operation
+- description: Creates a new template.
+  label: Create Template
+  method: POST
+  path: /api/v1/document_templates
+  tags:
+  - Template
+  term: createTemplate
+  type: operation
+- description: Returns a template and all associated template data. Supply the unique
+    template ID from either a Create Template request or template page URL.
+  label: Get Template
+  method: GET
+  path: /api/v1/document_templates/{id}
+  tags:
+  - Template
+  term: getTemplate
+  type: operation
+- description: Updates an existing template.
+  label: Update Template
+  method: PUT
+  path: /api/v1/document_templates/{id}
+  tags:
+  - Template
+  term: updateTemplate
+  type: operation
+- description: Deletes a template. Supply the unique template ID from either a Create
+    Template request or template page URL.
+  label: Delete Template
+  method: DELETE
+  path: /api/v1/document_templates/{id}
+  tags:
+  - Template
+  term: deleteTemplate
+  type: operation
+- description: Gets the details of a specific API Application within an account. Supply
+    the unique Application ID from either the Create API Application response or the
+    API Application edit page.
+  label: Get API Application
+  method: GET
+  path: /api/v1/api_applications/{id}
+  tags:
+  - API Application
+  term: getApiApplication
+  type: operation
+- description: Deletes an API Application from an account. Supply the unique Application
+    ID from either the Create API Application response or the API Application edit
+    page
+  label: Delete API Application
+  method: DELETE
+  path: /api/v1/api_applications/{id}
+  tags:
+  - API Application
+  term: deleteApiApplication
+  type: operation
+- description: List all the webhooks in the account.
+  label: List Webhooks
+  method: GET
+  path: /api/v1/hooks
+  tags:
+  - Webhooks
+  term: listWebhooks
+  type: operation
+- description: Register a callback URL that we will post document events to.
+  label: Create Webhook
+  method: POST
+  path: /api/v1/hooks
+  tags:
+  - Webhooks
+  term: createWebhook
+  type: operation
+- description: Deletes a registered callback URL that we are posting document events
+    to.
+  label: Delete Webhook
+  method: DELETE
+  path: /api/v1/hooks/{id}
+  tags:
+  - Webhooks
+  term: deleteWebhook
+  type: operation
+- description: Retrieves the account information associated with the API key being
+    used.
+  label: Get credentials
+  method: GET
+  path: /api/v1/me
+  tags:
+  - Me
+  term: getMe
+  type: operation
+- description: Returns information about the Bulk Send.
+  label: Get Bulk Send
+  method: GET
+  path: /api/v1/bulk_sends/{id}
+  tags:
+  - Bulk Send
+  term: getBulkSend
+  type: operation
+- description: Returns information about the Bulk Send.
+  label: List Bulk Sendings
+  method: GET
+  path: /api/v1/bulk_sends
+  tags:
+  - Bulk Send
+  term: listBulkSends
+  type: operation
+- description: Creates a bulk send, and it validates the CSV file before creating
+    the bulk send.
+  label: Create Bulk Send
+  method: POST
+  path: /api/v1/bulk_sends
+  tags:
+  - Bulk Send
+  term: createBulkSend
+  type: operation
+- description: 'Fetches a CSV template that corresponds to the provided document template
+    IDs. CSV templates are blank CSV files that have columns containing required and
+    optional data that can be sent when creating a bulk send. Fields can be referenced
+    by the field label. Example: [placeholder name]_[field label] could be something
+    like customer_address or signer_company_name (if ''Customer'' and ''Signer'' were
+    placeholder names for templates set up in SignWell).'
+  label: Get Bulk Send CSV Template
+  method: GET
+  path: /api/v1/bulk_sends/csv_template
+  tags:
+  - Bulk Send
+  term: getBulkSendCsvTemplate
+  type: operation
+- description: Validates a Bulk Send CSV file before creating the Bulk Send. It will
+    check the structure of the CSV and the data it contains, and return any errors
+    found.
+  label: Validate Bulk Send CSV
+  method: POST
+  path: /api/v1/bulk_sends/validate_csv
+  tags:
+  - Bulk Send
+  term: validateBulkSendCsv
+  type: operation
+- description: Returns information about the Bulk Send.
+  label: Get Bulk Send Documents
+  method: GET
+  path: /api/v1/bulk_sends/{id}/documents
+  tags:
+  - Bulk Send
+  term: getBulkSendDocuments
+  type: operation
+- description: Download NOM-151 certificate for a completed document. Returns a ZIP
+    file, download URL, or raw certificate data based on query parameters.
+  label: MX – NOM-151 Certificate
+  method: GET
+  path: /api/v1/documents/{id}/nom151_certificate
+  tags:
+  - Regional
+  term: getNom151Certificate
+  type: operation
+schemas:
+- description: Type of signing field
+  label: FieldType
+  term: FieldType
+  type: schema
+- description: Validation rule for text fields
+  label: TextValidation
+  term: TextValidation
+  type: schema
+- description: 'Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY,
+    YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY'
+  label: DateFormat
+  term: DateFormat
+  type: schema
+- description: Validation rule for checkbox groups
+  label: CheckboxValidation
+  term: CheckboxValidation
+  type: schema
+- description: File information
+  label: FileInfo
+  term: FileInfo
+  type: schema
+- description: Label information
+  label: LabelInfo
+  term: LabelInfo
+  type: schema
+- description: Copied contact information
+  label: CopiedContactInfo
+  term: CopiedContactInfo
+  type: schema
+- description: Checkbox group configuration
+  label: CheckboxGroupInfo
+  term: CheckboxGroupInfo
+  type: schema
+- description: Attachment request information
+  label: AttachmentRequestInfo
+  term: AttachmentRequestInfo
+  type: schema
+- description: Fields to be added to any appended files (not existing files). Document
+    fields placed on a document for collecting data or signatures from recipients.
+    Field data should be sent as a 2-dimensional JSON array. One array of fields is
+    needed for each file in the files array. An array of fields can be empty if you
+    have a file that does not contain any fields.
+  label: AdditionalFields
+  term: AdditionalFields
+  type: schema
+- description: ''
+  label: AdditionalFiles
+  term: AdditionalFiles
+  type: schema
+- description: Unique identifier for API Application settings to use. API Applications
+    are optional and mainly used when isolating OAuth apps or for more control over
+    embedded API settings
+  label: ApiApplicationId
+  term: ApiApplicationId
+  type: schema
+- description: Attachments that a recipient must upload to complete the signing process.
+    Attachment requests are shown after all document fields have been completed.
+  label: TemplateAttachmentRequests
+  term: TemplateAttachmentRequests
+  type: schema
+- description: Attachments that a recipient must upload to complete the signing process.
+    Attachment requests are shown after all document fields have been completed.
+  label: AttachmentRequests
+  term: AttachmentRequests
+  type: schema
+- description: Checkbox fields that are placed on a document can be grouped with selection
+    requirements. At least 2 checkbox fields in an array of fields must be assigned
+    to the same recipient.
+  label: TemplateCheckboxGroups
+  term: TemplateCheckboxGroups
+  type: schema
+- description: Checkbox fields that are placed on a document can be grouped with selection
+    requirements. At least 2 checkbox fields in an array of fields must be assigned
+    to the same recipient.
+  label: CheckboxGroups
+  term: CheckboxGroups
+  type: schema
+- description: A RFC 4648 base64 string of the template CSV file to be validated.
+  label: BulkSendCsv
+  term: BulkSendCsv
+  type: schema
+- description: When true, returns the CSV as a base64-encoded string in a JSON response
+    instead of a binary file download.
+  label: Base64Flag
+  term: Base64Flag
+  type: schema
+- description: Base64-encoded CSV template
+  label: BulkSendCsvTemplateResponse
+  term: BulkSendCsvTemplateResponse
+  type: schema
+- description: Unique identifier for a bulk send.
+  label: BulkSendId
+  term: BulkSendId
+  type: schema
+- description: Specify one or more templates to generate a single blank CSV file that
+    will contain available columns for your recipient data. The template_ids[] parameter
+    is an array of template IDs (e.g.,`/?template_ids[]=5a67dbd7-928a-4ea0-a7e2-e476a0eb045f&template_ids[]=d7315111-c671-4b15-8354-c9a19bbaefa0`).
+    Each ID should be a separate parameter in the query string.
+  label: BulkSendTemplateIds
+  term: BulkSendTemplateIds
+  type: schema
+- description: Copied contacts are emailed the final document once it has been completed
+    by all recipients.
+  label: CopiedContacts
+  term: CopiedContacts
+  type: schema
+- description: Copied placeholders are emailed the final document once it has been
+    completed by all recipients.
+  label: CopiedPlaceholders
+  term: CopiedPlaceholders
+  type: schema
+- description: Unique identifier for a completed document.
+  label: CompletedDocumentId
+  term: CompletedDocumentId
+  type: schema
+- description: Unique identifier for a document.
+  label: DocumentId
+  term: DocumentId
+  type: schema
+- description: Document recipients are people that must complete and/or sign a document.
+  label: Recipients
+  term: Recipients
+  type: schema
+- description: Document fields placed on a document for collecting data or signatures
+    from recipients. At least one field must be present in the Create Document request
+    if `draft` is `false` (unless adding a signature page by using `with_signature_page`).
+    Field data should be sent as a 2-dimensional JSON array. One array of fields is
+    needed for each file in the files array. An array of fields can be empty if you
+    have a file that does not contain any fields.
+  label: Fields
+  term: Fields
+  type: schema
+- description: Document fields placed on a document for collecting data or signatures
+    from recipients. At least one field must be present in the Create Document request
+    if `draft` is `false` (unless adding a signature page by using `with_signature_page`).
+    Field data should be sent as a 2-dimensional JSON array. One array of fields is
+    needed for each file in the files array. An array of fields can be empty if you
+    have a file that does not contain any fields.
+  label: TemplateFields
+  term: TemplateFields
+  type: schema
+- description: 'Document files can be uploaded by specifying a file URL or base64
+    string. Either `file_url` or `file_base64` must be present (not both). Valid file
+    types are: .pdf, .doc, .docx, .pages, .ppt, .pptx, .key, .xls, .xlsx, .numbers,
+    .jpg, .jpeg, .png, .tiff, .tif, .webp, .html, and .htm'
+  label: Files
+  term: Files
+  type: schema
+- description: The number of documents to fetch. Defaults to 10, max is 50.
+  label: Limit
+  term: Limit
+  type: schema
+- description: The page number for pagination. Defaults to the first page.
+  label: Page
+  term: Page
+  type: schema
+- description: Placeholders are generally job roles that must complete and/or sign
+    the document. For example, a placeholder might be “Client” or “Legal Department”.
+    When a document is created from the template, you assign a person to each placeholder.
+  label: Placeholders
+  term: Placeholders
+  type: schema
+- description: Optional list if recipients within the document to send a reminder
+    email to. If none are specified, all recipients that have not signed yet will
+    receive a reminder email.
+  label: ReminderRecipients
+  term: ReminderRecipients
+  type: schema
+- description: List of recipients to update on the document.
+  label: update_recipients_map
+  term: update_recipients_map
+  type: schema
+- description: Fields of your template(s) that you can prepopulate with values. Signature
+    and Initials fields cannot be signed through the API.
+  label: TemplateFieldValues
+  term: TemplateFieldValues
+  type: schema
+- description: Unique identifier for a template.
+  label: TemplateId
+  term: TemplateId
+  type: schema
+- description: Unique identifiers for a list of templates.
+  label: TemplateIds
+  term: TemplateIds
+  type: schema
+- description: Document recipients are people that must complete and/or sign a document.
+    Recipients of the document must be assigned to a placeholder of the template.
+    Recipients will inherit all placeholder fields and settings.
+  label: TemplateRecipients
+  term: TemplateRecipients
+  type: schema
+- description: Whether to return the URL of the completed PDF or the actual PDF content.
+    Defaults to `false`.
+  label: UrlOnly
+  term: UrlOnly
+  type: schema
+- description: If true, returns raw NOM-151 constancia certificate object as JSON
+    instead of a zip file or URL.
+  label: ObjectOnly
+  term: ObjectOnly
+  type: schema
+- description: Whether to include the audit page as part of the document. Defaults
+    to `true`
+  label: IncludeAuditPage
+  term: IncludeAuditPage
+  type: schema
+- description: Format of the file to be downloaded. Supported formats are 'pdf' and
+    'zip'.
+  label: FileFormat
+  term: FileFormat
+  type: schema
+- description: The email address of the user that sent the Bulk Send. Must have the
+    `admin` or `manager` role to view Bulk Sends of other users. Defaults to the user
+    that the API key belongs to.
+  label: UserEmail
+  term: UserEmail
+  type: schema
+- description: Labels can be used to organize documents in a way that can make it
+    easy to find using the document search in SignWell. A document can have multiple
+    labels.
+  label: Labels
+  term: Labels
+  type: schema
+- description: Labels can be used to organize documents in a way that can make it
+    easy to find using the document search in SignWell. A document can have multiple
+    labels. Updating labels on a document will replace any existing labels for that
+    document.
+  label: LabelsUpdate
+  term: LabelsUpdate
+  type: schema
+- description: Labels can be used to organize documents in a way that can make it
+    easy to find using the document search in SignWell. A document can have multiple
+    labels. Updating labels on a document will replace any existing labels for that
+    document.
+  label: LabelsResponse
+  term: LabelsResponse
+  type: schema
+- description: Labels can be used to organize documents and templates in a way that
+    can make it easy to find using the document search/template search in SignWell.
+    Labels can be used to organize documents in a way that can make it easy to find
+    using the document search in SignWell.
+  label: LabelResponse
+  term: LabelResponse
+  type: schema
+- description: Labels can be used to organize documents and templates in a way that
+    can make it easy to find using the document search/template search in SignWell.
+    Labels can be used to organize documents in a way that can make it easy to find
+    using the document search in SignWell.
+  label: LabelRequest
+  term: LabelRequest
+  type: schema
+- description: A dropdown option - either a simple string or a detailed object with
+    name and optional api_id
+  label: DropdownOption
+  term: DropdownOption
+  type: schema
+- description: ''
+  label: CreateBulkSendRequest
+  term: CreateBulkSendRequest
+  type: schema
+- description: ''
+  label: BulkSendCsvRequest
+  term: BulkSendCsvRequest
+  type: schema
+- description: ''
+  label: DocumentRequest
+  term: DocumentRequest
+  type: schema
+- description: ''
+  label: DocumentFromTemplateRequest
+  term: DocumentFromTemplateRequest
+  type: schema
+- description: ''
+  label: UpdateDocumentAndSendRequest
+  term: UpdateDocumentAndSendRequest
+  type: schema
+- description: ''
+  label: SendReminderRequest
+  term: SendReminderRequest
+  type: schema
+- description: ''
+  label: update_recipients_request
+  term: update_recipients_request
+  type: schema
+- description: ''
+  label: DocumentTemplateRequest
+  term: DocumentTemplateRequest
+  type: schema
+- description: ''
+  label: DocumentTemplateUpdateRequest
+  term: DocumentTemplateUpdateRequest
+  type: schema
+- description: ''
+  label: CompletedPdfResponse
+  term: CompletedPdfResponse
+  type: schema
+- description: JSON response containing the URL to the completed PDF file (returned
+    when url_only=true)
+  label: CompletedPdfUrlResponse
+  term: CompletedPdfUrlResponse
+  type: schema
+- description: Raw PDF binary data (default response when url_only=false)
+  label: CompletedPdfBinaryResponse
+  term: CompletedPdfBinaryResponse
+  type: schema
+- description: ZIP file containing the completed PDF (returned when file_format=zip)
+  label: CompletedPdfZipResponse
+  term: CompletedPdfZipResponse
+  type: schema
+- description: NOM-151 certificate data returned when object_only=true
+  label: Nom151CertificateResponse
+  term: Nom151CertificateResponse
+  type: schema
+- description: NOM-151 download URL returned when url_only=true
+  label: Nom151UrlResponse
+  term: Nom151UrlResponse
+  type: schema
+- description: ''
+  label: DocumentResponse
+  term: DocumentResponse
+  type: schema
+- description: ''
+  label: DocumentTemplateResponse
+  term: DocumentTemplateResponse
+  type: schema
+- description: ''
+  label: DocumentFromTemplateResponse
+  term: DocumentFromTemplateResponse
+  type: schema
+- description: Pagination metadata for list responses
+  label: PaginationMeta
+  term: PaginationMeta
+  type: schema
+- description: List of documents with pagination
+  label: DocumentListResponse
+  term: DocumentListResponse
+  type: schema
+- description: List of templates with pagination
+  label: DocumentTemplateListResponse
+  term: DocumentTemplateListResponse
+  type: schema
+- description: Bulk send summary in list responses
+  label: BulkSendListItem
+  term: BulkSendListItem
+  type: schema
+- description: List of bulk sends with pagination
+  label: BulkSendListResponse
+  term: BulkSendListResponse
+  type: schema
+- description: Account or workspace information
+  label: AccountInfoResponse
+  term: AccountInfoResponse
+  type: schema
+- description: Account information associated with the API key
+  label: MeResponse
+  term: MeResponse
+  type: schema
+- description: API application details
+  label: ApiApplicationResponse
+  term: ApiApplicationResponse
+  type: schema
+- description: Bulk send details
+  label: BulkSendResponse
+  term: BulkSendResponse
+  type: schema
+- description: Bulk send creation response
+  label: BulkSendCreateResponse
+  term: BulkSendCreateResponse
+  type: schema
+- description: Paginated list of documents in a bulk send
+  label: BulkSendDocumentsResponse
+  term: BulkSendDocumentsResponse
+  type: schema
+- description: Validated bulk send CSV response with defaults applied
+  label: BulkSendValidateCsvResponse
+  term: BulkSendValidateCsvResponse
+  type: schema
+- description: Webhook subscription
+  label: WebhookResponse
+  term: WebhookResponse
+  type: schema
+- description: List of webhook subscriptions
+  label: WebhookListResponse
+  term: WebhookListResponse
+  type: schema
+- description: Standard error response
+  label: ErrorResponse
+  term: ErrorResponse
+  type: schema
+- description: Validation error response. The errors object contains field-specific
+    error details with dynamic keys.
+  label: ValidationErrorResponse
+  term: ValidationErrorResponse
+  type: schema
+- description: Rate limit exceeded error response (HTTP 429)
+  label: RateLimitErrorResponse
+  term: RateLimitErrorResponse
+  type: schema
+tags:
+- Document
+- Template
+- Bulk Send
+- Webhooks
+- API Application
+- Me
+- Regional
+url: https://developers.signwell.com/
+version: v1

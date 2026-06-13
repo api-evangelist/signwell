@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/DocumentFromTemplateResponse.json",
+  "title": "DocumentFromTemplateResponse",
+  "type": "object",
+  "properties": {
+    "test_mode": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "string"
+    },
+    "template_id": {
+      "type": "string"
+    },
+    "template_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "api_application_id": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "requester_email_address": {
+      "type": "string",
+      "format": "email"
+    },
+    "custom_requester_name": {
+      "type": "string",
+      "nullable": true
+    },
+    "custom_requester_email": {
+      "type": "string",
+      "format": "email",
+      "nullable": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "nullable": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "recipients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "subject": {
+            "type": "string",
+            "nullable": true
+          },
+          "send_email": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "send_email_delay": {
+            "type": "integer",
+            "nullable": true
+          },
+          "signing_order": {
+            "type": "integer"
+          },
+          "signing_url": {
+            "type": "string",
+            "format": "url",
+            "nullable": true
+          },
+          "embedded_signing_url": {
+            "type": "string",
+            "format": "url",
+            "nullable": true
+          },
+          "bounced": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "bounced_details": {
+            "type": "string",
+            "nullable": true
+          },
+          "attachment_requests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttachmentRequestInfo"
+            }
+          },
+          "passcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string"
+          },
+          "placeholder_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Possible values: Draft, Created, Sending, Sent, Pending, Viewed, Completed, Manually completed, Declined, Canceled, Bounced, Blocked, Error, Expired"
+    },
+    "reminders": {
+      "type": "boolean"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "embedded_signing": {
+      "type": "boolean"
+    },
+    "embedded_edit_url": {
+      "type": "string",
+      "format": "url"
+    },
+    "embedded_preview_url": {
+      "type": "string",
+      "format": "url",
+      "nullable": true
+    },
+    "apply_signing_order": {
+      "type": "boolean"
+    },
+    "redirect_url": {
+      "type": "string",
+      "format": "url",
+      "nullable": true
+    },
+    "decline_redirect_url": {
+      "type": "string",
+      "format": "url",
+      "nullable": true
+    },
+    "language": {
+      "type": "string"
+    },
+    "expires_in": {
+      "type": "integer"
+    },
+    "decline_message": {
+      "type": "string",
+      "nullable": true
+    },
+    "error_message": {
+      "type": "string",
+      "nullable": true
+    },
+    "embedded_signing_notifications": {
+      "type": "boolean"
+    },
+    "attachment_requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "recipient_id": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "recipient_id"
+        ]
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FileInfo"
+      }
+    },
+    "copied_contacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CopiedContactInfo"
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "format": "float"
+            },
+            "y": {
+              "type": "number",
+              "format": "float"
+            },
+            "page": {
+              "type": "integer"
+            },
+            "recipient": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "name"
+              ]
+            },
+            "api_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "date_format": {
+              "$ref": "#/components/schemas/DateFormat"
+            },
+            "fixed_width": {
+              "type": "boolean"
+            },
+            "formula": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "lock_sign_date": {
+              "type": "boolean"
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "type": {
+              "$ref": "#/components/schemas/FieldType"
+            },
+            "validation": {
+              "$ref": "#/components/schemas/TextValidation"
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "nullable": true
+            },
+            "height": {
+              "type": "string"
+            },
+            "width": {
+              "type": "string"
+            },
+            "recipient_id": {
+              "type": "string",
+              "nullable": true
+            },
+            "signing_elements_group_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "placeholder_name": {
+              "type": "string"
+            },
+            "options": {
+              "type": "array",
+              "description": "Dropdown options (for dropdown/select fields)",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "api_id": {
+                    "type": "string"
+                  },
+                  "is_other": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "default_option": {
+              "type": "string",
+              "description": "Default selected option"
+            },
+            "allow_other": {
+              "type": "boolean",
+              "description": "Whether \"Other\" option is allowed"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "page"
+          ]
+        }
+      }
+    },
+    "allow_decline": {
+      "type": "boolean",
+      "nullable": true
+    },
+    "allow_reassign": {
+      "type": "boolean",
+      "nullable": true
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LabelInfo"
+      }
+    },
+    "checkbox_groups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CheckboxGroupInfo"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "test_mode"
+  ]
+}

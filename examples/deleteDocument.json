@@ -1,0 +1,18 @@
+{
+  "operationId": "deleteDocument",
+  "method": "DELETE",
+  "path": "/api/v1/documents/{id}",
+  "summary": "Delete Document",
+  "description": "Deletes a document. Deleting a document will also cancel document signing (if in progress).  Supply the unique document ID from either a Create Document request or document page URL.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ]
+}

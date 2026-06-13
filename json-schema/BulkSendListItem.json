@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/BulkSendListItem.json",
+  "title": "BulkSendListItem",
+  "type": "object",
+  "description": "Bulk send summary in list responses",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "api_application_id": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "documents_count": {
+      "type": "integer"
+    },
+    "documents_completed": {
+      "type": "integer"
+    },
+    "documents_not_completed": {
+      "type": "integer"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "user_id": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "status": {
+      "type": "string"
+    },
+    "template_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "documents_count",
+    "documents_completed",
+    "documents_not_completed",
+    "created_at",
+    "status",
+    "template_ids"
+  ]
+}

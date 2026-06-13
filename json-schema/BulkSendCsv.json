@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/BulkSendCsv.json",
+  "title": "BulkSendCsv",
+  "type": "string",
+  "description": "A RFC 4648 base64 string of the template CSV file to be validated."
+}

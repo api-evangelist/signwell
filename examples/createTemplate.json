@@ -1,0 +1,17 @@
+{
+  "operationId": "createTemplate",
+  "method": "POST",
+  "path": "/api/v1/document_templates",
+  "summary": "Create Template",
+  "description": "Creates a new template.",
+  "tags": [
+    "Template"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/DocumentTemplateRequest"
+    }
+  }
+}

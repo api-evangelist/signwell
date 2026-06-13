@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/Nom151CertificateResponse.json",
+  "title": "Nom151CertificateResponse",
+  "type": "object",
+  "description": "NOM-151 certificate data returned when object_only=true",
+  "properties": {
+    "nom151": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Certificate status (pending, issued, failed)"
+        },
+        "transactionId": {
+          "type": "string",
+          "description": "RSA signature / Transaction ID"
+        },
+        "hash": {
+          "type": "string",
+          "description": "Document digest (SHA-256 hash)"
+        },
+        "folio": {
+          "type": "string",
+          "description": "Certificate number / Folio"
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Certificate issuance timestamp"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Certificate provider (e.g., SeguriData)"
+        },
+        "validationUrl": {
+          "type": "string",
+          "format": "url",
+          "description": "URL to validate the certificate"
+        },
+        "constancia": {
+          "type": "string",
+          "description": "Base64-encoded certificate file"
+        }
+      },
+      "required": [
+        "status",
+        "transactionId",
+        "hash",
+        "folio",
+        "issuedAt",
+        "provider",
+        "validationUrl",
+        "constancia"
+      ]
+    }
+  },
+  "required": [
+    "nom151"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/BulkSendValidateCsvResponse.json",
+  "title": "BulkSendValidateCsvResponse",
+  "type": "object",
+  "description": "Validated bulk send CSV response with defaults applied",
+  "properties": {
+    "bulk_send_csv": {
+      "type": "string",
+      "description": "Base64-encoded CSV content"
+    },
+    "template_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "skip_row_errors": {
+      "type": "boolean"
+    },
+    "api_application_id": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "apply_signing_order": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "bulk_send_csv",
+    "template_ids"
+  ]
+}

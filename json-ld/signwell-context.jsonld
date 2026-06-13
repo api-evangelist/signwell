@@ -1,0 +1,168 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sw": "https://www.signwell.com/api/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "email": "schema:email",
+    "Document": {
+      "@id": "sw:Document",
+      "@type": "@id"
+    },
+    "Template": {
+      "@id": "sw:Template",
+      "@type": "@id"
+    },
+    "BulkSend": {
+      "@id": "sw:BulkSend",
+      "@type": "@id"
+    },
+    "Webhook": {
+      "@id": "sw:Webhook",
+      "@type": "@id"
+    },
+    "ApiApplication": {
+      "@id": "sw:ApiApplication",
+      "@type": "@id"
+    },
+    "Recipient": {
+      "@id": "sw:Recipient",
+      "@type": "@id"
+    },
+    "Signer": {
+      "@id": "sw:Signer",
+      "@type": "@id"
+    },
+    "Field": {
+      "@id": "sw:Field",
+      "@type": "@id"
+    },
+    "File": {
+      "@id": "sw:File",
+      "@type": "@id"
+    },
+    "document_id": {
+      "@id": "sw:document_id",
+      "@type": "xsd:string"
+    },
+    "template_id": {
+      "@id": "sw:template_id",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "sw:status",
+      "@type": "xsd:string"
+    },
+    "subject": {
+      "@id": "sw:subject",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "sw:message",
+      "@type": "xsd:string"
+    },
+    "draft": {
+      "@id": "sw:draft",
+      "@type": "xsd:boolean"
+    },
+    "test_mode": {
+      "@id": "sw:test_mode",
+      "@type": "xsd:boolean"
+    },
+    "embedded_signing": {
+      "@id": "sw:embedded_signing",
+      "@type": "xsd:boolean"
+    },
+    "expires_in": {
+      "@id": "sw:expires_in",
+      "@type": "xsd:integer"
+    },
+    "created_at": {
+      "@id": "sw:created_at",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "sw:updated_at",
+      "@type": "xsd:dateTime"
+    },
+    "completed_at": {
+      "@id": "sw:completed_at",
+      "@type": "xsd:dateTime"
+    },
+    "files": {
+      "@id": "sw:files",
+      "@container": "@list"
+    },
+    "recipients": {
+      "@id": "sw:recipients",
+      "@container": "@list"
+    },
+    "fields": {
+      "@id": "sw:fields",
+      "@container": "@list"
+    },
+    "signers": {
+      "@id": "sw:signers",
+      "@container": "@list"
+    },
+    "metadata": {
+      "@id": "sw:metadata",
+      "@type": "@json"
+    },
+    "callback_url": {
+      "@id": "sw:callback_url",
+      "@type": "xsd:anyURI"
+    },
+    "signing_url": {
+      "@id": "sw:signing_url",
+      "@type": "xsd:anyURI"
+    },
+    "requesting_url": {
+      "@id": "sw:requesting_url",
+      "@type": "xsd:anyURI"
+    },
+    "api_key": {
+      "@id": "sw:api_key",
+      "@type": "xsd:string"
+    },
+    "application_id": {
+      "@id": "sw:application_id",
+      "@type": "xsd:string"
+    },
+    "bulk_send_id": {
+      "@id": "sw:bulk_send_id",
+      "@type": "xsd:string"
+    },
+    "event": {
+      "@id": "sw:event",
+      "@type": "xsd:string"
+    },
+    "event_time": {
+      "@id": "sw:event_time",
+      "@type": "xsd:dateTime"
+    },
+    "data": {
+      "@id": "sw:data",
+      "@type": "@json"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://www.signwell.com/api/v1/",
+      "@type": "schema:WebAPI",
+      "name": "SignWell Developer API",
+      "description": "REST API for programmatically sending documents for electronic signature, creating and managing templates, tracking document status, managing signers, running bulk sends, and configuring webhooks.",
+      "url": "https://developers.signwell.com/",
+      "schema:termsOfService": "https://www.signwell.com/terms/",
+      "schema:contactPoint": {
+        "@type": "schema:ContactPoint",
+        "email": "support@signwell.com"
+      },
+      "schema:documentation": "https://developers.signwell.com/reference/getting-started-with-your-api-1",
+      "schema:version": "v1"
+    }
+  ]
+}

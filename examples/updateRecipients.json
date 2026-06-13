@@ -1,0 +1,24 @@
+{
+  "operationId": "updateRecipients",
+  "method": "PATCH",
+  "path": "/api/v1/documents/{id}/recipients",
+  "summary": "Update Recipients",
+  "description": "Updates one or more recipients on a document that has already been sent. Only recipients who have not started signing may be updated. Recipient IDs must be retrieved from the Get Document response. Allowed document statuses: sent, viewed, pending, bounced. For non-embedded documents, updated recipients will receive a new notification email. For embedded signing documents, email behavior follows each recipient's send_email setting.",
+  "tags": [
+    "Document"
+  ],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "requestBody": {
+    "content": "application/json",
+    "schema": {
+      "$ref": "#/components/schemas/update_recipients_request"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/TemplateRecipients.json",
+  "title": "TemplateRecipients",
+  "type": "array",
+  "description": "Document recipients are people that must complete and/or sign a document. Recipients of the document must be assigned to a placeholder of the template. Recipients will inherit all placeholder fields and settings.",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "A unique identifier that you will give to each recipient. We recommend numbering sequentially from 1 to X. IDs are required for associating recipients to fields and more."
+      },
+      "name": {
+        "type": "string",
+        "description": "Name of the recipient."
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "description": "Email address for the recipient.",
+        "example": "signer@example.com"
+      },
+      "placeholder_name": {
+        "type": "string",
+        "description": "The name of the placeholder you want this recipient assigned to."
+      },
+      "passcode": {
+        "type": "string",
+        "description": "If set, signers assigned with a passcode will be required to enter the passcode before they\u2019re able to view and complete the document."
+      },
+      "subject": {
+        "type": "string",
+        "description": "Email subject for the signature request that the recipient will see. Overrides the general subject for the template."
+      },
+      "message": {
+        "type": "string",
+        "description": "Email message for the signature request that the recipient will see. Overrides the general message for the template."
+      },
+      "send_email": {
+        "type": "boolean",
+        "default": false,
+        "description": "Applies on when `embedded_signing` is `true`. By default, recipients are not notified through email to sign when doing embedded signing. Setting this to `true`  will send a notification email to the recipient. Default is `false`."
+      },
+      "send_email_delay": {
+        "type": "integer",
+        "default": 0,
+        "description": "If `send_email` is `true` recipients will receive a new document notification immediately. In the case of embedded signing, you can delay this notification to only send if the document is not completed within a few minutes. The email notification will not go out if the document is completed before the delay time is over. Valid values are in minutes ranging from `0` to `60`. Defaults to `0`."
+      }
+    },
+    "required": [
+      "id",
+      "email"
+    ]
+  }
+}

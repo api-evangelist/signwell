@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/TextValidation.json",
+  "title": "TextValidation",
+  "type": "string",
+  "enum": [
+    "no_text_validation",
+    "numbers",
+    "letters",
+    "email_address",
+    "us_phone_number",
+    "us_zip_code",
+    "us_ssn",
+    "us_age",
+    "alphanumeric",
+    "us_bank_routing_number",
+    "us_bank_account_number"
+  ],
+  "description": "Validation rule for text fields"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/AttachmentRequests.json",
+  "title": "AttachmentRequests",
+  "type": "array",
+  "description": "Attachments that a recipient must upload to complete the signing process. Attachment requests are shown after all document fields have been completed.",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the requested attachment."
+      },
+      "recipient_id": {
+        "type": "string",
+        "description": "Unique identifier of the recipient that will view the attachment request."
+      },
+      "required": {
+        "type": "boolean",
+        "default": true,
+        "description": "Whether the recipient will need to upload the attachment to successfully complete/sign the document. Defaults to `true`."
+      }
+    },
+    "required": [
+      "name",
+      "recipient_id"
+    ]
+  }
+}

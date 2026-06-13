@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/signwell/main/json-schema/BulkSendDocumentsResponse.json",
+  "title": "BulkSendDocumentsResponse",
+  "type": "object",
+  "description": "Paginated list of documents in a bulk send",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "api_application_id": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "user_id": {
+      "type": "string",
+      "format": "uuid",
+      "nullable": true
+    },
+    "status": {
+      "type": "string"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DocumentResponse"
+      }
+    },
+    "current_page": {
+      "type": "integer"
+    },
+    "next_page": {
+      "type": "integer",
+      "nullable": true
+    },
+    "previous_page": {
+      "type": "integer",
+      "nullable": true
+    },
+    "total_count": {
+      "type": "integer"
+    },
+    "total_pages": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "documents",
+    "current_page",
+    "total_count",
+    "total_pages"
+  ]
+}
