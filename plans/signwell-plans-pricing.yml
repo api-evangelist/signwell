@@ -1,0 +1,131 @@
+name: SignWell Plans and Pricing
+description: Pricing plans for the SignWell e-signature platform covering both web
+  application plans and API-specific usage-based pricing.
+version: '0.1'
+url: https://www.signwell.com/api-pricing/
+plans:
+  - name: Free
+    description: Free plan for light personal use and testing the platform.
+    url: https://www.signwell.com/pricing/
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    features:
+      - 3 documents per month
+      - 1 sender
+      - 1 template
+      - Email reminders and notifications
+      - Template links
+    limitations:
+      - 3 document limit per month
+      - No API access
+
+  - name: Light
+    description: Affordable plan for individuals and small teams needing unlimited
+      documents with basic advanced features.
+    url: https://www.signwell.com/pricing/
+    price: 10
+    currency: USD
+    billingCycle: monthly
+    annualPrice: 8
+    annualCurrency: USD
+    features:
+      - Unlimited documents
+      - 1 sender (additional senders at extra cost)
+      - 5 templates per sender
+      - Bulk send
+      - Advanced preferences
+      - Custom branding
+      - Data validation
+      - 20% discount with annual billing
+    limitations:
+      - 5 templates per sender
+      - Additional senders billed separately
+
+  - name: Business
+    description: Plan for growing teams needing full features including in-person
+      signing and larger sender allotments.
+    url: https://www.signwell.com/pricing/
+    price: 30
+    currency: USD
+    billingCycle: monthly
+    annualPrice: 24
+    annualCurrency: USD
+    features:
+      - Unlimited documents
+      - 3 senders included
+      - Unlimited templates
+      - In-person signing
+      - All Light plan features
+      - Custom plans available for high volume
+      - 20% discount with annual billing
+    limitations:
+      - Additional senders billed separately
+
+  - name: Enterprise
+    description: Custom enterprise plan for large teams with high-volume signing needs
+      and advanced requirements.
+    url: https://www.signwell.com/pricing/
+    price: 0
+    currency: USD
+    billingCycle: custom
+    features:
+      - Custom sender pricing
+      - Unlimited templates and documents
+      - All advanced features
+      - Dedicated support
+      - Custom integrations
+    limitations:
+      - Contact sales for pricing
+
+  - name: API Free Developer
+    description: Free developer tier for testing and integration development with limited
+      live documents.
+    url: https://www.signwell.com/api-pricing/
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    features:
+      - 3 free live API documents per month
+      - Unlimited API test usage (sandbox)
+      - Access to full API reference
+    limitations:
+      - Only 3 live documents per month
+
+  - name: API Pay-As-You-Go
+    description: Usage-based API plan billed monthly after usage with 25 complimentary
+      documents per month and per-document fees beyond that.
+    url: https://www.signwell.com/api-pricing/
+    price: 275
+    currency: USD
+    billingCycle: monthly
+    unitPrice: 0.66
+    unitLabel: per document (beyond included 25)
+    features:
+      - 25 complimentary API documents per month
+      - Pay-as-you-go beyond included allotment
+      - Unlimited API test usage
+      - Dedicated developer support
+      - SOC 2 Type II compliance
+      - HIPAA compliance
+      - Automatic usage-based scaling
+      - No per-signer or per-file fees
+      - Billing 30 days after usage
+    limitations:
+      - Credit card required
+
+  - name: API Enterprise
+    description: High-volume custom API plan with prepay discounts up to 40% off for
+      large-scale document signing operations.
+    url: https://www.signwell.com/api-pricing/
+    price: 0
+    currency: USD
+    billingCycle: custom
+    features:
+      - Custom volume pricing
+      - Prepay discounts up to 40%
+      - Dedicated support
+      - SLA options
+      - All API plan features
+    limitations:
+      - Contact sales for pricing

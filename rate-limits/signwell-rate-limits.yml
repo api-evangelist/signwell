@@ -1,0 +1,42 @@
+name: SignWell API Rate Limits
+description: Rate limiting information for the SignWell REST API. SignWell enforces
+  monthly document quotas based on plan tier rather than per-second or per-minute
+  request throttling. Specific per-second rate limits are not publicly documented;
+  contact support@signwell.com for current technical throttling thresholds.
+version: '0.1'
+url: https://developers.signwell.com/
+limits:
+  - name: Free Plan Monthly Document Limit
+    description: Maximum number of live API documents that can be created per month
+      on the free developer plan.
+    scope: account
+    window: monthly
+    limit: 3
+    unit: documents
+    notes: Unlimited sandbox/test documents are not counted toward this limit.
+
+  - name: API Pay-As-You-Go Included Documents
+    description: Complimentary documents included each month before per-document charges
+      apply on the standard API plan.
+    scope: account
+    window: monthly
+    limit: 25
+    unit: documents
+    notes: Additional documents billed at the per-document rate after the 25 included
+      documents are consumed.
+
+  - name: Sandbox Test Usage
+    description: API test/sandbox document creation is unlimited across all plans and
+      does not count toward monthly live document quotas.
+    scope: account
+    window: unlimited
+    limit: unlimited
+    unit: test-documents
+    notes: Test mode allows unlimited usage for integration development and testing.
+
+notes:
+  - Per-second and per-minute request throttling limits are not publicly documented
+    by SignWell. Contact support@signwell.com for current technical rate limit thresholds.
+  - Monthly document quotas are enforced at the account level across all API keys
+    for that account.
+  - Enterprise plans include custom volume agreements negotiated directly with SignWell.

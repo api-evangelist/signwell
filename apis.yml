@@ -1,0 +1,70 @@
+aid: signwell
+name: SignWell
+description: E-signature platform with a REST API for sending documents for signature,
+  creating templates, tracking document status, and managing signers programmatically.
+  Supports embedded signing, bulk send, webhooks, and white-label customization with
+  compliance for ESIGN, UETA, GDPR, and HIPAA.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - E-Signature
+  - Electronic Signature
+  - Documents
+  - PDF
+  - Signing
+  - Templates
+  - Workflows
+  - HIPAA
+  - SOC2
+apis:
+  - aid: signwell:signwell-api
+    name: SignWell API
+    description: REST API for programmatically sending documents for electronic signature,
+      creating and managing templates, tracking document status, managing signers,
+      running bulk sends, and configuring webhooks. Supports embedded signing iframes,
+      draft documents, conditional sending, and MX NOM-151 compliance certificates.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.signwell.com/
+    baseURL: https://www.signwell.com/api/v1
+    tags:
+      - E-Signature
+      - Documents
+      - Templates
+      - Webhooks
+      - Embedded Signing
+      - Bulk Send
+    properties:
+      - type: Documentation
+        url: https://developers.signwell.com/reference/getting-started-with-your-api-1
+      - type: OpenAPI
+        url: https://developers.signwell.com/llms.txt
+common:
+  - type: Website
+    url: https://www.signwell.com/
+  - type: Documentation
+    url: https://developers.signwell.com/
+  - type: GitHubOrg
+    url: https://github.com/Bidsketch
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/signwellapp
+  - type: Blog
+    url: https://www.signwell.com/resources/
+  - type: Pricing
+    url: https://www.signwell.com/api-pricing/
+  - type: StatusPage
+    url: https://status.signwell.com
+  - type: X
+    url: https://x.com/signwellapp
+  - type: Plans
+    url: plans/signwell-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/signwell-rate-limits.yml
+  - type: FinOps
+    url: finops/signwell-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

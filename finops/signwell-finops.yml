@@ -1,0 +1,92 @@
+name: SignWell FinOps
+description: FinOps Framework 1.0 FOCUS-aligned cost management data for the SignWell
+  e-signature API, covering billing model, cost drivers, optimization strategies,
+  and budget governance for API consumers.
+version: '1.0'
+url: https://www.signwell.com/api-pricing/
+provider: SignWell
+product: SignWell API
+billingModel: usage-based
+currency: USD
+
+costDrivers:
+  - name: Live API Documents
+    description: Each live document sent through the API for real signatures counts
+      toward the monthly usage quota and incurs per-document charges above the plan
+      included allotment.
+    unit: document
+    baseRate: 0.66
+    currency: USD
+    notes: The first 25 documents per month are included in the standard API plan
+      at no additional per-document cost.
+
+  - name: Monthly Plan Base Fee
+    description: Flat monthly fee for the standard API plan which includes 25 complimentary
+      documents.
+    unit: month
+    baseRate: 275
+    currency: USD
+
+  - name: Enterprise Volume Prepay Discount
+    description: Prepaying for expected API usage volume earns discounts of up to
+      40% off the standard per-document rate.
+    unit: document
+    discountRate: 0.40
+    notes: Contact SignWell sales to negotiate prepay volume commitments.
+
+optimization:
+  - strategy: Sandbox Testing
+    description: Use SignWell's unlimited test/sandbox mode for all development and
+      QA activities to avoid consuming live document quota during non-production work.
+    savings: high
+
+  - strategy: Annual Billing Discount
+    description: Opt for annual billing on web application plans to receive a 20%
+      discount vs. monthly billing.
+    savings: medium
+    discountRate: 0.20
+
+  - strategy: Volume Prepay
+    description: Prepay for expected monthly API document volume to unlock up to 40%
+      discount on per-document pricing for high-volume operations.
+    savings: high
+    discountRate: 0.40
+
+  - strategy: Template Reuse
+    description: Use SignWell templates to reduce document creation overhead and standardize
+      recurring signing workflows, minimizing API calls and potential errors that
+      waste document quota.
+    savings: medium
+
+  - strategy: Bulk Send
+    description: Use the Bulk Send feature to send a single template to multiple recipients
+      in one operation rather than individual API calls, reducing per-operation overhead.
+    savings: medium
+
+billing:
+  cycle: monthly
+  invoicing: postpaid
+  billingDelay: 30 days after usage
+  paymentMethods:
+    - credit card
+  notes: Billing occurs 30 days after the end of the usage period. A credit card
+    on file is required even for the free tier to prevent abuse.
+
+governance:
+  - area: Budget Alerts
+    recommendation: Monitor monthly document consumption via the SignWell dashboard
+      or webhook events to receive alerts before exceeding budget thresholds.
+
+  - area: Cost Attribution
+    recommendation: Use separate API keys per project or team where possible to track
+      document consumption by business unit or application.
+
+  - area: Forecast
+    recommendation: Baseline monthly document volume from the SignWell dashboard
+      and apply usage growth trends when projecting future API spend to size prepay
+      commitments appropriately.
+
+  - area: Compliance Costs
+    recommendation: Factor in that HIPAA compliance and SOC 2 Type II are included
+      in API plans at no additional cost, which may offset costs when compared to
+      platforms that charge separately for compliance tiers.
