@@ -1,0 +1,577 @@
+# SignWell GraphQL Schema
+# Conceptual schema derived from the SignWell REST API
+# Source: https://developers.signwell.com/
+
+# ─── Enumerations ────────────────────────────────────────────────────────────
+
+enum DocumentStatus {
+  DRAFT
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  DECLINED
+  EXPIRED
+}
+
+enum DocumentType {
+  STANDARD
+  TEMPLATE_BASED
+  EMBEDDED
+  BULK_SEND
+}
+
+enum FieldType {
+  SIGNATURE
+  INITIALS
+  TEXT
+  DATE
+  CHECKBOX
+  DROPDOWN
+  ATTACHMENT
+  STAMP
+}
+
+enum UserRole {
+  OWNER
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+enum AccountType {
+  PERSONAL
+  TEAM
+  ENTERPRISE
+}
+
+enum BulkSendJobStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum FileSource {
+  UPLOAD
+  URL
+  TEMPLATE
+  S3
+}
+
+enum WebhookEvent {
+  DOCUMENT_CREATED
+  DOCUMENT_SENT
+  DOCUMENT_VIEWED
+  DOCUMENT_SIGNED
+  DOCUMENT_COMPLETED
+  DOCUMENT_DECLINED
+  DOCUMENT_CANCELLED
+  DOCUMENT_EXPIRED
+  DOCUMENT_REMINDED
+  SIGNER_VIEWED
+  SIGNER_SIGNED
+  SIGNER_DECLINED
+  BULK_SEND_COMPLETED
+}
+
+# ─── Scalars ─────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar Upload
+
+# ─── Document Types ──────────────────────────────────────────────────────────
+
+type Document {
+  id: ID!
+  name: String!
+  status: DocumentStatus!
+  type: DocumentType!
+  details: DocumentDetails
+  signers: [Signer!]
+  files: [File!]
+  fields: [Field!]
+  attachments: [Attachment!]
+  auditLog: DocumentAuditLog
+  metadata: Metadata
+  branding: Branding
+  reminder: Reminder
+  expiration: Expiration
+  embedUrl: EmbedUrl
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  completedAt: DateTime
+  cancelledAt: DateTime
+}
+
+type DocumentDetails {
+  subject: String
+  message: String
+  allowDecline: Boolean
+  allowReassign: Boolean
+  testMode: Boolean
+  draftMode: Boolean
+  sendAt: DateTime
+  externalId: String
+  redirectUrl: String
+  declineRedirectUrl: String
+  requireAttachment: Boolean
+  declineReason: String
+  signingOrder: Boolean
+  completedDocument: String
+}
+
+type DocumentAuditLog {
+  documentId: ID!
+  entries: [AuditEntry!]!
+  generatedAt: DateTime!
+}
+
+type AuditEntry {
+  id: ID!
+  action: String!
+  actor: String
+  actorEmail: String
+  ipAddress: SignatureIP
+  timestamp: DateTime!
+  details: JSON
+}
+
+# ─── Template Types ──────────────────────────────────────────────────────────
+
+type Template {
+  id: ID!
+  name: String!
+  details: TemplateDetails
+  fields: [TemplateField!]
+  files: [File!]
+  branding: Branding
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TemplateDetails {
+  subject: String
+  message: String
+  signerRoles: [String!]
+  allowDecline: Boolean
+  requireAttachment: Boolean
+  redirectUrl: String
+  draftMode: Boolean
+  externalId: String
+}
+
+type TemplateField {
+  id: ID!
+  name: String!
+  type: FieldType!
+  required: Boolean!
+  signerRole: String
+  placeholder: String
+  defaultValue: String
+  x: Float
+  y: Float
+  width: Float
+  height: Float
+  page: Int
+  lock: Boolean
+}
+
+# ─── Signer Types ────────────────────────────────────────────────────────────
+
+type Signer {
+  id: ID!
+  name: String!
+  email: String!
+  order: SignerOrder
+  details: SignerDetails
+  sms: SignerSMS
+  status: String
+  signedAt: DateTime
+  viewedAt: DateTime
+  declinedAt: DateTime
+  embedUrl: EmbedUrl
+}
+
+type SignerDetails {
+  role: String
+  message: String
+  redirectUrl: String
+  declineRedirectUrl: String
+  requireIdentityVerification: Boolean
+  requireSmsVerification: Boolean
+  pinCode: String
+  allowReassign: Boolean
+}
+
+type SignerOrder {
+  order: Int!
+  waitForPrevious: Boolean
+}
+
+type SignerSMS {
+  phoneNumber: String!
+  countryCode: String
+  enabled: Boolean!
+}
+
+# ─── Signature Types ─────────────────────────────────────────────────────────
+
+type Signature {
+  id: ID!
+  signerId: ID!
+  documentId: ID!
+  details: SignatureDetails
+  date: SignatureDate
+  ipAddress: SignatureIP
+  signedAt: DateTime!
+}
+
+type SignatureDetails {
+  type: String
+  font: String
+  color: String
+  imageData: String
+  initials: String
+}
+
+type SignatureDate {
+  date: String!
+  timezone: String
+  formatted: String
+}
+
+type SignatureIP {
+  address: String!
+  country: String
+  region: String
+  city: String
+}
+
+# ─── Field Types ─────────────────────────────────────────────────────────────
+
+type Field {
+  id: ID!
+  name: String
+  type: FieldType!
+  details: FieldDetails
+  value: FieldValue
+  required: Boolean!
+  signerId: ID
+  page: Int
+  x: Float
+  y: Float
+  width: Float
+  height: Float
+}
+
+type FieldDetails {
+  label: String
+  placeholder: String
+  defaultValue: String
+  options: [String!]
+  validationRegex: String
+  lock: Boolean
+  readOnly: Boolean
+  tooltip: String
+  dateFormat: String
+}
+
+type FieldValue {
+  raw: String
+  formatted: String
+  checked: Boolean
+  selectedOption: String
+  attachmentUrl: String
+}
+
+# ─── File Types ──────────────────────────────────────────────────────────────
+
+type File {
+  id: ID!
+  name: String!
+  source: FileSource!
+  details: FileDetails
+  page: Int
+  size: Int
+  mimeType: String
+  createdAt: DateTime!
+}
+
+type FileDetails {
+  url: String
+  base64Data: String
+  s3Key: String
+  pageCount: Int
+  previewUrl: String
+}
+
+# ─── Attachment Types ────────────────────────────────────────────────────────
+
+type Attachment {
+  id: ID!
+  name: String!
+  required: Boolean!
+  details: AttachmentDetails
+  signerId: ID
+}
+
+type AttachmentDetails {
+  description: String
+  uploadedUrl: String
+  uploadedAt: DateTime
+  fileType: String
+  fileSize: Int
+}
+
+# ─── Team Types ──────────────────────────────────────────────────────────────
+
+type Team {
+  id: ID!
+  name: String!
+  details: TeamDetails
+  members: [TeamMember!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TeamDetails {
+  description: String
+  maxMembers: Int
+  allowGuestSigners: Boolean
+  defaultBranding: Branding
+}
+
+type TeamMember {
+  id: ID!
+  user: User!
+  role: UserRole!
+  joinedAt: DateTime!
+  active: Boolean!
+}
+
+# ─── User Types ──────────────────────────────────────────────────────────────
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  role: UserRole!
+  details: UserDetails
+  account: Account
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lastLoginAt: DateTime
+}
+
+type UserDetails {
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  timezone: String
+  locale: String
+  avatarUrl: String
+  notificationsEnabled: Boolean
+}
+
+# ─── Account Types ───────────────────────────────────────────────────────────
+
+type Account {
+  id: ID!
+  name: String!
+  type: AccountType!
+  details: AccountDetails
+  team: Team
+  users: [User!]
+  branding: Branding
+  webhooks: [Webhook!]
+  apiKeys: [APIKey!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AccountDetails {
+  email: String!
+  plan: String
+  trialEndsAt: DateTime
+  maxUsers: Int
+  maxDocumentsPerMonth: Int
+  hipaaEnabled: Boolean
+  soc2Enabled: Boolean
+  customDomain: String
+  logoUrl: String
+}
+
+# ─── Auth Types ──────────────────────────────────────────────────────────────
+
+type APIKey {
+  id: ID!
+  name: String!
+  key: String
+  createdAt: DateTime!
+  lastUsedAt: DateTime
+  active: Boolean!
+}
+
+type Token {
+  accessToken: String!
+  tokenType: String!
+  expiresAt: DateTime
+  scope: String
+}
+
+# ─── Webhook Types ───────────────────────────────────────────────────────────
+
+type Webhook {
+  id: ID!
+  url: String!
+  events: [WebhookEvent!]!
+  active: Boolean!
+  secret: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lastTriggeredAt: DateTime
+  failureCount: Int
+}
+
+# ─── Bulk Send Types ─────────────────────────────────────────────────────────
+
+type BulkSendJob {
+  id: ID!
+  name: String!
+  status: BulkSendJobStatus!
+  details: BulkSendJobDetails
+  templateId: ID
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  completedAt: DateTime
+}
+
+type BulkSendJobDetails {
+  totalCount: Int!
+  sentCount: Int!
+  completedCount: Int!
+  failedCount: Int!
+  csvUrl: String
+  recipients: [Signer!]
+  errorMessages: [String!]
+}
+
+# ─── Scheduling Types ────────────────────────────────────────────────────────
+
+type Reminder {
+  enabled: Boolean!
+  intervalDays: Int
+  maxReminders: Int
+  nextReminderAt: DateTime
+}
+
+type Expiration {
+  enabled: Boolean!
+  expiresAt: DateTime
+  daysUntilExpiration: Int
+  notifyBeforeDays: Int
+}
+
+# ─── Metadata and Branding ───────────────────────────────────────────────────
+
+type Metadata {
+  key: String!
+  value: JSON
+  externalId: String
+  tags: [String!]
+}
+
+type Branding {
+  id: ID!
+  name: String!
+  details: BrandingDetails
+}
+
+type BrandingDetails {
+  logoUrl: String
+  primaryColor: String
+  secondaryColor: String
+  fontFamily: String
+  companyName: String
+  emailFromName: String
+  emailFromAddress: String
+  customCss: String
+  faviconUrl: String
+  hidePoweredBy: Boolean
+}
+
+# ─── Embedded Signing Types ──────────────────────────────────────────────────
+
+type FormEmbed {
+  id: ID!
+  documentId: ID!
+  signerId: ID!
+  embedUrl: EmbedUrl!
+  session: EmbedSession
+  createdAt: DateTime!
+  expiresAt: DateTime
+}
+
+type EmbedUrl {
+  url: String!
+  shortUrl: String
+  expiresAt: DateTime
+  allowedOrigins: [String!]
+}
+
+type EmbedSession {
+  sessionId: ID!
+  token: String!
+  signerId: ID!
+  documentId: ID!
+  createdAt: DateTime!
+  expiresAt: DateTime!
+  used: Boolean!
+}
+
+# ─── Root Query ──────────────────────────────────────────────────────────────
+
+type Query {
+  document(id: ID!): Document
+  documents(status: DocumentStatus, limit: Int, offset: Int): [Document!]!
+  template(id: ID!): Template
+  templates(limit: Int, offset: Int): [Template!]!
+  signer(id: ID!): Signer
+  user(id: ID!): User
+  users(teamId: ID, limit: Int, offset: Int): [User!]!
+  account: Account
+  team(id: ID!): Team
+  webhook(id: ID!): Webhook
+  webhooks: [Webhook!]!
+  bulkSendJob(id: ID!): BulkSendJob
+  bulkSendJobs(status: BulkSendJobStatus, limit: Int, offset: Int): [BulkSendJob!]!
+  documentAuditLog(documentId: ID!): DocumentAuditLog
+  apiKeys: [APIKey!]!
+  embedSession(sessionId: ID!): EmbedSession
+}
+
+# ─── Root Mutation ───────────────────────────────────────────────────────────
+
+type Mutation {
+  createDocument(input: JSON!): Document
+  sendDocument(id: ID!): Document
+  cancelDocument(id: ID!): Document
+  deleteDocument(id: ID!): Boolean
+  createTemplate(input: JSON!): Template
+  updateTemplate(id: ID!, input: JSON!): Template
+  deleteTemplate(id: ID!): Boolean
+  createWebhook(url: String!, events: [WebhookEvent!]!): Webhook
+  updateWebhook(id: ID!, input: JSON!): Webhook
+  deleteWebhook(id: ID!): Boolean
+  createBulkSendJob(templateId: ID!, input: JSON!): BulkSendJob
+  cancelBulkSendJob(id: ID!): BulkSendJob
+  createAPIKey(name: String!): APIKey
+  deleteAPIKey(id: ID!): Boolean
+  createEmbedSession(documentId: ID!, signerId: ID!): EmbedSession
+  updateBranding(input: JSON!): Branding
+  inviteUser(email: String!, role: UserRole!): User
+  removeUser(id: ID!): Boolean
+}
