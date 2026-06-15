@@ -6,5 +6,28 @@
   "rss": "https://www.signwell.com/resources/feed/",
   "confirmed": true,
   "last_checked": "2026-06-13",
-  "posts": []
+  "posts": [],
+  "repo": "signwell",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/signwellapp",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://www.signwell.com/resources/",
+      "feed_url": "https://www.signwell.com/resources/feed/",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    },
+    {
+      "source": "https://www.signwell.com/resources/feed/",
+      "feed_url": "https://www.signwell.com/resources/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-06-14T20:42:17Z"
 }
