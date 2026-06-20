@@ -5,7 +5,7 @@ description: E-signature platform with a REST API for sending documents for sign
   Supports embedded signing, bulk send, webhooks, and white-label customization with
   compliance for ESIGN, UETA, GDPR, and HIPAA.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -27,7 +27,7 @@ apis:
     creating and managing templates, tracking document status, managing signers, running
     bulk sends, and configuring webhooks. Supports embedded signing iframes, draft
     documents, conditional sending, and MX NOM-151 compliance certificates.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developers.signwell.com/
   baseURL: https://www.signwell.com/api/v1
   tags:
