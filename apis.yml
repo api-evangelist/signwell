@@ -65,7 +65,7 @@ common:
   url: https://www.signwell.com/resources/
 - type: BlogRSS
   url: https://www.signwell.com/resources/feed/
-- type: Blogs
+- type: Blog
   url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/blogs/blogs.json
 - type: Pricing
   url: https://www.signwell.com/api-pricing/
