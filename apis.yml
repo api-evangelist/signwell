@@ -53,6 +53,12 @@ apis:
   - url: graphql/signwell-graphql.md
     type: GraphQL
 common:
+- type: TrustCenter
+  url: security/signwell-trust-center.yml
+- type: DomainSecurity
+  url: security/signwell-domain-security.yml
+- type: Authentication
+  url: authentication/signwell-authentication.yml
 - type: Website
   url: https://www.signwell.com/
 - type: Documentation
