@@ -53,6 +53,8 @@ apis:
   - url: graphql/signwell-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/signwell-agentic-access.yml
 - type: TrustCenter
   url: security/signwell-trust-center.yml
 - type: DomainSecurity
