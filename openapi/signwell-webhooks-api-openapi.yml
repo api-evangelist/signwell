@@ -1,0 +1,215 @@
+openapi: 3.0.1
+info:
+  title: SignWell Developer API Application Webhooks API
+  description: API for creating, managing, and tracking electronic signature workflows.
+  version: v1
+  termsOfService: https://www.signwell.com/terms/
+  contact:
+    email: support@signwell.com
+servers:
+- url: https://www.signwell.com
+tags:
+- name: Webhooks
+  description: Subscribe to document lifecycle events via webhook callbacks.
+paths:
+  /api/v1/hooks:
+    get:
+      summary: List Webhooks
+      description: List all the webhooks in the account.
+      tags:
+      - Webhooks
+      security:
+      - api_key: []
+      operationId: listWebhooks
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              example:
+              - id: a6b55a29-218d-4766-ad94-8d418c5bda98
+                callback_url: http://greenfelder.example/ngoc
+              - id: 1afbb05a-42e4-4304-8c11-ec3978c00056
+                callback_url: http://olson-ledner.example/mack
+              - id: b9b5527b-d2ce-4816-bde0-c0942b5c9d66
+                callback_url: http://wyman.test/quintin
+              - id: 2677e7fa-de5f-4de0-8e40-c4706923889f
+                callback_url: http://spinka.test/athena.gerlach
+                api_application_id: 5e544e05-56db-48f5-9b47-061dd985b2c6
+              - id: f6be99fa-1dac-487d-a352-994d48c8a158
+                callback_url: http://schmidt.example/nanci
+                api_application_id: 5e544e05-56db-48f5-9b47-061dd985b2c6
+              - id: 84491f67-989d-485d-b46c-44e022fac543
+                callback_url: http://cassin-walker.test/kaley
+                api_application_id: 5e544e05-56db-48f5-9b47-061dd985b2c6
+              - id: c2f3cbd5-7277-42c8-ba99-56436870e9f7
+                callback_url: http://schiller-sauer.test/sybil
+                api_application_id: 5e544e05-56db-48f5-9b47-061dd985b2c6
+              - id: af0e3552-8116-4fc6-80d1-beb8f8e13d1a
+                callback_url: http://greenfelder-conroy.example/carmelo.stokes
+                api_application_id: 5e544e05-56db-48f5-9b47-061dd985b2c6
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+    post:
+      summary: Create Webhook
+      description: Register a callback URL that we will post document events to.
+      tags:
+      - Webhooks
+      security:
+      - api_key: []
+      operationId: createWebhook
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              example:
+                id: 782111c8-f182-4067-8fc0-d7ba8d3e87ae
+                callback_url: http://prohaska.test/della
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              example:
+                message: Bad request (bad request data)
+                meta:
+                  error: invalid_parameter
+                  message: 'Invalid parameter: callback_url must be present'
+                  messages:
+                  - 'Invalid parameter: callback_url must be present'
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                callback_url:
+                  type: string
+                  format: url
+                  description: URL that we will post document events to.
+                  example: https://example.com/webhook
+                api_application_id:
+                  type: string
+                  format: uuid
+                  description: Unique identifier for the API Application.
+              required:
+              - callback_url
+        required: true
+  /api/v1/hooks/{id}:
+    delete:
+      summary: Delete Webhook
+      description: Deletes a registered callback URL that we are posting document events to.
+      tags:
+      - Webhooks
+      security:
+      - api_key: []
+      operationId: deleteWebhook
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+          format: uuid
+          description: Unique identifier for a webhook.
+        required: true
+      responses:
+        '204':
+          description: no content
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the hook requested
+                  messages:
+                  - Couldn't find the hook requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+components:
+  schemas:
+    WebhookResponse:
+      type: object
+      description: Webhook subscription
+      properties:
+        id:
+          type: string
+          format: uuid
+        callback_url:
+          type: string
+          format: url
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - id
+      - callback_url
+    WebhookListResponse:
+      type: array
+      description: List of webhook subscriptions
+      items:
+        $ref: '#/components/schemas/WebhookResponse'
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Api-Key
+      in: header

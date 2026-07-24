@@ -1,0 +1,1384 @@
+openapi: 3.0.1
+info:
+  title: SignWell Developer API Application Bulk Send API
+  description: API for creating, managing, and tracking electronic signature workflows.
+  version: v1
+  termsOfService: https://www.signwell.com/terms/
+  contact:
+    email: support@signwell.com
+servers:
+- url: https://www.signwell.com
+tags:
+- name: Bulk Send
+  description: Send a document to multiple recipients in batch using templates.
+paths:
+  /api/v1/bulk_sends/{id}:
+    get:
+      summary: Get Bulk Send
+      description: Returns information about the Bulk Send.
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/BulkSendId'
+        required: true
+      tags:
+      - Bulk Send
+      security:
+      - api_key: []
+      operationId: getBulkSend
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                id: 3a337429-7411-4796-9d1c-bd68cfe0d256
+                name: Parth Galen
+                api_application_id: null
+                documents_count: 0
+                documents_completed: 0
+                documents_not_completed: 0
+                created_at: '2026-03-31T15:47:08Z'
+                user_id: null
+                status: Created
+                templates:
+                - id: b985f6f9-579a-485b-96c1-35d16dc8c8bf
+                  name: scale_nursery/totam.key
+              schema:
+                $ref: '#/components/schemas/BulkSendResponse'
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                message: Missing or invalid authorization key
+                meta:
+                  error: api_key_unauthorized_error
+                  message: Not valid authorization token
+                  messages:
+                  - Not valid authorization token
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the bulk_send requested
+                  messages:
+                  - Couldn't find the bulk_send requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+  /api/v1/bulk_sends:
+    get:
+      summary: List Bulk Sendings
+      description: Returns information about the Bulk Send.
+      tags:
+      - Bulk Send
+      security:
+      - api_key: []
+      operationId: listBulkSends
+      parameters:
+      - name: user_email
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/UserEmail'
+      - name: limit
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Limit'
+      - name: page
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Page'
+      - name: api_application_id
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ApiApplicationId'
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                bulk_sends:
+                - id: 81c057c3-8569-4b1d-9a7b-d46f584d815d
+                  name: Argonath
+                  api_application_id: null
+                  documents_count: 0
+                  documents_completed: 0
+                  documents_not_completed: 0
+                  created_at: '2026-03-31T15:47:09Z'
+                  user_id: null
+                  status: Created
+                  template_ids:
+                  - a3a6b56e-7d5c-4531-843a-047de9ae1a1e
+                - id: 087c6e94-528f-462c-9601-db6b1741a7e9
+                  name: Nargothrond
+                  api_application_id: null
+                  documents_count: 0
+                  documents_completed: 0
+                  documents_not_completed: 0
+                  created_at: '2026-03-31T15:47:09Z'
+                  user_id: null
+                  status: Created
+                  template_ids:
+                  - a3a6b56e-7d5c-4531-843a-047de9ae1a1e
+                - id: 7544ffc3-6d1a-4328-9e97-c6882e6f2e6b
+                  name: Luthany
+                  api_application_id: null
+                  documents_count: 0
+                  documents_completed: 0
+                  documents_not_completed: 0
+                  created_at: '2026-03-31T15:47:09Z'
+                  user_id: null
+                  status: Created
+                  template_ids:
+                  - a3a6b56e-7d5c-4531-843a-047de9ae1a1e
+                - id: 5d9cbb3e-f517-4dea-b13f-351866a8f9e7
+                  name: Tol-in-Gaurhoth
+                  api_application_id: null
+                  documents_count: 0
+                  documents_completed: 0
+                  documents_not_completed: 0
+                  created_at: '2026-03-31T15:47:09Z'
+                  user_id: null
+                  status: Created
+                  template_ids:
+                  - a3a6b56e-7d5c-4531-843a-047de9ae1a1e
+                - id: f515d01f-a50f-4633-b604-58a0cfd84ace
+                  name: Marish
+                  api_application_id: null
+                  documents_count: 0
+                  documents_completed: 0
+                  documents_not_completed: 0
+                  created_at: '2026-03-31T15:47:09Z'
+                  user_id: null
+                  status: Created
+                  template_ids:
+                  - a3a6b56e-7d5c-4531-843a-047de9ae1a1e
+                current_page: 1
+                next_page: null
+                previous_page: null
+                total_count: 5
+                total_pages: 1
+              schema:
+                $ref: '#/components/schemas/BulkSendListResponse'
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                message: Missing or invalid authorization key
+                meta:
+                  error: api_key_unauthorized_error
+                  message: Not valid authorization token
+                  messages:
+                  - Not valid authorization token
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+    post:
+      summary: Create Bulk Send
+      description: Creates a bulk send, and it validates the CSV file before creating the bulk send.
+      tags:
+      - Bulk Send
+      security:
+      - api_key: []
+      operationId: createBulkSend
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              example:
+                id: 6a287375-c151-435c-9bbe-856074348b25
+                template_ids:
+                - 3f0cead6-c915-4119-99a1-06ad11f1f684
+                api_application_id: 38916d06-bdf2-4cf7-b97c-c2fb72b8c1a8
+                documents_count: 0
+                created_at: '2026-03-31T15:47:10Z'
+                user_id: 810157d0-83c5-4309-8d75-830d4464379e
+                status: Enqueuing
+              schema:
+                $ref: '#/components/schemas/BulkSendCreateResponse'
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              example:
+                errors:
+                  bulk_send_csv:
+                  - row: 2
+                    data:
+                      document_sender_email: not an email
+                      document_sender_name: email@signwell.com
+                      document_sender_label: Label
+                      recipient_email: recipient@signwell.com
+                      recipient_name: Recipient
+                      recipient_label: Recipient
+                    errors:
+                    - 'The following columns have an email address invalid: document_sender_email.'
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                message: Missing or invalid authorization key
+                meta:
+                  error: api_key_unauthorized_error
+                  message: Not valid authorization token
+                  messages:
+                  - Not valid authorization token
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBulkSendRequest'
+        required: true
+  /api/v1/bulk_sends/csv_template:
+    get:
+      summary: Get Bulk Send CSV Template
+      description: 'Fetches a CSV template that corresponds to the provided document template IDs. CSV templates are blank CSV files that have columns containing required and optional data that can be sent when creating a bulk send. Fields can be referenced by the field label. Example: [placeholder name]_[field label] could be something like customer_address or signer_company_name (if ''Customer'' and ''Signer'' were placeholder names for templates set up in SignWell).'
+      parameters:
+      - name: template_ids[]
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/BulkSendTemplateIds'
+      - name: base64
+        in: query
+        schema:
+          $ref: '#/components/schemas/Base64Flag'
+      tags:
+      - Bulk Send
+      security:
+      - api_key: []
+      operationId: getBulkSendCsvTemplate
+      responses:
+        '200':
+          description: successful
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+              example: 'document_sender_email,document_sender_name
+
+                fart_138@becker.test,Fart
+
+                '
+            application/json:
+              example:
+                data: ZG9jdW1lbnRfc2VuZGVyX2VtYWlsLGRvY3VtZW50X3NlbmRlcl9uYW1lCnRlcnJ5X3NjYXJ5XzE0MkBuaWNvbGFzLnRlc3QsU2NhcnkgVGVycnkK
+              schema:
+                $ref: '#/components/schemas/BulkSendCsvTemplateResponse'
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                message: Missing or invalid authorization key
+                meta:
+                  error: api_key_unauthorized_error
+                  message: Not valid authorization token
+                  messages:
+                  - Not valid authorization token
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the template requested
+                  messages:
+                  - Couldn't find the template requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+  /api/v1/bulk_sends/validate_csv:
+    post:
+      summary: Validate Bulk Send CSV
+      description: Validates a Bulk Send CSV file before creating the Bulk Send. It will check the structure of the CSV and the data it contains, and return any errors found.
+      parameters: []
+      tags:
+      - Bulk Send
+      security:
+      - api_key: []
+      operationId: validateBulkSendCsv
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                bulk_send_csv: IkRvY3VtZW50IFNlbmRlciBFbWFpbCIsJ0RvY3VtZW50IFNlbmRlciBOYW1lJywvXERvY3VtZW50LSBTZW5kZXIgPUxhYmVsLEBSZWNpcGllbnRfIEVtYWlsLFJlY2lwaWVudCAqTmFtZSxgUmVjaXBpZW50fiFAIyQlXiYqKCl7fVtdPD4uPyBMYWJlbGAKc2VuZGVyQHNpZ253ZWxsLmNvbSxTZW5kZXIsU2VuZGVyLHJlY2lwaWVudEBzaWdud2VsbC5jb20sUmVjaXBpZW50LFJlY2lwaWVudAplbWFpbEBzb21lLmNvbSwsLGVtYWlsMkBzb21lLmNvbQo=
+                template_ids:
+                - a80001a0-2936-44ae-b0a2-4eb4e70ef3ef
+                skip_row_errors: false
+                api_application_id: null
+                name: arena_linger/in.css
+                subject: Please complete arena_linger/in.css
+                message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                apply_signing_order: false
+              schema:
+                $ref: '#/components/schemas/BulkSendValidateCsvResponse'
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              example:
+                errors:
+                  bulk_send_csv:
+                  - row: 2
+                    data:
+                      document_sender_email: not an email
+                      document_sender_name: email@signwell.com
+                      document_sender_label: Label
+                      recipient_email: recipient@signwell.com
+                      recipient_name: Recipient
+                      recipient_label: Recipient
+                    errors:
+                    - 'The following columns have an email address invalid: document_sender_email.'
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                message: Missing or invalid authorization key
+                meta:
+                  error: api_key_unauthorized_error
+                  message: Not valid authorization token
+                  messages:
+                  - Not valid authorization token
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkSendCsvRequest'
+        required: true
+  /api/v1/bulk_sends/{id}/documents:
+    get:
+      summary: Get Bulk Send Documents
+      description: Returns information about the Bulk Send.
+      tags:
+      - Bulk Send
+      security:
+      - api_key: []
+      operationId: getBulkSendDocuments
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/BulkSendId'
+        required: true
+      - name: limit
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Limit'
+      - name: page
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Page'
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                id: 5d88cabc-9352-458a-b19c-80991c4a8255
+                name: Minas Tirith
+                api_application_id: null
+                created_at: '2026-03-31T15:47:14Z'
+                user_id: null
+                status: Created
+                documents:
+                - id: 66891ea4-616f-4ecc-ada9-80e5283273f6
+                  archived: false
+                  created_at: '2026-03-31T15:47:13Z'
+                  decline_message: null
+                  embedded_edit_url: https://www.signwell.com/edit/document/5153b085-19b0-4688-9694-100eff33b4e3/
+                  error_message: null
+                  embedded_preview_url: null
+                  language: en
+                  name: cruelty_notebook/sint.flac
+                  requester_email_address: 158_terry_scary@von.example
+                  status: Created
+                  test_mode: false
+                  updated_at: '2026-03-31T15:47:13Z'
+                  allow_decline: true
+                  allow_reassign: true
+                  api_application_id: null
+                  custom_requester_email: carolynn_okuneva@predovic.test
+                  custom_requester_name: Kylo Ren
+                  decline_redirect_url: http://aufderhar-shanahan.test/mira
+                  embedded_signing: false
+                  expires_in: 10
+                  metadata:
+                    et: numquam
+                    molestias: dolores
+                  redirect_url: http://emard.example/preston_heathcote
+                  reminders: false
+                  apply_signing_order: false
+                  message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                  subject: Please complete cruelty_notebook/sint.flac
+                  labels:
+                  - id: e980859e-f839-404c-8f0d-b4808fec2821
+                    name: Malcom Thompson
+                  - id: ce0ee7ec-ceb4-43cc-881e-35bf56c5a901
+                    name: Melony Stracke
+                  fields:
+                  - - api_id: CheckBox_71
+                      height: '13.0'
+                      page: 1
+                      required: true
+                      type: checkbox
+                      value: null
+                      width: '13.0'
+                      x: 1.1
+                      y: 1.1
+                      name: null
+                      recipient_id: null
+                      signing_elements_group_id: d6b47015-754d-417f-8c53-9ffa43cba00a
+                    - api_id: CheckBox_72
+                      height: '13.0'
+                      page: 1
+                      required: true
+                      type: checkbox
+                      value: null
+                      width: '13.0'
+                      x: 1.1
+                      y: 1.1
+                      name: null
+                      recipient_id: null
+                    - api_id: Signature_70
+                      height: '32.0'
+                      page: 1
+                      required: true
+                      type: signature
+                      value: null
+                      width: '112.0'
+                      x: 1.1
+                      y: 1.1
+                      recipient_id: afc00701-d0db-4cad-9fee-f3f12e9d513e
+                  files:
+                  - name: eveniet.doc
+                    pages_number: 1
+                  copied_contacts:
+                  - name: The Hon. Noel Schowalter
+                    email: benjamin@turner-witting.example
+                  recipients:
+                  - email: lloyd@krajcik-gottlieb.test
+                    id: afc00701-d0db-4cad-9fee-f3f12e9d513e
+                    message: null
+                    name: Pres. Syreeta Kreiger
+                    passcode: null
+                    send_email: null
+                    send_email_delay: null
+                    status: created
+                    subject: null
+                    signing_order: 46
+                    signing_url: https://www.signwell.com/docs/ba8dcb6e10/
+                    bounced: null
+                    bounced_details: null
+                    attachment_requests:
+                    - name: arena-corn/nostrum.jpeg
+                      required: true
+                      url: https://www.signwell.com/document_attachments/D98kY33DQZcn6N0OjW6Di615KBLw/?access=f5b4e237-bad0-46b1-864c-225debae311f
+                  - email: caterina@lesch-rolfson.example
+                    id: 65ef4984-18b1-4b19-9ca0-258c607c5acd
+                    message: null
+                    name: Napoleon Schuster
+                    passcode: null
+                    send_email: null
+                    send_email_delay: null
+                    status: created
+                    subject: null
+                    signing_order: 47
+                    signing_url: https://www.signwell.com/docs/f82f345105/
+                    bounced: null
+                    bounced_details: null
+                    attachment_requests: []
+                  checkbox_groups:
+                  - id: d6b47015-754d-417f-8c53-9ffa43cba00a
+                    group_name: null
+                    recipient_id: null
+                    checkbox_ids:
+                    - CheckBox_71
+                    validation: null
+                    required: false
+                current_page: 1
+                next_page: null
+                previous_page: null
+                total_count: 1
+                total_pages: 1
+              schema:
+                $ref: '#/components/schemas/BulkSendDocumentsResponse'
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                message: Missing or invalid authorization key
+                meta:
+                  error: api_key_unauthorized_error
+                  message: Not valid authorization token
+                  messages:
+                  - Not valid authorization token
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the bulk_send requested
+                  messages:
+                  - Couldn't find the bulk_send requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+components:
+  schemas:
+    DocumentResponse:
+      type: object
+      properties:
+        test_mode:
+          type: boolean
+        id:
+          type: string
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        requester_email_address:
+          type: string
+          format: email
+        custom_requester_name:
+          type: string
+          nullable: true
+        custom_requester_email:
+          type: string
+          format: email
+          nullable: true
+        name:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        recipients:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              email:
+                type: string
+              body:
+                type: string
+              message:
+                type: string
+                nullable: true
+              subject:
+                type: string
+                nullable: true
+              send_email:
+                type: boolean
+                nullable: true
+              send_email_delay:
+                type: integer
+                nullable: true
+              signing_order:
+                type: integer
+              signing_url:
+                type: string
+                format: url
+                nullable: true
+              embedded_signing_url:
+                type: string
+                format: url
+                nullable: true
+              bounced:
+                type: boolean
+                nullable: true
+              bounced_details:
+                type: string
+                nullable: true
+              attachment_requests:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttachmentRequestInfo'
+              passcode:
+                type: string
+                nullable: true
+              status:
+                type: string
+                nullable: true
+            required:
+            - name
+            - email
+        status:
+          type: string
+          description: 'Possible values: Draft, Created, Sending, Sent, Pending, Viewed, Completed, Manually completed, Declined, Canceled, Bounced, Blocked, Error, Expired'
+        reminders:
+          type: boolean
+        archived:
+          type: boolean
+        embedded_signing:
+          type: boolean
+        embedded_edit_url:
+          type: string
+          format: url
+          nullable: true
+        embedded_preview_url:
+          type: string
+          format: url
+          nullable: true
+        apply_signing_order:
+          type: boolean
+        redirect_url:
+          type: string
+          format: url
+          nullable: true
+        decline_redirect_url:
+          type: string
+          format: url
+          nullable: true
+        language:
+          type: string
+        expires_in:
+          type: integer
+        decline_message:
+          type: string
+          nullable: true
+        error_message:
+          type: string
+          nullable: true
+        template_id:
+          type: string
+          nullable: true
+        template_ids:
+          type: array
+          items:
+            type: string
+        embedded_signing_notifications:
+          type: boolean
+        attachment_requests:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              recipient_id:
+                type: string
+              required:
+                type: boolean
+            required:
+            - name
+            - recipient_id
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
+        copied_contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CopiedContactInfo'
+        fields:
+          type: array
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                x:
+                  type: number
+                  format: float
+                y:
+                  type: number
+                  format: float
+                page:
+                  type: integer
+                recipient:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    name:
+                      type: string
+                  required:
+                  - email
+                  - name
+                api_id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                  nullable: true
+                date_format:
+                  $ref: '#/components/schemas/DateFormat'
+                fixed_width:
+                  type: boolean
+                formula:
+                  type: string
+                label:
+                  type: string
+                lock_sign_date:
+                  type: boolean
+                required:
+                  type: boolean
+                type:
+                  $ref: '#/components/schemas/FieldType'
+                validation:
+                  $ref: '#/components/schemas/TextValidation'
+                value:
+                  oneOf:
+                  - type: string
+                  - type: boolean
+                  - type: number
+                  nullable: true
+                height:
+                  type: string
+                width:
+                  type: string
+                recipient_id:
+                  type: string
+                  nullable: true
+                signing_elements_group_id:
+                  type: string
+                  format: uuid
+                placeholder_name:
+                  type: string
+                options:
+                  type: array
+                  description: Dropdown options (for dropdown/select fields)
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      api_id:
+                        type: string
+                      is_other:
+                        type: boolean
+                default_option:
+                  type: string
+                  description: Default selected option
+                allow_other:
+                  type: boolean
+                  description: Whether "Other" option is allowed
+              required:
+              - x
+              - y
+              - page
+        allow_decline:
+          type: boolean
+          nullable: true
+        allow_reassign:
+          type: boolean
+          nullable: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelInfo'
+        checkbox_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckboxGroupInfo'
+      required:
+      - id
+      - test_mode
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
+    AttachmentRequestInfo:
+      type: object
+      description: Attachment request information
+      properties:
+        name:
+          type: string
+          description: Name of the attachment request
+        url:
+          type: string
+          format: url
+          description: URL of the uploaded attachment (when available)
+        required:
+          type: boolean
+          description: Whether the attachment is required
+      required:
+      - name
+      - required
+    BulkSendDocumentsResponse:
+      type: object
+      description: Paginated list of documents in a bulk send
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type: string
+          format: uuid
+          nullable: true
+        status:
+          type: string
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentResponse'
+        current_page:
+          type: integer
+        next_page:
+          type: integer
+          nullable: true
+        previous_page:
+          type: integer
+          nullable: true
+        total_count:
+          type: integer
+        total_pages:
+          type: integer
+      required:
+      - id
+      - documents
+      - current_page
+      - total_count
+      - total_pages
+    BulkSendListItem:
+      type: object
+      description: Bulk send summary in list responses
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        documents_count:
+          type: integer
+        documents_completed:
+          type: integer
+        documents_not_completed:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type: string
+          format: uuid
+          nullable: true
+        status:
+          type: string
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - id
+      - name
+      - documents_count
+      - documents_completed
+      - documents_not_completed
+      - created_at
+      - status
+      - template_ids
+    BulkSendValidateCsvResponse:
+      type: object
+      description: Validated bulk send CSV response with defaults applied
+      properties:
+        bulk_send_csv:
+          type: string
+          description: Base64-encoded CSV content
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        skip_row_errors:
+          type: boolean
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        name:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        apply_signing_order:
+          type: boolean
+      required:
+      - bulk_send_csv
+      - template_ids
+    BulkSendListResponse:
+      type: object
+      description: List of bulk sends with pagination
+      properties:
+        bulk_sends:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkSendListItem'
+        current_page:
+          type: integer
+        next_page:
+          type: integer
+          nullable: true
+        previous_page:
+          type: integer
+          nullable: true
+        total_count:
+          type: integer
+        total_pages:
+          type: integer
+      required:
+      - bulk_sends
+      - current_page
+      - total_count
+      - total_pages
+    Page:
+      type: integer
+      minimum: 1
+      default: 1
+      description: The page number for pagination. Defaults to the first page.
+    Limit:
+      type: integer
+      minimum: 1
+      maximum: 50
+      default: 10
+      description: The number of documents to fetch. Defaults to 10, max is 50.
+    CheckboxValidation:
+      type: string
+      enum:
+      - minimum
+      - maximum
+      - range
+      - exact
+      description: Validation rule for checkbox groups
+    TextValidation:
+      type: string
+      enum:
+      - no_text_validation
+      - numbers
+      - letters
+      - email_address
+      - us_phone_number
+      - us_zip_code
+      - us_ssn
+      - us_age
+      - alphanumeric
+      - us_bank_routing_number
+      - us_bank_account_number
+      description: Validation rule for text fields
+    BulkSendCsvTemplateResponse:
+      type: object
+      description: Base64-encoded CSV template
+      properties:
+        data:
+          type: string
+          format: byte
+          description: Base64-encoded CSV content
+      required:
+      - data
+    Base64Flag:
+      type: boolean
+      description: When true, returns the CSV as a base64-encoded string in a JSON response instead of a binary file download.
+    BulkSendResponse:
+      type: object
+      description: Bulk send details
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        documents_count:
+          type: integer
+        documents_completed:
+          type: integer
+        documents_not_completed:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type: string
+          format: uuid
+          nullable: true
+        status:
+          type: string
+        templates:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+            required:
+            - id
+            - name
+      required:
+      - id
+      - documents_count
+      - created_at
+      - status
+    LabelInfo:
+      type: object
+      description: Label information
+      properties:
+        id:
+          type: string
+          description: Label ID
+        name:
+          type: string
+          description: Label name
+    BulkSendTemplateIds:
+      type: array
+      description: Specify one or more templates to generate a single blank CSV file that will contain available columns for your recipient data. The template_ids[] parameter is an array of template IDs (e.g.,`/?template_ids[]=5a67dbd7-928a-4ea0-a7e2-e476a0eb045f&template_ids[]=d7315111-c671-4b15-8354-c9a19bbaefa0`). Each ID should be a separate parameter in the query string.
+      items:
+        type: string
+        format: uuid
+    FileInfo:
+      type: object
+      description: File information
+      properties:
+        name:
+          type: string
+          description: File name
+        pages_number:
+          type: integer
+          description: Number of pages in the file
+      required:
+      - name
+      - pages_number
+    BulkSendCsvRequest:
+      type: object
+      properties:
+        template_ids:
+          type: array
+          description: Specify one or more templates to generate a single blank CSV file that will contain available columns for your recipient data. The template_ids[] parameter is an array of template IDs (e.g.,`/?template_ids[]=5a67dbd7-928a-4ea0-a7e2-e476a0eb045f&template_ids[]=d7315111-c671-4b15-8354-c9a19bbaefa0`). Each ID should be a separate parameter in the query string.
+          items:
+            type: string
+            format: uuid
+            example: 00000000-0000-0000-0000-000000000000
+        bulk_send_csv:
+          type: string
+          description: A RFC 4648 base64 string of the template CSV file to be validated.
+          example: bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K
+      required:
+      - template_ids
+      - bulk_send_csv
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+    UserEmail:
+      type: string
+      format: email
+      description: The email address of the user that sent the Bulk Send. Must have the `admin` or `manager` role to view Bulk Sends of other users. Defaults to the user that the API key belongs to.
+    CopiedContactInfo:
+      type: object
+      description: Copied contact information
+      properties:
+        id:
+          type: string
+          description: Contact ID
+        name:
+          type: string
+          description: Contact name
+        email:
+          type: string
+          format: email
+          description: Contact email
+      required:
+      - email
+    CreateBulkSendRequest:
+      type: object
+      properties:
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: 00000000-0000-0000-0000-000000000000
+          description: Unique identifiers for a list of templates.
+        bulk_send_csv:
+          type: string
+          description: A RFC 4648 base64 string of the template CSV file to be validated.
+          example: bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K
+        skip_row_errors:
+          type: boolean
+          default: false
+          description: Whether to skip errors in the rows. Defaults to `false`.
+        api_application_id:
+          type: string
+          format: uuid
+          description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
+        name:
+          type: string
+          description: The name of the Bulk Send. Will be used as the document name for each of the documents.
+        subject:
+          type: string
+          description: Email subject for the signature request that recipients will see. Defaults to the default system subject or a template subject.
+        message:
+          type: string
+          description: Email message for the signature request that recipients will see. Defaults to the default system message or a template message.
+        apply_signing_order:
+          type: boolean
+          default: false
+          description: When set to `true` recipients will sign one at a time in the order of the `recipients` collection of this request.
+        custom_requester_name:
+          type: string
+          description: Sets the custom requester name for the document. When set, this is the name used for all email communications, signing notifications, and in the audit file.
+        custom_requester_email:
+          type: string
+          format: email
+          description: Sets the custom requester email for the document. When set, this is the email used for all email communications, signing notifications, and in the audit file.
+      required:
+      - template_ids
+      - bulk_send_csv
+    FieldType:
+      type: string
+      enum:
+      - initials
+      - signature
+      - checkbox
+      - date
+      - select
+      - text
+      - dropdown
+      - autofill_company
+      - autofill_email
+      - autofill_first_name
+      - autofill_last_name
+      - autofill_name
+      - autofill_phone
+      - autofill_title
+      - autofill_date_signed
+      description: Type of signing field
+    BulkSendCreateResponse:
+      type: object
+      description: Bulk send creation response
+      properties:
+        id:
+          type: string
+          format: uuid
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        documents_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type: string
+          format: uuid
+          nullable: true
+        status:
+          type: string
+      required:
+      - id
+      - template_ids
+      - documents_count
+      - created_at
+      - status
+    ApiApplicationId:
+      type: string
+      format: uuid
+      description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
+    CheckboxGroupInfo:
+      type: object
+      description: Checkbox group configuration
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Checkbox group ID
+        group_name:
+          type: string
+          nullable: true
+          description: Name of the checkbox group
+        recipient_id:
+          type: string
+          nullable: true
+          description: Recipient ID associated with the group
+        checkbox_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of checkboxes in this group
+        validation:
+          $ref: '#/components/schemas/CheckboxValidation'
+          nullable: true
+        required:
+          type: boolean
+          description: Whether at least one checkbox must be checked
+        min_value:
+          type: integer
+          description: Minimum number of checkboxes to check
+        max_value:
+          type: integer
+          description: Maximum number of checkboxes to check
+        exact_value:
+          type: integer
+          description: Exact number of checkboxes that must be checked
+      required:
+      - id
+      - checkbox_ids
+      - required
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      properties:
+        errors:
+          type: object
+          additionalProperties: true
+          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+      required:
+      - errors
+    BulkSendId:
+      type: string
+      format: uuid
+      description: Unique identifier for a bulk send.
+    DateFormat:
+      type: string
+      enum:
+      - MM/DD/YYYY
+      - DD/MM/YYYY
+      - YYYY/MM/DD
+      - Month DD, YYYY
+      - MM/DD/YYYY hh:mm:ss a
+      description: 'Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY'
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Api-Key
+      in: header

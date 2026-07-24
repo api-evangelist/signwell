@@ -1,0 +1,210 @@
+openapi: 3.0.1
+info:
+  title: SignWell Developer API Application API
+  description: API for creating, managing, and tracking electronic signature workflows.
+  version: v1
+  termsOfService: https://www.signwell.com/terms/
+  contact:
+    email: support@signwell.com
+servers:
+- url: https://www.signwell.com
+tags:
+- name: API Application
+  description: Manage API application settings and branding.
+paths:
+  /api/v1/api_applications/{id}:
+    get:
+      summary: Get API Application
+      description: Gets the details of a specific API Application within an account. Supply the unique Application ID from either the Create API Application response or the API Application edit page.
+      tags:
+      - API Application
+      security:
+      - api_key: []
+      operationId: getApiApplication
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+          format: uuid
+          description: Unique identifier for the API Application.
+        required: true
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                id: 86cbb357-7b1b-4c43-894a-d0e94b649126
+                callback_urls: []
+                created_at: '2026-03-31T15:47:06Z'
+                name: Opela
+                updated_at: '2026-03-31T15:47:06Z'
+                owner:
+                  id: ed63535c-75c0-4a72-875c-6426d9210b71
+                  account_id: 43a98242-d533-4f82-bbfe-87cf8e983e73
+                  name: Arthricia
+                  email: arthricia_105@rohan.test
+                preferences:
+                  button_text_color: '610505'
+                  buttons_border_radius: 10
+                  custom_logo_file: /Users/signwell/Code/docsketch/tmp/test_files/files_number/api_application_preferences/000/000/003/original.png
+                  link_text_color: BCBC80
+                  primary_color: '898952'
+              schema:
+                $ref: '#/components/schemas/ApiApplicationResponse'
+        '404':
+          description: not_found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the api_application requested
+                  messages:
+                  - Couldn't find the api_application requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+    delete:
+      summary: Delete API Application
+      description: Deletes an API Application from an account. Supply the unique Application ID from either the Create API Application response or the API Application edit page
+      tags:
+      - API Application
+      security:
+      - api_key: []
+      operationId: deleteApiApplication
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+          format: uuid
+          description: Unique identifier for the API Application.
+        required: true
+      responses:
+        '204':
+          description: no content
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the api_application requested
+                  messages:
+                  - Couldn't find the api_application requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+components:
+  schemas:
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
+    ApiApplicationResponse:
+      type: object
+      description: API application details
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        callback_urls:
+          type: array
+          items:
+            type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        owner:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            account_id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+          required:
+          - id
+          - name
+          - email
+        preferences:
+          type: object
+          properties:
+            button_text_color:
+              type: string
+              nullable: true
+            buttons_border_radius:
+              type: integer
+            custom_logo_file:
+              type: string
+              nullable: true
+            link_text_color:
+              type: string
+              nullable: true
+            primary_color:
+              type: string
+              nullable: true
+      required:
+      - id
+      - name
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Api-Key
+      in: header

@@ -1,0 +1,147 @@
+openapi: 3.0.1
+info:
+  title: SignWell Developer API Application Regional API
+  description: API for creating, managing, and tracking electronic signature workflows.
+  version: v1
+  termsOfService: https://www.signwell.com/terms/
+  contact:
+    email: support@signwell.com
+servers:
+- url: https://www.signwell.com
+tags:
+- name: Regional
+  description: Access region-specific endpoints for data residency compliance.
+paths:
+  /api/v1/documents/{id}/nom151_certificate:
+    get:
+      summary: MX – NOM-151 Certificate
+      description: Download NOM-151 certificate for a completed document. Returns a ZIP file, download URL, or raw certificate data based on query parameters.
+      tags:
+      - Regional
+      security:
+      - api_key: []
+      operationId: getNom151Certificate
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/CompletedDocumentId'
+        required: true
+      - name: url_only
+        in: query
+        schema:
+          $ref: '#/components/schemas/UrlOnly'
+        description: If true, returns JSON with download URL instead of downloading the file
+      - name: object_only
+        in: query
+        schema:
+          $ref: '#/components/schemas/ObjectOnly'
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                file_url: https://www.signwell.com/completed_docs/yzQaZQykwATojZNwPdpyFAeyz9A/nom151_certificate/
+              schema:
+                $ref: '#/components/schemas/Nom151UrlResponse'
+        '404':
+          description: not_found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the document requested
+                  messages:
+                  - Couldn't find the document requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: unprocessable_entity
+          content:
+            application/json:
+              example:
+                errors:
+                  not_available: NOM-151 certificate not available
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+components:
+  schemas:
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
+    UrlOnly:
+      type: boolean
+      default: false
+      description: Whether to return the URL of the completed PDF or the actual PDF content. Defaults to `false`.
+    Nom151UrlResponse:
+      type: object
+      description: NOM-151 download URL returned when url_only=true
+      properties:
+        file_url:
+          type: string
+          format: url
+          description: Public URL to download the certificate ZIP file
+      required:
+      - file_url
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+    ObjectOnly:
+      type: boolean
+      default: false
+      description: If true, returns raw NOM-151 constancia certificate object as JSON instead of a zip file or URL.
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      properties:
+        errors:
+          type: object
+          additionalProperties: true
+          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+      required:
+      - errors
+    CompletedDocumentId:
+      type: string
+      format: uuid
+      description: Unique identifier for a completed document.
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Api-Key
+      in: header

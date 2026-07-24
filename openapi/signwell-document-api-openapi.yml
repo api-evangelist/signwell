@@ -1,0 +1,3454 @@
+openapi: 3.0.1
+info:
+  title: SignWell Developer API Application Document API
+  description: API for creating, managing, and tracking electronic signature workflows.
+  version: v1
+  termsOfService: https://www.signwell.com/terms/
+  contact:
+    email: support@signwell.com
+servers:
+- url: https://www.signwell.com
+tags:
+- name: Document
+  description: Create, send, and manage documents for electronic signing.
+paths:
+  /api/v1/documents:
+    get:
+      summary: List Documents
+      description: Returns a paginated list of documents for the authenticated account.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: listDocuments
+      x-internal: true
+      parameters:
+      - name: page
+        in: query
+        schema:
+          $ref: '#/components/schemas/Page'
+        required: false
+      - name: limit
+        in: query
+        schema:
+          $ref: '#/components/schemas/Limit'
+        required: false
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                documents:
+                - id: a83ff091-11fc-4091-8111-6dd2ee8e3393
+                  archived: false
+                  created_at: '2026-03-31T15:46:45Z'
+                  decline_message: null
+                  embedded_edit_url: https://www.signwell.com/edit/document/cb858cfc-3bd0-41a8-9b29-abb1da693aac/
+                  error_message: null
+                  embedded_preview_url: null
+                  language: en
+                  name: miscarriage-relationship/omnis.mp3
+                  requester_email_address: 1_scary_terry@keeling-bahringer.example
+                  status: Created
+                  test_mode: false
+                  updated_at: '2026-03-31T15:46:45Z'
+                  allow_decline: true
+                  allow_reassign: true
+                  api_application_id: null
+                  custom_requester_email: null
+                  custom_requester_name: null
+                  decline_redirect_url: null
+                  embedded_signing: false
+                  expires_in: 30
+                  metadata: {}
+                  redirect_url: null
+                  reminders: true
+                  apply_signing_order: false
+                  message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                  subject: Please complete miscarriage-relationship/omnis.mp3
+                  labels: []
+                  fields: []
+                  files: []
+                  copied_contacts: []
+                  recipients: []
+                  checkbox_groups: []
+                - id: f9bce8ff-2f98-4959-92e4-c895a1367341
+                  archived: false
+                  created_at: '2026-03-31T15:46:45Z'
+                  decline_message: null
+                  embedded_edit_url: https://www.signwell.com/edit/document/302e3717-2a9d-4126-a5f1-b7143b21a018/
+                  error_message: null
+                  embedded_preview_url: null
+                  language: en
+                  name: miscarriage-linger/et.mp4
+                  requester_email_address: 1_scary_terry@keeling-bahringer.example
+                  status: Created
+                  test_mode: false
+                  updated_at: '2026-03-31T15:46:45Z'
+                  allow_decline: true
+                  allow_reassign: true
+                  api_application_id: null
+                  custom_requester_email: null
+                  custom_requester_name: null
+                  decline_redirect_url: null
+                  embedded_signing: false
+                  expires_in: 30
+                  metadata: {}
+                  redirect_url: null
+                  reminders: true
+                  apply_signing_order: false
+                  message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                  subject: Please complete miscarriage-linger/et.mp4
+                  labels: []
+                  fields: []
+                  files: []
+                  copied_contacts: []
+                  recipients: []
+                  checkbox_groups: []
+                - id: 1b03215e-f3cc-446b-a9dc-293af294c988
+                  archived: false
+                  created_at: '2026-03-31T15:46:45Z'
+                  decline_message: null
+                  embedded_edit_url: https://www.signwell.com/edit/document/28e9b87a-88dd-4f08-a1a2-633649ccfa3c/
+                  error_message: null
+                  embedded_preview_url: null
+                  language: en
+                  name: dictate_publish/error.avi
+                  requester_email_address: 1_scary_terry@keeling-bahringer.example
+                  status: Created
+                  test_mode: false
+                  updated_at: '2026-03-31T15:46:45Z'
+                  allow_decline: true
+                  allow_reassign: true
+                  api_application_id: null
+                  custom_requester_email: null
+                  custom_requester_name: null
+                  decline_redirect_url: null
+                  embedded_signing: false
+                  expires_in: 30
+                  metadata: {}
+                  redirect_url: null
+                  reminders: true
+                  apply_signing_order: false
+                  message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                  subject: Please complete dictate_publish/error.avi
+                  labels: []
+                  fields: []
+                  files: []
+                  copied_contacts: []
+                  recipients: []
+                  checkbox_groups: []
+                current_page: 1
+                next_page: null
+                previous_page: null
+                total_count: 3
+                total_pages: 1
+              schema:
+                $ref: '#/components/schemas/DocumentListResponse'
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              example:
+                message: Missing or invalid authorization key
+                meta:
+                  error: api_key_unauthorized_error
+                  message: Not valid authorization token
+                  messages:
+                  - Not valid authorization token
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+    post:
+      summary: Create Document
+      description: Creates and optionally sends a new document for signing. If `draft` is set to true the document will not be sent.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: createDocument
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              example:
+                id: 6a8b63de-1885-4ab8-bf0a-77ebd3686c00
+                archived: false
+                created_at: '2026-03-31T15:46:47Z'
+                decline_message: null
+                embedded_edit_url: https://www.signwell.com/edit/document/3560287f-49f5-423e-a37a-37cd7403c1c8/
+                error_message: null
+                embedded_preview_url: null
+                language: en
+                name: Agreement
+                requester_email_address: requester@domain.com
+                status: Created
+                test_mode: false
+                updated_at: '2026-03-31T15:46:47Z'
+                allow_decline: true
+                allow_reassign: true
+                api_application_id: null
+                custom_requester_email: requester@domain.com
+                custom_requester_name: Requester
+                decline_redirect_url: https://www.domain.com/decline_path/
+                embedded_signing: false
+                expires_in: 365
+                metadata:
+                  key1: value1
+                  key2: value2
+                redirect_url: https://www.domain.com/redirect_path/
+                reminders: true
+                apply_signing_order: false
+                message: Normal Body
+                subject: Normal subject
+                labels:
+                - id: 7af3624f-fc72-4f69-bed6-de920ba4f72b
+                  name: My First Label
+                - id: 00f4b0c6-c24b-4320-9ebf-0a3b068cfc05
+                  name: My Second Label
+                - id: bd7c048f-dc98-4a32-b84f-46e8a117839e
+                  name: My Third Label
+                fields:
+                - - api_id: DateField_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: date
+                    value: 06/05/2021
+                    width: '86.0'
+                    x: 230.0
+                    y: 60.0
+                    date_format: DD/MM/YYYY
+                    formula: ''
+                    lock_sign_date: true
+                    recipient_id: recipient_id_1
+                  - api_id: DateSigned_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_date_signed
+                    value: null
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: Company_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_company
+                    value: Great Company
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: Email_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_email
+                    value: recipient1@domain.com
+                    width: '86.0'
+                    x: 260.0
+                    y: 90.0
+                    recipient_id: recipient_id_1
+                  - api_id: Name_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_name
+                    value: Recipient One
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: FirstName_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_name
+                    value: Recipient
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: LastName_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_name
+                    value: One
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: Phone_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_phone
+                    value: '123456789'
+                    width: '86.0'
+                    x: 260.0
+                    y: 100.0
+                    recipient_id: recipient_id_1
+                  - api_id: Title_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_title
+                    value: Important Title
+                    width: '86.0'
+                    x: 260.0
+                    y: 100.0
+                    recipient_id: recipient_id_1
+                - - api_id: DateField_2
+                    height: '2.0'
+                    page: 1
+                    required: true
+                    type: date
+                    value: 05/06/2021
+                    width: '1.0'
+                    x: 260.0
+                    y: 80.0
+                    date_format: MM/DD/YYYY
+                    formula: ''
+                    lock_sign_date: false
+                    recipient_id: recipient_id_2
+                  - api_id: Signature_1
+                    height: '32.0'
+                    page: 2
+                    required: true
+                    type: signature
+                    value: null
+                    width: '112.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_2
+                  - api_id: Signature_2
+                    height: '2.0'
+                    page: 1
+                    required: true
+                    type: signature
+                    value: null
+                    width: '1.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_2
+                  - api_id: CheckBox_1
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: t
+                    width: '13.0'
+                    x: 260.0
+                    y: 80.0
+                    name: null
+                    recipient_id: recipient_id_2
+                  - api_id: CheckBox_2
+                    height: '2.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: t
+                    width: '1.0'
+                    x: 260.0
+                    y: 80.0
+                    name: Checkbox name
+                    recipient_id: recipient_id_2
+                  - api_id: Initials_1
+                    height: '32.0'
+                    page: 2
+                    required: true
+                    type: initials
+                    value: null
+                    width: '44.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_2
+                  - api_id: Initials_2
+                    height: '2.0'
+                    page: 1
+                    required: true
+                    type: initials
+                    value: null
+                    width: '1.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_2
+                  - api_id: TextField_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: text
+                    value: '123456'
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    fixed_width: true
+                    label: label
+                    validation: numbers
+                    recipient_id: recipient_id_2
+                  - api_id: TextField_2
+                    height: '2.0'
+                    page: 1
+                    required: true
+                    type: text
+                    value: '123456'
+                    width: '1.0'
+                    x: 260.0
+                    y: 80.0
+                    fixed_width: true
+                    label: label
+                    validation: numbers
+                    recipient_id: recipient_id_2
+                  - api_id: TextField_3
+                    height: '20.0'
+                    page: 1
+                    required: true
+                    type: text
+                    value: '123456'
+                    width: '100.0'
+                    x: 260.0
+                    y: 80.0
+                    fixed_width: true
+                    label: label
+                    validation: numbers
+                    recipient_id: recipient_id_2
+                  - api_id: TextField_4
+                    height: '20.0'
+                    page: 1
+                    required: true
+                    type: text
+                    value: '123456'
+                    width: '100.0'
+                    x: 260.0
+                    y: 80.0
+                    fixed_width: true
+                    label: label
+                    validation: numbers
+                    recipient_id: recipient_id_2
+                  - api_id: Company_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_company
+                    value: Great Company
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: Email_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_email
+                    value: recipient1@domain.com
+                    width: '86.0'
+                    x: 260.0
+                    y: 90.0
+                    recipient_id: recipient_id_1
+                  - api_id: Name_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_name
+                    value: Recipient One
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: FirstName_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_name
+                    value: Recipient
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: LastName_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_name
+                    value: One
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_id_1
+                  - api_id: Phone_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_phone
+                    value: '123456789'
+                    width: '86.0'
+                    x: 260.0
+                    y: 100.0
+                    recipient_id: recipient_id_1
+                  - api_id: Title_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: autofill_title
+                    value: Important Title
+                    width: '86.0'
+                    x: 260.0
+                    y: 100.0
+                    recipient_id: recipient_id_1
+                files:
+                - name: filename1.pdf
+                  pages_number: 0
+                - name: filename2.pdf
+                  pages_number: 0
+                copied_contacts:
+                - name: CC one
+                  email: cc1@domain.com
+                recipients:
+                - email: recipient1@domain.com
+                  id: recipient_id_1
+                  message: This is a message
+                  name: Recipient One
+                  passcode: '123'
+                  send_email: false
+                  send_email_delay: 0
+                  status: created
+                  subject: Hi, please sign this contract
+                  signing_order: 1
+                  signing_url: https://www.signwell.com/docs/d549fd60a0/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests:
+                  - name: normal name
+                    required: true
+                    url: https://www.signwell.com/document_attachments/boe984aG7RUlK6YP2jZrInX6ywR/?access=2dd579d0-5e1d-4fd5-abd4-ebe5a228284d
+                - email: recipient2@domain.com
+                  id: recipient_id_2
+                  message: null
+                  name: Recipient 2
+                  passcode: null
+                  send_email: false
+                  send_email_delay: 0
+                  status: created
+                  subject: null
+                  signing_order: 2
+                  signing_url: https://www.signwell.com/docs/bf45f2dad5/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests:
+                  - name: Driver License
+                    required: false
+                    url: https://www.signwell.com/document_attachments/LgbPkXRrZDTdzzNRGLkXSplYMMJ/?access=2dd579d0-5e1d-4fd5-abd4-ebe5a228284d
+                checkbox_groups:
+                - id: 6f69b18a-5fd7-4d74-8829-e7cc707a34f3
+                  group_name: Group 1
+                  recipient_id: null
+                  checkbox_ids:
+                  - CheckBox_1
+                  - CheckBox_2
+                  validation: minimum
+                  required: true
+                  min_value: 1
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              example:
+                errors:
+                  message: The request contains invalid key values.
+                  invalid_keys:
+                  - name
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              example:
+                errors:
+                  custom_requester_email:
+                  - is invalid
+                  custom_requester_name:
+                  - is too long (maximum is 100 characters)
+                  decline_redirect_url:
+                  - is not a valid URL
+                  redirect_url:
+                  - is not a valid URL
+                  expires_in:
+                  - must be less than or equal to 365
+                  metadata:
+                  - The key/value pairs must not exceed 50
+                  - 'Check the following keys: [qgtxtpsnyxjwzvbzhnmrjziscxsmgcugpqanuygve], length needs to be less than 40 characters'
+                  - 'Check the value of the following keys: [ke50], length needs to be less than 500 characters and must be a string'
+                  api_application_id:
+                  - The provided API application id is invalid
+                  subject:
+                  - is too long (maximum is 255 characters)
+                  message:
+                  - is too long (maximum is 4000 characters)
+                  recipients:
+                    duplicated_ids: 'These ids are duplicated: recipient_id_1.'
+                    duplicated_emails: 'These emails are duplicated: recipient1domain.com.'
+                    recipient_1:
+                      name:
+                      - is too long (maximum is 255 characters)
+                      email:
+                      - format is invalid.
+                    recipient_2:
+                      email:
+                      - format is invalid.
+                  copied_contacts:
+                    copied_contact_1:
+                      name:
+                      - is too long (maximum is 255 characters)
+                      email:
+                      - format is invalid.
+                    copied_contact_2:
+                      email:
+                      - format is invalid.
+                      - is already a recipient
+                  attachment_requests:
+                    invalid_ids: 'These recipient ids are not present in the recipients array: [recipient_id_3]'
+                  fields:
+                    duplicated_api_ids: 'These api ids are duplicated: CheckBox_2.'
+                    invalid_ids: 'These recipient ids are not present in the recipients array: [recipient_id_2, recipient_id_3]'
+                    file_1:
+                      field_1:
+                        date_format:
+                        - Not allowed for text.
+                        lock_sign_date:
+                        - Not allowed for text.
+                    file_2:
+                      field_1:
+                        date_format:
+                        - Not allowed for checkbox.
+                        fixed_width:
+                        - Not allowed for checkbox.
+                        validation:
+                        - Not allowed for checkbox.
+                        label:
+                        - Not allowed for checkbox.
+                        lock_sign_date:
+                        - Not allowed for checkbox.
+                      field_2:
+                        invalid_date_value: DateField value must be in Iso8601 format.
+                        fixed_width:
+                        - Not allowed for date.
+                        validation:
+                        - Not allowed for date.
+                        label:
+                        - Not allowed for date.
+                        date_format:
+                        - 'Allowed formats for date fields are: MM/DD/YYYY | DD/MM/YYYY | YYYY/MM/DD | Month DD, YYYY | MM/DD/YYYY hh:mm:ss a'
+                      field_3:
+                        date_format:
+                        - Not allowed for initials.
+                        fixed_width:
+                        - Not allowed for initials.
+                        validation:
+                        - Not allowed for initials.
+                        label:
+                        - Not allowed for initials.
+                        lock_sign_date:
+                        - Not allowed for initials.
+                      field_4:
+                        date_format:
+                        - Not allowed for signature.
+                        fixed_width:
+                        - Not allowed for signature.
+                        validation:
+                        - Not allowed for signature.
+                        label:
+                        - Not allowed for signature.
+                        lock_sign_date:
+                        - Not allowed for signature.
+                  checkbox_groups:
+                    min_value_negative: The min value must be greater than or equal to 0 in the checkbox group Group 1
+                  files:
+                    file_1:
+                      file_data:
+                      - At least one of file_url or file_base64 should be present
+                    file_2:
+                      file_data:
+                      - Only one of file_url or file_base64 should be present, not both
+                    file_3:
+                      file_url:
+                      - is not a valid URL
+                    file_4:
+                      file_base64:
+                      - 'the file type is unsupported, we support the following formats: application/msword, application/pdf, application/octet-stream, application/x-ole-storage, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-iwork-keynote-sffkey, application/x-iwork-numbers-sffnumbers, application/x-iwork-pages-sffpages, image/jpeg, image/png, image/tiff, image/webp, text/html'
+                    file_5:
+                      name:
+                      - The file extension is invalid.
+                    file_6:
+                      name:
+                      - can't be blank
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentRequest'
+        required: true
+  /api/v1/documents/{id}:
+    get:
+      summary: Get Document
+      description: Returns a document and all associated document data. Supply the unique document ID from either a document creation request or Document page URL.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: getDocument
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/DocumentId'
+        required: true
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                id: 2707ac1d-5dd3-4d95-8ae9-f0ac55f51203
+                archived: false
+                created_at: '2026-03-31T15:46:45Z'
+                decline_message: null
+                embedded_edit_url: https://www.signwell.com/edit/document/bf0ff8a4-50ec-42d7-8167-72fb404a5276/
+                error_message: null
+                embedded_preview_url: null
+                language: en
+                name: diagram_arena/architecto.mp3
+                requester_email_address: jerry.smith.2@yundt-weber.test
+                status: Created
+                test_mode: false
+                updated_at: '2026-03-31T15:46:45Z'
+                allow_decline: false
+                allow_reassign: true
+                api_application_id: null
+                custom_requester_email: rosalia_fisher@lehner.test
+                custom_requester_name: Bendu
+                decline_redirect_url: http://bosco.example/shani
+                embedded_signing: false
+                expires_in: 10
+                metadata:
+                  ut: quam
+                  itaque: cumque
+                redirect_url: http://bogan.example/eldora.kiehn
+                reminders: false
+                apply_signing_order: false
+                message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                subject: Please complete diagram_arena/architecto.mp3
+                labels:
+                - id: 915b493e-8ba3-44aa-9e8b-ceb4044ac294
+                  name: Frances Goodwin
+                - id: 9acee41c-ee12-452d-bf40-f6645ee4b6ce
+                  name: Gov. Roy Kohler
+                fields:
+                - - api_id: CheckBox_2
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    recipient_id: null
+                    signing_elements_group_id: 6cd1fb22-417c-48e9-8674-d95c9613ff73
+                  - api_id: CheckBox_3
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    recipient_id: null
+                  - api_id: Signature_1
+                    height: '32.0'
+                    page: 1
+                    required: true
+                    type: signature
+                    value: null
+                    width: '112.0'
+                    x: 1.1
+                    y: 1.1
+                    recipient_id: e052eeae-0706-4dd9-8ec2-68a918290223
+                files:
+                - name: velit.numbers
+                  pages_number: 1
+                copied_contacts:
+                - name: Jon Auer
+                  email: david@cummings-dicki.example
+                recipients:
+                - email: kimbery_kreiger@hoeger-littel.example
+                  id: e052eeae-0706-4dd9-8ec2-68a918290223
+                  message: null
+                  name: Rodolfo Daniel
+                  passcode: null
+                  send_email: null
+                  send_email_delay: null
+                  status: created
+                  subject: null
+                  signing_order: 1
+                  signing_url: https://www.signwell.com/docs/05791040ca/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests:
+                  - name: introduction_premium/vitae.html
+                    required: true
+                    url: https://www.signwell.com/document_attachments/n4dXkq0XLoioY3K7Z9k4SX1ezWd/?access=3550e3ab-f2da-4193-897f-cfba53272548
+                - email: ira@metz-dare.test
+                  id: 34e316a6-0f62-4751-81fe-145afa405f34
+                  message: null
+                  name: Laurette Rohan
+                  passcode: null
+                  send_email: null
+                  send_email_delay: null
+                  status: created
+                  subject: null
+                  signing_order: 2
+                  signing_url: https://www.signwell.com/docs/2eb80d8fb8/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests: []
+                checkbox_groups:
+                - id: 6cd1fb22-417c-48e9-8674-d95c9613ff73
+                  group_name: null
+                  recipient_id: null
+                  checkbox_ids:
+                  - CheckBox_2
+                  validation: null
+                  required: false
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '404':
+          description: not_found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the document requested
+                  messages:
+                  - Couldn't find the document requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+    delete:
+      summary: Delete Document
+      description: Deletes a document. Deleting a document will also cancel document signing (if in progress).  Supply the unique document ID from either a Create Document request or document page URL.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: deleteDocument
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/DocumentId'
+        required: true
+      responses:
+        '204':
+          description: no content
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the document requested
+                  messages:
+                  - Couldn't find the document requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+  /api/v1/document_templates/documents:
+    post:
+      summary: Create Document from Template
+      description: Creates and optionally sends a new document for signing. If `draft` is set to true the document will not be sent.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: createDocumentFromTemplate
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              example:
+                id: d30a5382-698d-4dfc-a5ac-fe89fbd74689
+                archived: false
+                created_at: '2026-03-31T15:46:49Z'
+                decline_message: null
+                embedded_edit_url: https://www.signwell.com/edit/document/9cc6abb4-874c-48c3-920f-499c12b8d56a/
+                error_message: null
+                embedded_preview_url: null
+                language: en
+                name: Agreement
+                requester_email_address: requester@domain.com
+                status: Created
+                test_mode: false
+                updated_at: '2026-03-31T15:46:49Z'
+                template_ids:
+                - f3374520-a554-454c-ba90-d3d95f51212a
+                - b44029f8-87a7-4f05-85d5-f343b0e5dbc1
+                allow_decline: true
+                allow_reassign: true
+                api_application_id: null
+                custom_requester_email: requester@domain.com
+                custom_requester_name: Requester
+                decline_redirect_url: https://www.domain.com/decline_path/
+                embedded_signing: false
+                expires_in: 365
+                metadata:
+                  key1: value1
+                  key2: value2
+                redirect_url: https://www.domain.com/redirect_path/
+                reminders: true
+                apply_signing_order: false
+                message: Normal Body
+                subject: Normal subject
+                labels: []
+                fields:
+                - - api_id: Signature_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: signature
+                    value: ''
+                    width: '86.0'
+                    x: 1.1
+                    y: 1.1
+                    recipient_id: document_sender
+                  - api_id: TextField_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: text
+                    value: a_valid_email@domain.com
+                    width: '86.0'
+                    x: 1.1
+                    y: 1.1
+                    fixed_width: false
+                    label: ''
+                    validation: no_text_validation
+                    recipient_id: recipient_1
+                  - api_id: DateField_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: date
+                    value: 05/06/2021
+                    width: '86.0'
+                    x: 1.1
+                    y: 1.1
+                    date_format: MM/DD/YYYY
+                    formula: ''
+                    lock_sign_date: false
+                    recipient_id: recipient_1
+                  - api_id: DateField_2
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: date
+                    value: null
+                    width: '86.0'
+                    x: 1.1
+                    y: 1.1
+                    date_format: MM/DD/YYYY
+                    formula: ''
+                    lock_sign_date: true
+                    recipient_id: recipient_1
+                  - api_id: CheckBox_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: t
+                    width: '86.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    recipient_id: recipient_1
+                - - api_id: Initials_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: initials
+                    value: ''
+                    width: '86.0'
+                    x: 1.1
+                    y: 1.1
+                    recipient_id: document_sender
+                - - api_id: DateField_1_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: date
+                    value: null
+                    width: '86.0'
+                    x: 230.0
+                    y: 60.0
+                    date_format: DD/MM/YYYY
+                    formula: ''
+                    lock_sign_date: true
+                    recipient_id: recipient_1
+                  - api_id: DateField_2_1
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: date
+                    value: 05/06/2021
+                    width: '86.0'
+                    x: 230.0
+                    y: 120.0
+                    date_format: MM/DD/YYYY
+                    formula: ''
+                    lock_sign_date: false
+                    recipient_id: recipient_1
+                - - api_id: Signature_1_1
+                    height: '32.0'
+                    page: 2
+                    required: true
+                    type: signature
+                    value: null
+                    width: '112.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_2
+                  - api_id: CheckBox_3
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: t
+                    width: '13.0'
+                    x: 260.0
+                    y: 80.0
+                    name: null
+                    recipient_id: recipient_2
+                  - api_id: Initials_4
+                    height: '32.0'
+                    page: 2
+                    required: true
+                    type: initials
+                    value: null
+                    width: '44.0'
+                    x: 260.0
+                    y: 80.0
+                    recipient_id: recipient_2
+                  - api_id: TextField_5
+                    height: '19.0'
+                    page: 1
+                    required: true
+                    type: text
+                    value: '123456'
+                    width: '86.0'
+                    x: 260.0
+                    y: 80.0
+                    fixed_width: true
+                    label: label
+                    validation: numbers
+                    recipient_id: recipient_2
+                files:
+                - name: inventore.wav
+                  pages_number: 2
+                - name: consequatur.odp
+                  pages_number: 2
+                - name: filename1.pdf
+                  pages_number: 0
+                - name: filename2.pdf
+                  pages_number: 0
+                copied_contacts:
+                - name: CC one
+                  email: cc1@domain.com
+                - name: CC 2
+                  email: cc2@domain.com
+                recipients:
+                - email: document_sender@domain.com
+                  id: document_sender
+                  message: null
+                  name: Recipient 0
+                  passcode: '123'
+                  send_email: false
+                  send_email_delay: 0
+                  status: created
+                  subject: null
+                  signing_order: 1
+                  signing_url: https://www.signwell.com/docs/b073120ed1/
+                  bounced: null
+                  bounced_details: null
+                  placeholder_name: Document Sender
+                  attachment_requests: []
+                - email: recipient_1@domain.com
+                  id: recipient_1
+                  message: null
+                  name: Recipient 1
+                  passcode: null
+                  send_email: false
+                  send_email_delay: 0
+                  status: created
+                  subject: null
+                  signing_order: 2
+                  signing_url: https://www.signwell.com/docs/4cd4755817/
+                  bounced: null
+                  bounced_details: null
+                  placeholder_name: Placeholder 1
+                  attachment_requests:
+                  - name: normal name
+                    required: true
+                    url: https://www.signwell.com/document_attachments/pW6aNG7REwIRRE3BGPpdFNwQDBY/?access=225a83c4-1f7f-4a6e-91e2-05cca38ade3e
+                - email: recipient_2@domain.com
+                  id: recipient_2
+                  message: null
+                  name: Recipient 2
+                  passcode: null
+                  send_email: false
+                  send_email_delay: 0
+                  status: created
+                  subject: null
+                  signing_order: 3
+                  signing_url: https://www.signwell.com/docs/558335fef6/
+                  bounced: null
+                  bounced_details: null
+                  placeholder_name: Placeholder 2
+                  attachment_requests:
+                  - name: Driver License
+                    required: false
+                    url: https://www.signwell.com/document_attachments/bYYjEqk62ocW3BDrlYJrCbYb45K/?access=225a83c4-1f7f-4a6e-91e2-05cca38ade3e
+                checkbox_groups: []
+              schema:
+                $ref: '#/components/schemas/DocumentFromTemplateResponse'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              example:
+                errors:
+                  message: The request contains invalid key values.
+                  invalid_keys:
+                  - name
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              example:
+                errors:
+                  template_id_or_ids: At least one of template_id or template_ids should be present.
+                  custom_requester_email:
+                  - is invalid
+                  custom_requester_name:
+                  - is too long (maximum is 100 characters)
+                  decline_redirect_url:
+                  - is not a valid URL
+                  redirect_url:
+                  - is not a valid URL
+                  expires_in:
+                  - must be less than or equal to 365
+                  metadata:
+                  - The key/value pairs must not exceed 50
+                  - 'Check the following keys: [qgtxtpsnyxjwzvbzhnmrjziscxsmgcugpqanuygve], length needs to be less than 40 characters'
+                  - 'Check the value of the following keys: [ke50], length needs to be less than 500 characters and must be a string'
+                  api_application_id:
+                  - The provided API application id is invalid
+                  subject:
+                  - is too long (maximum is 255 characters)
+                  message:
+                  - is too long (maximum is 4000 characters)
+                  recipients:
+                    duplicated_ids: 'These ids are duplicated: recipient_id_1.'
+                    duplicated_emails: 'These emails are duplicated: recipient1domain.com.'
+                    recipient_1:
+                      name:
+                      - is too long (maximum is 255 characters)
+                      email:
+                      - format is invalid.
+                    recipient_2:
+                      email:
+                      - format is invalid.
+                  copied_contacts:
+                    copied_contact_1:
+                      name:
+                      - is too long (maximum is 255 characters)
+                      email:
+                      - format is invalid.
+                    copied_contact_2:
+                      email:
+                      - format is invalid.
+                      - is already a recipient
+                  attachment_requests:
+                    invalid_ids: 'These recipient ids are not present in the recipients array: [recipient_id_3]'
+                  fields:
+                    duplicated_api_ids: 'These api ids are duplicated: CheckBox_2.'
+                    invalid_ids: 'These recipient ids are not present in the recipients array: [recipient_id_2, recipient_id_3]'
+                    file_1:
+                      field_1:
+                        date_format:
+                        - Not allowed for text.
+                        lock_sign_date:
+                        - Not allowed for text.
+                    file_2:
+                      field_1:
+                        date_format:
+                        - Not allowed for checkbox.
+                        fixed_width:
+                        - Not allowed for checkbox.
+                        validation:
+                        - Not allowed for checkbox.
+                        label:
+                        - Not allowed for checkbox.
+                        lock_sign_date:
+                        - Not allowed for checkbox.
+                      field_2:
+                        invalid_date_value: DateField value must be in Iso8601 format.
+                        fixed_width:
+                        - Not allowed for date.
+                        validation:
+                        - Not allowed for date.
+                        label:
+                        - Not allowed for date.
+                        date_format:
+                        - 'Allowed formats for date fields are: MM/DD/YYYY | DD/MM/YYYY | YYYY/MM/DD | Month DD, YYYY | MM/DD/YYYY hh:mm:ss a'
+                      field_3:
+                        date_format:
+                        - Not allowed for initials.
+                        fixed_width:
+                        - Not allowed for initials.
+                        validation:
+                        - Not allowed for initials.
+                        label:
+                        - Not allowed for initials.
+                        lock_sign_date:
+                        - Not allowed for initials.
+                      field_4:
+                        date_format:
+                        - Not allowed for signature.
+                        fixed_width:
+                        - Not allowed for signature.
+                        validation:
+                        - Not allowed for signature.
+                        label:
+                        - Not allowed for signature.
+                        lock_sign_date:
+                        - Not allowed for signature.
+                  checkbox_groups:
+                    min_value_negative: The min value must be greater than or equal to 0 in the checkbox group Group 1
+                  files:
+                    file_1:
+                      file_data:
+                      - At least one of file_url or file_base64 should be present
+                    file_2:
+                      file_data:
+                      - Only one of file_url or file_base64 should be present, not both
+                    file_3:
+                      file_url:
+                      - is not a valid URL
+                    file_4:
+                      file_base64:
+                      - 'the file type is unsupported, we support the following formats: application/msword, application/pdf, application/octet-stream, application/x-ole-storage, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-iwork-keynote-sffkey, application/x-iwork-numbers-sffnumbers, application/x-iwork-pages-sffpages, image/jpeg, image/png, image/tiff, image/webp, text/html'
+                    file_5:
+                      name:
+                      - The file extension is invalid.
+                    file_6:
+                      name:
+                      - can't be blank
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentFromTemplateRequest'
+        required: true
+  /api/v1/documents/{id}/send:
+    post:
+      summary: Update and Send Document
+      description: Updates a draft document and sends it to be signed by recipients.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: sendDocument
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/DocumentId'
+        required: true
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              example:
+                id: deca430d-99eb-4f40-8042-a6b41624f19e
+                archived: false
+                copied_contacts:
+                - email: alleen@smitham.example
+                  name: Joye Hills
+                created_at: '2026-03-31T15:46:51Z'
+                custom_requester_email: crystle.ohara@konopelski-boyer.test
+                custom_requester_name: Jango Fett
+                decline_redirect_url: https://www.domain.com/decline_path/
+                embedded_edit_url: https://www.signwell.com/edit/document/c030b003-efc9-4462-a30f-333e4fb416c7/
+                embedded_preview_url: null
+                error_message: null
+                fields:
+                - - api_id: CheckBox_8
+                    height: '13.0'
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    page: 1
+                    recipient_id: null
+                  - api_id: CheckBox_9
+                    height: '13.0'
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    page: 1
+                    recipient_id: null
+                  - api_id: Signature_7
+                    height: '32.0'
+                    required: true
+                    type: signature
+                    value: null
+                    width: '112.0'
+                    x: 1.1
+                    y: 1.1
+                    page: 1
+                    recipient_id: b9bc58e7-a95c-4137-933c-7968aa9122cd
+                labels:
+                - id: 7388da56-d911-4b3a-b809-3b4a56e0ee5f
+                  name: My First Label
+                - id: c639eb49-f658-486b-9dbc-dd2ab79a3dda
+                  name: My Second Label
+                - id: 46557ebc-6d03-4a8e-a1a8-02b44e178c13
+                  name: My Third Label
+                language: en
+                metadata:
+                  key1: value1
+                  key2: value2
+                name: Agreement
+                recipients:
+                - id: b9bc58e7-a95c-4137-933c-7968aa9122cd
+                  attachment_requests: []
+                  email: enrique.kohler@price.test
+                  message: null
+                  name: Clarinda Block CPA
+                  passcode: null
+                  send_email_delay: null
+                  signing_order: 7
+                  status: draft
+                  subject: null
+                  bounced: null
+                  bounced_details: null
+                  send_email: null
+                  signing_url: https://www.signwell.com/docs/e9be3e29e7/
+                - id: 30ca2873-cf42-4fba-abaa-2aaaaac8e532
+                  attachment_requests: []
+                  email: trent_pouros@pfeffer-runte.example
+                  message: null
+                  name: Shandi Kuphal
+                  passcode: null
+                  send_email_delay: null
+                  signing_order: 8
+                  status: draft
+                  subject: null
+                  bounced: null
+                  bounced_details: null
+                  send_email: null
+                  signing_url: https://www.signwell.com/docs/c3fe92b5c2/
+                subject: Normal subject
+                test_mode: false
+                updated_at: '2026-03-31T15:46:51Z'
+                decline_message: null
+                api_application_id: null
+                allow_decline: true
+                allow_reassign: true
+                apply_signing_order: false
+                embedded_signing: false
+                expires_in: 365
+                message: Normal Body
+                reminders: true
+                requester_email_address: poopybutthole_15_mr@runolfsson-nienow.example
+                redirect_url: https://www.domain.com/redirect_path/
+                status: Draft
+                files:
+                - name: consectetur.jpeg
+                  pages_number: 1
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              example:
+                errors:
+                  decline_redirect_url:
+                  - is not a valid URL
+                  redirect_url:
+                  - is not a valid URL
+                  expires_in:
+                  - must be less than or equal to 365
+                  metadata:
+                  - The key/value pairs must not exceed 50
+                  - 'Check the following keys: [qgtxtpsnyxjwzvbzhnmrjziscxsmgcugpqanuygve], length needs to be less than 40 characters'
+                  - 'Check the value of the following keys: [ke50], length needs to be less than 500 characters and must be a string'
+                  subject:
+                  - is too long (maximum is 255 characters)
+                  message:
+                  - is too long (maximum is 4000 characters)
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDocumentAndSendRequest'
+        required: true
+  /api/v1/documents/{id}/recipients:
+    patch:
+      summary: Update Recipients
+      description: 'Updates one or more recipients on a document that has already been sent. Only recipients who have not started signing may be updated. Recipient IDs must be retrieved from the Get Document response. Allowed document statuses: sent, viewed, pending, bounced. For non-embedded documents, updated recipients will receive a new notification email. For embedded signing documents, email behavior follows each recipient''s send_email setting.'
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: updateRecipients
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/DocumentId'
+        required: true
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              example:
+                id: 8e9b4d47-0648-44a0-a65c-20bba1a1f96b
+                archived: false
+                created_at: '2026-03-31T15:46:52Z'
+                decline_message: null
+                embedded_edit_url: null
+                error_message: null
+                embedded_preview_url: https://www.signwell.com/preview/document/8e9b4d47-0648-44a0-a65c-20bba1a1f96b/
+                language: en
+                name: cutting-relationship/cumque.odp
+                requester_email_address: abradolf_lincler_21@rohan.example
+                status: Sent
+                test_mode: false
+                updated_at: '2026-03-31T15:46:53Z'
+                allow_decline: true
+                allow_reassign: true
+                api_application_id: null
+                custom_requester_email: hugh@larkin.test
+                custom_requester_name: Yoda
+                decline_redirect_url: http://tremblay.test/lorenzo_predovic
+                embedded_signing: false
+                expires_in: 10
+                metadata:
+                  velit: occaecati
+                  pariatur: ut
+                redirect_url: http://beier-schimmel.example/cornell.reichert
+                reminders: false
+                apply_signing_order: false
+                message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                subject: Please complete cutting-relationship/cumque.odp
+                labels:
+                - id: f50f20b5-f669-4275-b6dc-59f1fd5e70f5
+                  name: Curtis Cummerata
+                - id: 22a174fa-d60d-4ab8-ad87-f1b1d0c9e59c
+                  name: Fr. Ike Grant
+                fields:
+                - - api_id: CheckBox_14
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    recipient_id: null
+                    signing_elements_group_id: 2afe4442-28ce-4297-87fd-b4cc84dcb12e
+                  - api_id: CheckBox_15
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    recipient_id: null
+                  - api_id: Signature_13
+                    height: '32.0'
+                    page: 1
+                    required: true
+                    type: signature
+                    value: null
+                    width: '112.0'
+                    x: 1.1
+                    y: 1.1
+                    recipient_id: cb5cdf15-ba7e-439b-8805-1a2a93f124d4
+                files:
+                - name: et.mov
+                  pages_number: 1
+                copied_contacts:
+                - name: Palmira Johnson
+                  email: gerry_tremblay@casper-kuhic.example
+                recipients:
+                - email: updated@example.com
+                  id: cb5cdf15-ba7e-439b-8805-1a2a93f124d4
+                  message: null
+                  name: Updated Name
+                  passcode: null
+                  send_email: null
+                  send_email_delay: null
+                  status: null
+                  subject: null
+                  signing_order: 13
+                  signing_url: https://www.signwell.com/docs/4df237952f/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests:
+                  - name: stuff_exhibition/ea.jpeg
+                    required: true
+                    url: https://www.signwell.com/document_attachments/X1zKblna5Gf2QRnLKw1ohRBWZ71/?access=12f2922b-6ad7-47c3-9604-0fedf58ddb3b
+                - email: kacey.kautzer@kutch.test
+                  id: d4aa0b84-f4d2-46d8-a6ac-9e42d9786789
+                  message: null
+                  name: Exie Vandervort
+                  passcode: null
+                  send_email: null
+                  send_email_delay: null
+                  status: null
+                  subject: null
+                  signing_order: 14
+                  signing_url: https://www.signwell.com/docs/42f6910bae/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests: []
+                checkbox_groups:
+                - id: 2afe4442-28ce-4297-87fd-b4cc84dcb12e
+                  group_name: null
+                  recipient_id: null
+                  checkbox_ids:
+                  - CheckBox_14
+                  validation: null
+                  required: false
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '409':
+          description: conflict - document not in eligible state
+          content:
+            application/json:
+              example:
+                errors:
+                  base:
+                  - Document in 'completed' status cannot have recipients managed. Only sent, viewed, pending, or bounced documents are eligible.
+        '400':
+          description: bad request - invalid structure
+          content:
+            application/json:
+              example:
+                errors:
+                  invalid_keys:
+                  - recipients
+                  base:
+                  - The request contains invalid key values.
+        '422':
+          description: unprocessable entity - business rule violation
+          content:
+            application/json:
+              example:
+                errors:
+                  recipients[59cc95d7-2c7e-44b7-8767-f9b0904e74ce]:
+                  - Amb. Mitchel Gutkowski (fredric@kihn.test) has started signing so you can't edit or replace them now. You can Update & Resend if you need to change recipients who already started signing.
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the document requested
+                  messages:
+                  - Couldn't find the document requested
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_recipients_request'
+        required: true
+  /api/v1/documents/{id}/remind:
+    post:
+      summary: Send Reminder
+      description: Sends a reminder email to recipients that have not signed yet.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: sendReminder
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/DocumentId'
+        required: true
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              example:
+                id: 55c90c31-54e1-48c0-8b01-a57324764f50
+                archived: false
+                created_at: '2026-03-31T15:46:56Z'
+                decline_message: null
+                embedded_edit_url: null
+                error_message: null
+                embedded_preview_url: https://www.signwell.com/preview/document/55c90c31-54e1-48c0-8b01-a57324764f50/
+                language: en
+                name: cutting_confuse/et.avi
+                requester_email_address: 36.arthricia@damore.test
+                status: Sent
+                test_mode: false
+                updated_at: '2026-03-31T15:46:57Z'
+                allow_decline: true
+                allow_reassign: true
+                api_application_id: null
+                custom_requester_email: bryce@bayer.example
+                custom_requester_name: Wedge Antilles
+                decline_redirect_url: http://orn-grady.test/eryn
+                embedded_signing: false
+                expires_in: 10
+                metadata:
+                  est: quae
+                  iure: perspiciatis
+                redirect_url: http://corkery.example/jared.reinger
+                reminders: true
+                apply_signing_order: false
+                message: <p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>
+                subject: Please complete cutting_confuse/et.avi
+                labels:
+                - id: 2aab0d33-2ac9-4687-9b13-fcddb10f68ea
+                  name: Chance Braun
+                - id: 20bdd21c-377c-40a2-a546-2902da2e2ac2
+                  name: The Hon. Rico Koch
+                fields:
+                - - api_id: CheckBox_29
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    recipient_id: null
+                    signing_elements_group_id: a2c21918-23b3-49aa-b387-be1a7fe6d0ba
+                  - api_id: CheckBox_30
+                    height: '13.0'
+                    page: 1
+                    required: true
+                    type: checkbox
+                    value: null
+                    width: '13.0'
+                    x: 1.1
+                    y: 1.1
+                    name: null
+                    recipient_id: null
+                  - api_id: Signature_28
+                    height: '32.0'
+                    page: 1
+                    required: true
+                    type: signature
+                    value: null
+                    width: '112.0'
+                    x: 1.1
+                    y: 1.1
+                    recipient_id: c93c0059-57a2-4db3-9bc7-142ab408848a
+                files:
+                - name: magni.png
+                  pages_number: 1
+                copied_contacts:
+                - name: Gov. Tanner Volkman
+                  email: jonas_towne@cronin.test
+                recipients:
+                - email: lowell@yost.example
+                  id: c93c0059-57a2-4db3-9bc7-142ab408848a
+                  message: null
+                  name: Lupe Padberg
+                  passcode: null
+                  send_email: null
+                  send_email_delay: null
+                  status: null
+                  subject: null
+                  signing_order: 28
+                  signing_url: https://www.signwell.com/docs/3bf8835bc7/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests:
+                  - name: doctor_agree/perferendis.mov
+                    required: true
+                    url: https://www.signwell.com/document_attachments/8R3LMelr37iBjDYnq3onF88KaKg/?access=d0a14244-884b-4a00-b629-f11faad3e816
+                - email: elwanda@wuckert-wolf.test
+                  id: 912aebe7-868a-414f-b553-9182641c4686
+                  message: null
+                  name: Pat Bergnaum Sr.
+                  passcode: null
+                  send_email: null
+                  send_email_delay: null
+                  status: null
+                  subject: null
+                  signing_order: 29
+                  signing_url: https://www.signwell.com/docs/a7bc69c79e/
+                  bounced: null
+                  bounced_details: null
+                  attachment_requests: []
+                checkbox_groups:
+                - id: a2c21918-23b3-49aa-b387-be1a7fe6d0ba
+                  group_name: null
+                  recipient_id: null
+                  checkbox_ids:
+                  - CheckBox_29
+                  validation: null
+                  required: false
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              example:
+                errors:
+                  document: The document is in a status that cannot be reminded
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '404':
+          description: not found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the document requested
+                  messages:
+                  - Couldn't find the document requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendReminderRequest'
+        required: true
+  /api/v1/documents/{id}/completed_pdf:
+    get:
+      summary: Completed PDF
+      description: Gets a completed document PDF or ZIP file. Supply the unique document ID from either a document creation request or document page URL.
+      tags:
+      - Document
+      security:
+      - api_key: []
+      operationId: getCompletedPdf
+      parameters:
+      - name: id
+        in: path
+        schema:
+          $ref: '#/components/schemas/CompletedDocumentId'
+        required: true
+      - name: url_only
+        in: query
+        schema:
+          $ref: '#/components/schemas/UrlOnly'
+      - name: audit_page
+        in: query
+        schema:
+          $ref: '#/components/schemas/IncludeAuditPage'
+      - name: file_format
+        in: query
+        schema:
+          $ref: '#/components/schemas/FileFormat'
+      responses:
+        '200':
+          description: successful, returns the final completed PDF, or if url_only is set to true, a JSON object is returned. When url_only=false (default), the response is the raw PDF or ZIP binary data.
+          content:
+            application/json:
+              example:
+                file_url: https://www.signwell.com/signed/9rrKOB86EBc7ZMwwdYN8Ha63Wrl.pdf?audit_page=true
+              schema:
+                $ref: '#/components/schemas/CompletedPdfResponse'
+        '404':
+          description: not_found
+          content:
+            application/json:
+              example:
+                message: Not found
+                meta:
+                  error: record_not_found
+                  message: Couldn't find the document requested
+                  messages:
+                  - Couldn't find the document requested
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+components:
+  schemas:
+    DocumentResponse:
+      type: object
+      properties:
+        test_mode:
+          type: boolean
+        id:
+          type: string
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        requester_email_address:
+          type: string
+          format: email
+        custom_requester_name:
+          type: string
+          nullable: true
+        custom_requester_email:
+          type: string
+          format: email
+          nullable: true
+        name:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        recipients:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              email:
+                type: string
+              body:
+                type: string
+              message:
+                type: string
+                nullable: true
+              subject:
+                type: string
+                nullable: true
+              send_email:
+                type: boolean
+                nullable: true
+              send_email_delay:
+                type: integer
+                nullable: true
+              signing_order:
+                type: integer
+              signing_url:
+                type: string
+                format: url
+                nullable: true
+              embedded_signing_url:
+                type: string
+                format: url
+                nullable: true
+              bounced:
+                type: boolean
+                nullable: true
+              bounced_details:
+                type: string
+                nullable: true
+              attachment_requests:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttachmentRequestInfo'
+              passcode:
+                type: string
+                nullable: true
+              status:
+                type: string
+                nullable: true
+            required:
+            - name
+            - email
+        status:
+          type: string
+          description: 'Possible values: Draft, Created, Sending, Sent, Pending, Viewed, Completed, Manually completed, Declined, Canceled, Bounced, Blocked, Error, Expired'
+        reminders:
+          type: boolean
+        archived:
+          type: boolean
+        embedded_signing:
+          type: boolean
+        embedded_edit_url:
+          type: string
+          format: url
+          nullable: true
+        embedded_preview_url:
+          type: string
+          format: url
+          nullable: true
+        apply_signing_order:
+          type: boolean
+        redirect_url:
+          type: string
+          format: url
+          nullable: true
+        decline_redirect_url:
+          type: string
+          format: url
+          nullable: true
+        language:
+          type: string
+        expires_in:
+          type: integer
+        decline_message:
+          type: string
+          nullable: true
+        error_message:
+          type: string
+          nullable: true
+        template_id:
+          type: string
+          nullable: true
+        template_ids:
+          type: array
+          items:
+            type: string
+        embedded_signing_notifications:
+          type: boolean
+        attachment_requests:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              recipient_id:
+                type: string
+              required:
+                type: boolean
+            required:
+            - name
+            - recipient_id
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
+        copied_contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CopiedContactInfo'
+        fields:
+          type: array
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                x:
+                  type: number
+                  format: float
+                y:
+                  type: number
+                  format: float
+                page:
+                  type: integer
+                recipient:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    name:
+                      type: string
+                  required:
+                  - email
+                  - name
+                api_id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                  nullable: true
+                date_format:
+                  $ref: '#/components/schemas/DateFormat'
+                fixed_width:
+                  type: boolean
+                formula:
+                  type: string
+                label:
+                  type: string
+                lock_sign_date:
+                  type: boolean
+                required:
+                  type: boolean
+                type:
+                  $ref: '#/components/schemas/FieldType'
+                validation:
+                  $ref: '#/components/schemas/TextValidation'
+                value:
+                  oneOf:
+                  - type: string
+                  - type: boolean
+                  - type: number
+                  nullable: true
+                height:
+                  type: string
+                width:
+                  type: string
+                recipient_id:
+                  type: string
+                  nullable: true
+                signing_elements_group_id:
+                  type: string
+                  format: uuid
+                placeholder_name:
+                  type: string
+                options:
+                  type: array
+                  description: Dropdown options (for dropdown/select fields)
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      api_id:
+                        type: string
+                      is_other:
+                        type: boolean
+                default_option:
+                  type: string
+                  description: Default selected option
+                allow_other:
+                  type: boolean
+                  description: Whether "Other" option is allowed
+              required:
+              - x
+              - y
+              - page
+        allow_decline:
+          type: boolean
+          nullable: true
+        allow_reassign:
+          type: boolean
+          nullable: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelInfo'
+        checkbox_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckboxGroupInfo'
+      required:
+      - id
+      - test_mode
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
+    CompletedPdfBinaryResponse:
+      type: string
+      format: binary
+      description: Raw PDF binary data (default response when url_only=false)
+    AttachmentRequestInfo:
+      type: object
+      description: Attachment request information
+      properties:
+        name:
+          type: string
+          description: Name of the attachment request
+        url:
+          type: string
+          format: url
+          description: URL of the uploaded attachment (when available)
+        required:
+          type: boolean
+          description: Whether the attachment is required
+      required:
+      - name
+      - required
+    Files:
+      type: array
+      description: 'Document files can be uploaded by specifying a file URL or base64 string. Either `file_url` or `file_base64` must be present (not both). Valid file types are: .pdf, .doc, .docx, .pages, .ppt, .pptx, .key, .xls, .xlsx, .numbers, .jpg, .jpeg, .png, .tiff, .tif, .webp, .html, and .htm'
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the file that will be uploaded.
+          file_url:
+            type: string
+            format: url
+            description: Publicly available URL of the file to be uploaded.
+          file_base64:
+            type: string
+            format: byte
+            description: A RFC 4648 base64 string of the file to be uploaded.
+        required:
+        - name
+    DocumentFromTemplateRequest:
+      type: object
+      properties:
+        test_mode:
+          type: boolean
+          default: false
+          description: Set to `true` to enable Test Mode. Documents created with Test Mode do not count towards API billing and are not legally binding. Defaults to `false`
+        template_id:
+          type: string
+          format: uuid
+          description: Use when you have to create a document from a single template. Either :template_id or :template_ids must be present in the request, not both.
+        template_ids:
+          type: array
+          description: Use when you have to create a document from multiple templates. Either :template_id or :template_ids must be present in the request, not both.
+          items:
+            type: string
+        name:
+          type: string
+          description: The name of the document.
+        subject:
+          type: string
+          description: Email subject for the signature request that recipients will see. Defaults to the default system subject or a template subject (if the document is created from a template).
+        message:
+          type: string
+          description: Email message for the signature request that recipients will see. Defaults to the default system message or a template message (if the document is created from a template).
+        recipients:
+          $ref: '#/components/schemas/TemplateRecipients'
+        exclude_placeholders:
+          type: array
+          description: Exclude one or more template placeholders when creating a document from a template. Any excluded placeholders (and their associated recipients and fields) will not be included on the created document. Values must match placeholder names on the template. You can't exclude all placeholders (at least one recipient must remain).
+          items:
+            type: string
+        draft:
+          type: boolean
+          default: false
+          description: Whether the document can still be updated before sending a signature request. If set to `false` the document is sent for signing as part of this request. Defaults to `false`.
+        with_signature_page:
+          type: boolean
+          default: false
+          description: When set to `true` the document will have a signature page added to the end, and all signers will be required to add their signature on that page.
+        expires_in:
+          type: integer
+          minimum: 1
+          description: Number of days before the signature request expires. Defaults to the account expiration setting or template expiration (if the document is created from a template).
+        reminders:
+          type: boolean
+          default: true
+          description: Whether to send signing reminders to recipients. Reminders are sent on day 3, day 6, and day 10 if set to `true`. Defaults to `true`.
+        apply_signing_order:
+          type: boolean
+          default: false
+          description: When set to `true` recipients will sign one at a time in the order of the `recipients` collection of this request.
+        api_application_id:
+          type: string
+          format: uuid
+          description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
+        embedded_signing:
+          type: boolean
+          default: false
+          description: When set to `true` it enables embedded signing in your website/web application. Embedded functionality works with an iFrame and email authentication is disabled. :embedded_signinig defaults to `false`.
+        embedded_signing_notifications:
+          type: boolean
+          default: false
+          description: On embedding signing, document owners (and CC'd contacts) do not get a notification email when documents have been completed. Setting this param to `true` will send out those final completed notifications. Default is `false`
+        text_tags:
+          type: boolean
+          default: false
+          description: An alternative way (if you can’t use the recommended way) of placing fields in specific locations of your document by using special text tags. Useful when changing the content of your files changes the location of fields. See API documentation for “Text Tags” for details. Defaults to false.
+        custom_requester_name:
+          type: string
+          description: Sets the custom requester name for the document. When set, this is the name used for all email communications, signing notifications, and in the audit file.
+        custom_requester_email:
+          type: string
+          format: email
+          description: Sets the custom requester email for the document. When set, this is the email used for all email communications, signing notifications, and in the audit file.
+        redirect_url:
+          type: string
+          format: url
+          description: A URL that recipients are redirected to after successfully signing a document.
+        allow_decline:
+          type: boolean
+          default: true
+          description: Whether to allow recipients the option to decline signing a document. If multiple signers are involved in a document, any single recipient can cancel the entire document signing process by declining to sign.
+        allow_reassign:
+          type: boolean
+          default: true
+          description: In some cases a signer is not the right person to sign and may need to reassign their signing responsibilities to another person. This feature allows them to reassign the document to someone else.
+        decline_redirect_url:
+          type: string
+          format: url
+          description: A URL that recipients are redirected to if the document is declined.
+        language:
+          type: string
+          description: 'Sets the language for all recipients on the document and updates all recipient side interactions including the document email and the document itself. Accepted languages: English, Français, Español, Deutsch, Polski, Português, Dansk, Nederlands, Italiano, Русский, Svenska, العربية, Ελληνικά, Türkçe, Slovenčina. Defaults to English. Language should be sent in ISO 639-1 format: en, fr, es, de, pl, pt, da, nl, it, ru, sv, ar, el, tr, sk.'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional key-value data that can be associated with the document. If set, will be available every time the document data is returned.
+        template_fields:
+          $ref: '#/components/schemas/TemplateFieldValues'
+        files:
+          $ref: '#/components/schemas/AdditionalFiles'
+        fields:
+          $ref: '#/components/schemas/AdditionalFields'
+        attachment_requests:
+          $ref: '#/components/schemas/AttachmentRequests'
+        copied_contacts:
+          $ref: '#/components/schemas/CopiedContacts'
+        labels:
+          $ref: '#/components/schemas/LabelsUpdate'
+        checkbox_groups:
+          $ref: '#/components/schemas/CheckboxGroups'
+      required:
+      - recipients
+    CompletedPdfZipResponse:
+      type: string
+      format: binary
+      description: ZIP file containing the completed PDF (returned when file_format=zip)
+    UpdateDocumentAndSendRequest:
+      type: object
+      properties:
+        test_mode:
+          type: boolean
+          default: false
+          description: Set to `true` to enable Test Mode. Documents created with Test Mode do not count towards API billing and are not legally binding. Defaults to `false`
+        name:
+          type: string
+          description: The name of the document.
+        subject:
+          type: string
+          description: Email subject for the signature request that recipients will see. Defaults to the default system subject or a template subject (if the document is created from a template).
+        message:
+          type: string
+          description: Email message for the signature request that recipients will see. Defaults to the default system message or a template message (if the document is created from a template).
+        expires_in:
+          type: integer
+          minimum: 1
+          description: Number of days before the signature request expires. Defaults to the account expiration setting or template expiration (if the document is created from a template).
+        reminders:
+          type: boolean
+          default: true
+          description: Whether to send signing reminders to recipients. Reminders are sent on day 3, day 6, and day 10 if set to `true`. Defaults to `true`.
+        apply_signing_order:
+          type: boolean
+          default: false
+          description: When set to `true` recipients will sign one at a time in the order of the `recipients` collection of this request.
+        api_application_id:
+          type: string
+          format: uuid
+          description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
+        embedded_signing:
+          type: boolean
+          default: false
+          description: When set to `true` it enables embedded signing in your website/web application. Embedded functionality works with an iFrame and email authentication is disabled. :embedded_signinig defaults to `false`.
+        embedded_signing_notifications:
+          type: boolean
+          default: false
+          description: On embedding signing, document owners (and CC'd contacts) do not get a notification email when documents have been completed. Setting this param to `true` will send out those final completed notifications. Default is `false`
+        custom_requester_name:
+          type: string
+          description: Sets the custom requester name for the document. When set, this is the name used for all email communications, signing notifications, and in the audit file.
+        custom_requester_email:
+          type: string
+          format: email
+          description: Sets the custom requester email for the document. When set, this is the email used for all email communications, signing notifications, and in the audit file.
+        redirect_url:
+          type: string
+          format: url
+          description: A URL that recipients are redirected to after successfully signing a document.
+        allow_decline:
+          type: boolean
+          default: true
+          description: Whether to allow recipients the option to decline signing a document. If multiple signers are involved in a document, any single recipient can cancel the entire document signing process by declining to sign.
+        allow_reassign:
+          type: boolean
+          default: true
+          description: In some cases a signer is not the right person to sign and may need to reassign their signing responsibilities to another person. This feature allows them to reassign the document to someone else.
+        decline_redirect_url:
+          type: string
+          format: url
+          description: A URL that recipients are redirected to if the document is declined.
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional key-value data that can be associated with the document. If set, will be available every time the document data is returned.
+        labels:
+          $ref: '#/components/schemas/LabelsUpdate'
+        checkbox_groups:
+          $ref: '#/components/schemas/CheckboxGroups'
+    update_recipients_request:
+      type: object
+      properties:
+        recipients:
+          $ref: '#/components/schemas/update_recipients_map'
+      required:
+      - recipients
+    DocumentId:
+      type: string
+      format: uuid
+      description: Unique identifier for a document.
+    AdditionalFields:
+      type: array
+      description: Fields to be added to any appended files (not existing files). Document fields placed on a document for collecting data or signatures from recipients. Field data should be sent as a 2-dimensional JSON array. One array of fields is needed for each file in the files array. An array of fields can be empty if you have a file that does not contain any fields.
+      items:
+        type: array
+        description: Array of Fields you're adding to each file.
+        items:
+          type: object
+          properties:
+            x:
+              type: number
+              format: float
+              description: Horizontal value in the coordinates of the field (in pixels). Coordinates are specific to the page where fields are located.
+            y:
+              type: number
+              format: float
+              description: Vertical value in the coordinates of the field (in pixels). Coordinates are specific to the page where fields are located.
+            page:
+              type: integer
+              description: The page number within the file. If the page does not exist within the file then the field won't be created.
+            recipient_id:
+              type: string
+              description: Unique identifier of the recipient assigned to the field. Recipients assigned to fields will be the only ones that will see and be able to complete those fields.
+            type:
+              $ref: '#/components/schemas/FieldType'
+              description: 'Field type of the field. Valid field types: initials, signatures, checkbox, date, and text. To autofill fields with contact data, use an autofill field type. To group checkbox fields, enter an api_id for each checkbox and add the checkbox_groups parameter.'
+            required:
+              type: boolean
+              default: true
+              description: Whether the field must be completed by the recipient. Defaults to `true` except for checkbox type fields.
+            label:
+              type: string
+              description: 'Text and Date fields only: label that is displayed when the field is empty.'
+            value:
+              oneOf:
+              - type: string
+              - type: boolean
+              - type: number
+              description: Varies according to the field type. Text fields accept strings or numbers. Date fields accept Iso8601 date strings. CheckBoxes accept booleans. Signature and Initials fields can't be signed through API requests. Autofill text fields accept strings or numbers.
+            api_id:
+              type: string
+              description: Unique identifier of the field. Useful when needing to reference specific field values or update a document and its fields.
+            name:
+              type: string
+              description: Checkbox fields only. At least 2 checkbox fields in an array of fields must be assigned to the same recipient and grouped with selection requirements.
+            validation:
+              $ref: '#/components/schemas/TextValidation'
+              description: 'Text fields only: optional validation for field values. Valid values: numbers, letters, email_address, us_phone_number, us_zip_code, us_ssn, us_age, alphanumeric, us_bank_routing_number, us_bank_account.'
+            fixed_width:
+              type: boolean
+              default: false
+              description: 'Text fields only: whether the field width will stay fixed and text will display in multiple lines, rather than one long line. If set to `false` the field width will automatically grow horizontally to fit text on one line. Defaults to `false`.'
+            lock_sign_date:
+              type: boolean
+              default: false
+              description: 'Date fields only: makes fields readonly and automatically populates with the date the recipient signed. Defaults to `false`.'
+            date_format:
+              $ref: '#/components/schemas/DateFormat'
+              description: 'Date fields only: date format to use for the field. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, and MM/DD/YYYY hh:mm:ss a. Defaults to MM/DD/YYYY.'
+            formula:
+              type: string
+              description: 'Date fields only (text field formulas coming soon): formulas are a way to prefill fields with calculated future or past dates. Addition, subtraction, and parentheses are allowed. Valid event dates are `created_date`, `sent_date`, and `signed_date`. Valid time periods are `day`, `days`, `week`, `weeks`, `month`, and `months`. Example: `formula: ''sent_date + 10 days''`. Use with `lock_sign_date` if you''d like to make the field readonly and prevent signers from choosing a different date.'
+            height:
+              type: number
+              format: float
+              description: 'Height of the field (in pixels). Maximum height varies by field type: Signature/Initials (200px), others (74px). When using text tags if the height is greater than the maximum height, the height will be set to the maximum height.'
+            width:
+              type: number
+              format: float
+              description: Width of the field (in pixels). For text fields, width will auto-grow unless `fixed_width` is true.
+            options:
+              type: array
+              description: Array of dropdown options (for dropdown/select fields only)
+              items:
+                $ref: '#/components/schemas/DropdownOption'
+            default_option:
+              type: string
+              description: Default selected option (for dropdown/select fields only)
+            allow_other:
+              type: boolean
+              description: Whether to allow "Other" option with text input (for dropdown/select fields only)
+              default: false
+          required:
+          - x
+          - y
+          - page
+          - recipient_id
+          - type
+    Page:
+      type: integer
+      minimum: 1
+      default: 1
+      description: The page number for pagination. Defaults to the first page.
+    SendReminderRequest:
+      type: object
+      properties:
+        recipients:
+          $ref: '#/components/schemas/ReminderRecipients'
+    CheckboxGroups:
+      type: array
+      description: Checkbox fields that are placed on a document can be grouped with selection requirements. At least 2 checkbox fields in an array of fields must be assigned to the same recipient.
+      items:
+        type: object
+        properties:
+          group_name:
+            type: string
+            description: A unique identifier for the checkbox group.
+          recipient_id:
+            type: string
+            description: The recipient ID associated with the checkbox group.
+          checkbox_ids:
+            type: array
+            items:
+              type: string
+              description: A unique identifier for each checkbox in a group. ID must match the api_id of the checkbox field.
+          validation:
+            $ref: '#/components/schemas/CheckboxValidation'
+            description: 'Set requirements for the group of one or multiple selections by the recipient. Defaults to minimum. Validation values: minimum, maximum, exact, range.'
+          required:
+            type: boolean
+            default: false
+            description: Whether the group must be completed by the recipient. Defaults to false.
+          min_value:
+            type: integer
+            description: 'The minimum number of checkboxes that must be checked in the group. (Only for validation: minimum and range)'
+          max_value:
+            type: integer
+            description: 'The maximum number of checkboxes that can be checked in the group. (Only for validation: maximum and range)'
+          exact_value:
+            type: integer
+            description: 'The exact number of checkboxes that must be checked in the group. (Only for validation: exact)'
+        required:
+        - group_name
+        - recipient_id
+        - checkbox_ids
+    CopiedContacts:
+      type: array
+      description: Copied contacts are emailed the final document once it has been completed by all recipients.
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the copied contact.
+          email:
+            type: string
+            format: email
+            description: Email for the copied contact.
+        required:
+        - email
+    CompletedPdfUrlResponse:
+      type: object
+      description: JSON response containing the URL to the completed PDF file (returned when url_only=true)
+      properties:
+        file_url:
+          type: string
+          format: url
+          description: URL to download the completed document
+      required:
+      - file_url
+    FileFormat:
+      type: string
+      enum:
+      - pdf
+      - zip
+      description: Format of the file to be downloaded. Supported formats are 'pdf' and 'zip'.
+    TemplateRecipients:
+      type: array
+      description: Document recipients are people that must complete and/or sign a document. Recipients of the document must be assigned to a placeholder of the template. Recipients will inherit all placeholder fields and settings.
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            description: A unique identifier that you will give to each recipient. We recommend numbering sequentially from 1 to X. IDs are required for associating recipients to fields and more.
+          name:
+            type: string
+            description: Name of the recipient.
+          email:
+            type: string
+            format: email
+            description: Email address for the recipient.
+            example: signer@example.com
+          placeholder_name:
+            type: string
+            description: The name of the placeholder you want this recipient assigned to.
+          passcode:
+            type: string
+            description: If set, signers assigned with a passcode will be required to enter the passcode before they’re able to view and complete the document.
+          subject:
+            type: string
+            description: Email subject for the signature request that the recipient will see. Overrides the general subject for the template.
+          message:
+            type: string
+            description: Email message for the signature request that the recipient will see. Overrides the general message for the template.
+          send_email:
+            type: boolean
+            default: false
+            description: Applies on when `embedded_signing` is `true`. By default, recipients are not notified through email to sign when doing embedded signing. Setting this to `true`  will send a notification email to the recipient. Default is `false`.
+          send_email_delay:
+            type: integer
+            default: 0
+            description: If `send_email` is `true` recipients will receive a new document notification immediately. In the case of embedded signing, you can delay this notification to only send if the document is not completed within a few minutes. The email notification will not go out if the document is completed before the delay time is over. Valid values are in minutes ranging from `0` to `60`. Defaults to `0`.
+        required:
+        - id
+        - email
+    Limit:
+      type: integer
+      minimum: 1
+      maximum: 50
+      default: 10
+      description: The number of documents to fetch. Defaults to 10, max is 50.
+    CheckboxValidation:
+      type: string
+      enum:
+      - minimum
+      - maximum
+      - range
+      - exact
+      description: Validation rule for checkbox groups
+    UrlOnly:
+      type: boolean
+      default: false
+      description: Whether to return the URL of the completed PDF or the actual PDF content. Defaults to `false`.
+    IncludeAuditPage:
+      type: boolean
+      default: true
+      description: Whether to include the audit page as part of the document. Defaults to `true`
+    TextValidation:
+      type: string
+      enum:
+      - no_text_validation
+      - numbers
+      - letters
+      - email_address
+      - us_phone_number
+      - us_zip_code
+      - us_ssn
+      - us_age
+      - alphanumeric
+      - us_bank_routing_number
+      - us_bank_account_number
+      description: Validation rule for text fields
+    Recipients:
+      type: array
+      description: Document recipients are people that must complete and/or sign a document.
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            description: A unique identifier that you will give to each recipient. We recommend numbering sequentially from 1 to X. IDs are required for associating recipients to fields and more.
+          name:
+            type: string
+            description: Name of the recipient.
+          email:
+            type: string
+            format: email
+            description: Email address for the recipient.
+            example: signer@example.com
+          passcode:
+            type: string
+            description: If set, signers assigned with a passcode will be required to enter the passcode before they’re able to view and complete the document.
+          subject:
+            type: string
+            description: Email subject for the signature request that the recipient will see. Overrides the general subject for the document.
+          message:
+            type: string
+            description: Email message for the signature request that the recipient will see. Overrides the general message for the document.
+          send_email:
+            type: boolean
+            default: false
+            description: Applies on when `embedded_signing` is `true`. By default, recipients are not notified through email to sign when doing embedded signing. Setting this to `true`  will send a notification email to the recipient. Default is `false`.
+          send_email_delay:
+            type: integer
+            default: 0
+            description: If `send_email` is `true` recipients will receive a new document notification immediately. In the case of embedded signing, you can delay this notification to only send if the document is not completed within a few minutes. The email notification will not go out if the document is completed before the delay time is over. Valid values are in minutes ranging from `0` to `60`. Defaults to `0`.
+        required:
+        - id
+        - email
+    Labels:
+      type: array
+      description: Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell. A document can have multiple labels.
+      items:
+        $ref: '#/components/schemas/LabelRequest'
+    DocumentListResponse:
+      type: object
+      description: List of documents with pagination
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentResponse'
+        current_page:
+          type: integer
+        next_page:
+          type: integer
+          nullable: true
+        previous_page:
+          type: integer
+          nullable: true
+        total_count:
+          type: integer
+        total_pages:
+          type: integer
+      required:
+      - documents
+      - current_page
+      - total_count
+      - total_pages
+    ReminderRecipients:
+      type: array
+      description: Optional list if recipients within the document to send a reminder email to. If none are specified, all recipients that have not signed yet will receive a reminder email.
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Recipient's name (required if multiple recipients share the same email).
+          email:
+            type: string
+            format: email
+            description: Recipient's email address.
+    LabelInfo:
+      type: object
+      description: Label information
+      properties:
+        id:
+          type: string
+          description: Label ID
+        name:
+          type: string
+          description: Label name
+    LabelsUpdate:
+      type: array
+      description: Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell. A document can have multiple labels. Updating labels on a document will replace any existing labels for that document.
+      items:
+        $ref: '#/components/schemas/LabelRequest'
+    TemplateFieldValues:
+      type: array
+      description: Fields of your template(s) that you can prepopulate with values. Signature and Initials fields cannot be signed through the API.
+      items:
+        type: object
+        properties:
+          api_id:
+            type: string
+            description: The API ID of the field in your template. This field is case sensitive.
+          value:
+            oneOf:
+            - type: string
+            - type: boolean
+            - type: number
+            description: TextField value must be a string or a number.
+        required:
+        - api_id
+        - value
+    update_recipients_map:
+      type: array
+      description: List of recipients to update on the document.
+      items:
+        type: object
+        required:
+        - id
+        - name
+        - email
+        properties:
+          id:
+            type: string
+            description: The recipient's unique identifier from the Get Document response.
+          name:
+            type: string
+            description: Updated name for the recipient.
+          email:
+            type: string
+            format: email
+            example: jane@example.com
+            description: Updated email address for the recipient.
+          subject:
+            type: string
+            description: Updated email subject for the signature request that this recipient will see.
+          message:
+            type: string
+            description: Updated email message for the signature request that this recipient will see.
+          passcode:
+            type: string
+            description: Updated passcode for the recipient. If set, the signer will be required to enter the passcode before viewing and completing the document.
+    FileInfo:
+      type: object
+      description: File information
+      properties:
+        name:
+          type: string
+          description: File name
+        pages_number:
+          type: integer
+          description: Number of pages in the file
+      required:
+      - name
+      - pages_number
+    LabelRequest:
+      type: object
+      description: Labels can be used to organize documents and templates in a way that can make it easy to find using the document search/template search in SignWell. Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell.
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+    AttachmentRequests:
+      type: array
+      description: Attachments that a recipient must upload to complete the signing process. Attachment requests are shown after all document fields have been completed.
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the requested attachment.
+          recipient_id:
+            type: string
+            description: Unique identifier of the recipient that will view the attachment request.
+          required:
+            type: boolean
+            default: true
+            description: Whether the recipient will need to upload the attachment to successfully complete/sign the document. Defaults to `true`.
+        required:
+        - name
+        - recipient_id
+    DocumentFromTemplateResponse:
+      type: object
+      properties:
+        test_mode:
+          type: boolean
+        id:
+          type: string
+        template_id:
+          type: string
+        template_ids:
+          type: array
+          items:
+            type: string
+        api_application_id:
+          type: string
+          format: uuid
+          nullable: true
+        requester_email_address:
+          type: string
+          format: email
+        custom_requester_name:
+          type: string
+          nullable: true
+        custom_requester_email:
+          type: string
+          format: email
+          nullable: true
+        name:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        recipients:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              email:
+                type: string
+              role:
+                type: string
+              message:
+                type: string
+                nullable: true
+              subject:
+                type: string
+                nullable: true
+              send_email:
+                type: boolean
+                nullable: true
+              send_email_delay:
+                type: integer
+                nullable: true
+              signing_order:
+                type: integer
+              signing_url:
+                type: string
+                format: url
+                nullable: true
+              embedded_signing_url:
+                type: string
+                format: url
+                nullable: true
+              bounced:
+                type: boolean
+                nullable: true
+              bounced_details:
+                type: string
+                nullable: true
+              attachment_requests:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttachmentRequestInfo'
+              passcode:
+                type: string
+                nullable: true
+              status:
+                type: string
+              placeholder_name:
+                type: string
+            required:
+            - email
+        status:
+          type: string
+          description: 'Possible values: Draft, Created, Sending, Sent, Pending, Viewed, Completed, Manually completed, Declined, Canceled, Bounced, Blocked, Error, Expired'
+        reminders:
+          type: boolean
+        archived:
+          type: boolean
+        embedded_signing:
+          type: boolean
+        embedded_edit_url:
+          type: string
+          format: url
+        embedded_preview_url:
+          type: string
+          format: url
+          nullable: true
+        apply_signing_order:
+          type: boolean
+        redirect_url:
+          type: string
+          format: url
+          nullable: true
+        decline_redirect_url:
+          type: string
+          format: url
+          nullable: true
+        language:
+          type: string
+        expires_in:
+          type: integer
+        decline_message:
+          type: string
+          nullable: true
+        error_message:
+          type: string
+          nullable: true
+        embedded_signing_notifications:
+          type: boolean
+        attachment_requests:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              recipient_id:
+                type: string
+              required:
+                type: boolean
+            required:
+            - name
+            - recipient_id
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
+        copied_contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CopiedContactInfo'
+        fields:
+          type: array
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                x:
+                  type: number
+                  format: float
+                y:
+                  type: number
+                  format: float
+                page:
+                  type: integer
+                recipient:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    name:
+                      type: string
+                    role:
+                      type: string
+                  required:
+                  - email
+                  - name
+                api_id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                  nullable: true
+                date_format:
+                  $ref: '#/components/schemas/DateFormat'
+                fixed_width:
+                  type: boolean
+                formula:
+                  type: string
+                label:
+                  type: string
+                lock_sign_date:
+                  type: boolean
+                required:
+                  type: boolean
+                type:
+                  $ref: '#/components/schemas/FieldType'
+                validation:
+                  $ref: '#/components/schemas/TextValidation'
+                value:
+                  oneOf:
+                  - type: string
+                  - type: boolean
+                  - type: number
+                  nullable: true
+                height:
+                  type: string
+                width:
+                  type: string
+                recipient_id:
+                  type: string
+                  nullable: true
+                signing_elements_group_id:
+                  type: string
+                  format: uuid
+                placeholder_name:
+                  type: string
+                options:
+                  type: array
+                  description: Dropdown options (for dropdown/select fields)
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      api_id:
+                        type: string
+                      is_other:
+                        type: boolean
+                default_option:
+                  type: string
+                  description: Default selected option
+                allow_other:
+                  type: boolean
+                  description: Whether "Other" option is allowed
+              required:
+              - x
+              - y
+              - page
+        allow_decline:
+          type: boolean
+          nullable: true
+        allow_reassign:
+          type: boolean
+          nullable: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelInfo'
+        checkbox_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckboxGroupInfo'
+      required:
+      - id
+      - test_mode
+    CopiedContactInfo:
+      type: object
+      description: Copied contact information
+      properties:
+        id:
+          type: string
+          description: Contact ID
+        name:
+          type: string
+          description: Contact name
+        email:
+          type: string
+          format: email
+          description: Contact email
+      required:
+      - email
+    FieldType:
+      type: string
+      enum:
+      - initials
+      - signature
+      - checkbox
+      - date
+      - select
+      - text
+      - dropdown
+      - autofill_company
+      - autofill_email
+      - autofill_first_name
+      - autofill_last_name
+      - autofill_name
+      - autofill_phone
+      - autofill_title
+      - autofill_date_signed
+      description: Type of signing field
+    DropdownOption:
+      oneOf:
+      - type: string
+        title: SimpleOption
+        description: Simple string option
+      - type: object
+        title: DetailedOption
+        description: Detailed option object
+        properties:
+          name:
+            type: string
+            description: Option display name
+          api_id:
+            type: string
+            description: Unique identifier for the option
+          is_other:
+            type: boolean
+            description: Whether this is the special "Other" option
+            default: false
+        required:
+        - name
+      description: A dropdown option - either a simple string or a detailed object with name and optional api_id
+    CompletedPdfResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CompletedPdfUrlResponse'
+      - $ref: '#/components/schemas/CompletedPdfBinaryResponse'
+      - $ref: '#/components/schemas/CompletedPdfZipResponse'
+    DocumentRequest:
+      type: object
+      properties:
+        test_mode:
+          type: boolean
+          default: false
+          description: Set to `true` to enable Test Mode. Documents created with Test Mode do not count towards API billing and are not legally binding. Defaults to `false`
+        files:
+          $ref: '#/components/schemas/Files'
+        name:
+          type: string
+          description: The name of the document.
+        subject:
+          type: string
+          description: Email subject for the signature request that recipients will see. Defaults to the default system subject or a template subject (if the document is created from a template).
+        message:
+          type: string
+          description: Email message for the signature request that recipients will see. Defaults to the default system message or a template message (if the document is created from a template).
+        recipients:
+          $ref: '#/components/schemas/Recipients'
+        draft:
+          type: boolean
+          default: false
+          description: Whether the document can still be updated before sending a signature request. If set to `false` the document is sent for signing as part of this request. Defaults to `false`.
+        self_sign:
+          type: boolean
+          default: false
+          description: When set to true the document will enter self-sign mode, which allows the document creator to sign and complete a document without any field setup. Must use the embedded_edit_url in the response and (if embedding) the embedded requesting workflow.
+        with_signature_page:
+          type: boolean
+          default: false
+          description: When set to `true` the document will have a signature page added to the end, and all signers will be required to add their signature on that page.
+        expires_in:
+          type: integer
+          minimum: 1
+          description: Number of days before the signature request expires. Defaults to the account expiration setting or template expiration (if the document is created from a template).
+        reminders:
+          type: boolean
+          default: true
+          description: Whether to send signing reminders to recipients. Reminders are sent on day 3, day 6, and day 10 if set to `true`. Defaults to `true`.
+        apply_signing_order:
+          type: boolean
+          default: false
+          description: When set to `true` recipients will sign one at a time in the order of the `recipients` collection of this request.
+        api_application_id:
+          type: string
+          format: uuid
+          description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
+        embedded_signing:
+          type: boolean
+          default: false
+          description: When set to `true` it enables embedded signing in your website/web application. Embedded functionality works with an iFrame and email authentication is disabled. :embedded_signinig defaults to `false`.
+        embedded_signing_notifications:
+          type: boolean
+          default: false
+          description: On embedding signing, document owners (and CC'd contacts) do not get a notification email when documents have been completed. Setting this param to `true` will send out those final completed notifications. Default is `false`
+        text_tags:
+          type: boolean
+          default: false
+          description: An alternative way (if you can’t use the recommended way) of placing fields in specific locations of your document by using special text tags. Useful when changing the content of your files changes the location of fields. See API documentation for “Text Tags” for details. Defaults to false.
+        custom_requester_name:
+          type: string
+          description: Sets the custom requester name for the document. When set, this is the name used for all email communications, signing notifications, and in the audit file.
+        custom_requester_email:
+          type: string
+          format: email
+          description: Sets the custom requester email for the document. When set, this is the email used for all email communications, signing notifications, and in the audit file.
+        redirect_url:
+          type: string
+          format: url
+          description: A URL that recipients are redirected to after successfully signing a document.
+        allow_decline:
+          type: boolean
+          default: true
+          description: Whether to allow recipients the option to decline signing a document. If multiple signers are involved in a document, any single recipient can cancel the entire document signing process by declining to sign.
+        allow_reassign:
+          type: boolean
+          default: true
+          description: In some cases a signer is not the right person to sign and may need to reassign their signing responsibilities to another person. This feature allows them to reassign the document to someone else.
+        decline_redirect_url:
+          type: string
+          format: url
+          description: A URL that recipients are redirected to if the document is declined.
+        language:
+          type: string
+          description: 'Sets the language for all recipients on the document and updates all recipient side interactions including the document email and the document itself. Accepted languages: English, Français, Español, Deutsch, Polski, Português, Dansk, Nederlands, Italiano, Русский, Svenska, العربية, Ελληνικά, Türkçe, Slovenčina. Defaults to English. Language should be sent in ISO 639-1 format: en, fr, es, de, pl, pt, da, nl, it, ru, sv, ar, el, tr, sk.'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional key-value data that can be associated with the document. If set, will be available every time the document data is returned.
+        fields:
+          $ref: '#/components/schemas/Fields'
+        attachment_requests:
+          $ref: '#/components/schemas/AttachmentRequests'
+        copied_contacts:
+          $ref: '#/components/schemas/CopiedContacts'
+        labels:
+          $ref: '#/components/schemas/Labels'
+        checkbox_groups:
+          $ref: '#/components/schemas/CheckboxGroups'
+      required:
+      - files
+      - recipients
+    Fields:
+      type: array
+      description: Document fields placed on a document for collecting data or signatures from recipients. At least one field must be present in the Create Document request if `draft` is `false` (unless adding a signature page by using `with_signature_page`). Field data should be sent as a 2-dimensional JSON array. One array of fields is needed for each file in the files array. An array of fields can be empty if you have a file that does not contain any fields.
+      items:
+        type: array
+        description: Array of Fields you're adding to each file.
+        items:
+          type: object
+          properties:
+            x:
+              type: number
+              format: float
+              description: Horizontal value in the coordinates of the field (in pixels). Coordinates are specific to the page where fields are located.
+            y:
+              type: number
+              format: float
+              description: Vertical value in the coordinates of the field (in pixels). Coordinates are specific to the page where fields are located.
+            page:
+              type: integer
+              description: The page number within the file. If the page does not exist within the file then the field won't be created.
+            recipient_id:
+              type: string
+              description: Unique identifier of the recipient assigned to the field. Recipients assigned to fields will be the only ones that will see and be able to complete those fields.
+            type:
+              $ref: '#/components/schemas/FieldType'
+              description: 'Field type of the field. Valid field types: initials, signatures, checkbox, date, and text. To autofill fields with contact data, use an autofill field type. To group checkbox fields, enter an api_id for each checkbox and add the checkbox_groups parameter.'
+            required:
+              type: boolean
+              default: true
+              description: Whether the field must be completed by the recipient. Defaults to `true` except for checkbox type fields.
+            label:
+              type: string
+              description: 'Text and Date fields only: label that is displayed when the field is empty.'
+            value:
+              oneOf:
+              - type: string
+              - type: boolean
+              - type: number
+              description: Varies according to the field type. Text fields accept strings or numbers. Date fields accept Iso8601 date strings. CheckBoxes accept booleans. Signature and Initials fields can't be signed through API requests. Autofill text fields accept strings or numbers.
+            api_id:
+              type: string
+              description: Unique identifier of the field. Useful when needing to reference specific field values or update a document and its fields.
+            name:
+              type: string
+              description: Checkbox fields only. At least 2 checkbox fields in an array of fields must be assigned to the same recipient and grouped with selection requirements.
+            validation:
+              $ref: '#/components/schemas/TextValidation'
+              description: 'Text fields only: optional validation for field values. Valid values: numbers, letters, email_address, us_phone_number, us_zip_code, us_ssn, us_age, alphanumeric, us_bank_routing_number, us_bank_account.'
+            fixed_width:
+              type: boolean
+              default: false
+              description: 'Text fields only: whether the field width will stay fixed and text will display in multiple lines, rather than one long line. If set to `false` the field width will automatically grow horizontally to fit text on one line. Defaults to `false`.'
+            lock_sign_date:
+              type: boolean
+              default: false
+              description: 'Date fields only: makes fields readonly and automatically populates with the date the recipient signed. Defaults to `false`.'
+            date_format:
+              $ref: '#/components/schemas/DateFormat'
+              description: 'Date fields only: date format to use for the field. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, and MM/DD/YYYY hh:mm:ss a. Defaults to MM/DD/YYYY.'
+            height:
+              type: number
+              format: float
+              description: 'Height of the field (in pixels). Maximum height varies by field type: Signature/Initials (200px), others (74px). When using text tags if the height is greater than the maximum height, the height will be set to the maximum height.'
+            width:
+              type: number
+              format: float
+              description: Width of the field (in pixels). For text fields, width will auto-grow unless `fixed_width` is true.
+            options:
+              type: array
+              description: Array of dropdown options (for dropdown/select fields only)
+              items:
+                $ref: '#/components/schemas/DropdownOption'
+            default_option:
+              type: string
+              description: Default selected option (for dropdown/select fields only)
+            allow_other:
+              type: boolean
+              description: Whether to allow "Other" option with text input (for dropdown/select fields only)
+              default: false
+          required:
+          - x
+          - y
+          - page
+          - recipient_id
+          - type
+    CheckboxGroupInfo:
+      type: object
+      description: Checkbox group configuration
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Checkbox group ID
+        group_name:
+          type: string
+          nullable: true
+          description: Name of the checkbox group
+        recipient_id:
+          type: string
+          nullable: true
+          description: Recipient ID associated with the group
+        checkbox_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of checkboxes in this group
+        validation:
+          $ref: '#/components/schemas/CheckboxValidation'
+          nullable: true
+        required:
+          type: boolean
+          description: Whether at least one checkbox must be checked
+        min_value:
+          type: integer
+          description: Minimum number of checkboxes to check
+        max_value:
+          type: integer
+          description: Maximum number of checkboxes to check
+        exact_value:
+          type: integer
+          description: Exact number of checkboxes that must be checked
+      required:
+      - id
+      - checkbox_ids
+      - required
+    AdditionalFiles:
+      type: array
+      items:
+        type: object
+        description: 'Additional files to be appended to the document. Will not replace existing files from the template. Document files can be uploaded by specifying a file URL or base64 string. Either `file_url` or `file_base64` must be present (not both). Valid file types are: .pdf, .docx, .jpg, .png, .ppt, .xls, .pages, and .txt.'
+        properties:
+          name:
+            type: string
+            description: Name of the file that will be uploaded.
+          file_url:
+            type: string
+            format: url
+            description: Publicly available URL of the file to be uploaded.
+          file_base64:
+            type: string
+            format: byte
+            description: A RFC 4648 base64 string of the file to be uploaded.
+        required:
+        - name
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      properties:
+        errors:
+          type: object
+          additionalProperties: true
+          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+      required:
+      - errors
+    CompletedDocumentId:
+      type: string
+      format: uuid
+      description: Unique identifier for a completed document.
+    DateFormat:
+      type: string
+      enum:
+      - MM/DD/YYYY
+      - DD/MM/YYYY
+      - YYYY/MM/DD
+      - Month DD, YYYY
+      - MM/DD/YYYY hh:mm:ss a
+      description: 'Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY'
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Api-Key
+      in: header
