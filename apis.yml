@@ -5,7 +5,20 @@ description: E-signature platform with a REST API for sending documents for sign
   Supports embedded signing, bulk send, webhooks, and white-label customization with
   compliance for ESIGN, UETA, GDPR, and HIPAA.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/signwell.png
 url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -21,37 +34,160 @@ tags:
 - HIPAA
 - SOC2
 apis:
-- aid: signwell:signwell-api
-  name: SignWell API
-  description: REST API for programmatically sending documents for electronic signature,
-    creating and managing templates, tracking document status, managing signers, running
-    bulk sends, and configuring webhooks. Supports embedded signing iframes, draft
-    documents, conditional sending, and MX NOM-151 compliance certificates.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: signwell:signwell-api-application-api
+  name: SignWell API Application API
+  description: Manage API application settings and branding.
   humanURL: https://developers.signwell.com/
   baseURL: https://www.signwell.com/api/v1
   tags:
-  - E-Signature
-  - Documents
-  - Templates
-  - Webhooks
-  - Embedded Signing
-  - Bulk Send
+  - API Application
   properties:
+  - type: OpenAPI
+    url: openapi/signwell-api-application-api-openapi.yml
   - type: Documentation
     url: https://developers.signwell.com/reference/getting-started-with-your-api-1
-  - type: OpenAPI
-    url: https://developers.signwell.com/llms.txt
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/openapi/signwell-signwell-api-openapi.yml
   - type: JSONSchema
     url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
   - type: JSONLDContext
-    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
   - type: Vocabulary
-    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - url: graphql/signwell-graphql.md
-    type: GraphQL
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
+  - type: GraphQL
+    url: graphql/signwell-graphql.md
+- aid: signwell:signwell-bulk-send-api
+  name: SignWell Bulk Send API
+  description: Send a document to multiple recipients in batch using templates.
+  humanURL: https://developers.signwell.com/
+  baseURL: https://www.signwell.com/api/v1
+  tags:
+  - Bulk Send
+  properties:
+  - type: OpenAPI
+    url: openapi/signwell-bulk-send-api-openapi.yml
+  - type: Documentation
+    url: https://developers.signwell.com/reference/getting-started-with-your-api-1
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
+  - type: GraphQL
+    url: graphql/signwell-graphql.md
+- aid: signwell:signwell-document-api
+  name: SignWell Document API
+  description: Create, send, and manage documents for electronic signing.
+  humanURL: https://developers.signwell.com/
+  baseURL: https://www.signwell.com/api/v1
+  tags:
+  - Document
+  properties:
+  - type: OpenAPI
+    url: openapi/signwell-document-api-openapi.yml
+  - type: Documentation
+    url: https://developers.signwell.com/reference/getting-started-with-your-api-1
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
+  - type: GraphQL
+    url: graphql/signwell-graphql.md
+- aid: signwell:signwell-me-api
+  name: SignWell Me API
+  description: Retrieve account information for the authenticated API key.
+  humanURL: https://developers.signwell.com/
+  baseURL: https://www.signwell.com/api/v1
+  tags:
+  - Me
+  properties:
+  - type: OpenAPI
+    url: openapi/signwell-me-api-openapi.yml
+  - type: Documentation
+    url: https://developers.signwell.com/reference/getting-started-with-your-api-1
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
+  - type: GraphQL
+    url: graphql/signwell-graphql.md
+- aid: signwell:signwell-regional-api
+  name: SignWell Regional API
+  description: Access region-specific endpoints for data residency compliance.
+  humanURL: https://developers.signwell.com/
+  baseURL: https://www.signwell.com/api/v1
+  tags:
+  - Regional
+  properties:
+  - type: OpenAPI
+    url: openapi/signwell-regional-api-openapi.yml
+  - type: Documentation
+    url: https://developers.signwell.com/reference/getting-started-with-your-api-1
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
+  - type: GraphQL
+    url: graphql/signwell-graphql.md
+- aid: signwell:signwell-template-api
+  name: SignWell Template API
+  description: Create and manage reusable document templates.
+  humanURL: https://developers.signwell.com/
+  baseURL: https://www.signwell.com/api/v1
+  tags:
+  - Template
+  properties:
+  - type: OpenAPI
+    url: openapi/signwell-template-api-openapi.yml
+  - type: Documentation
+    url: https://developers.signwell.com/reference/getting-started-with-your-api-1
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
+  - type: GraphQL
+    url: graphql/signwell-graphql.md
+- aid: signwell:signwell-webhooks-api
+  name: SignWell Webhooks API
+  description: Subscribe to document lifecycle events via webhook callbacks.
+  humanURL: https://developers.signwell.com/
+  baseURL: https://www.signwell.com/api/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/signwell-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.signwell.com/reference/getting-started-with-your-api-1
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-schema/
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/json-ld/signwell-context.jsonld
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
+  - type: GraphQL
+    url: graphql/signwell-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/signwell-agentic-access.yml
