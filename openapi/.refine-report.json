@@ -1,0 +1,26 @@
+{
+  "provider": "signwell",
+  "sources": [
+    "signwell-api-application-api-openapi.yml",
+    "signwell-bulk-send-api-openapi.yml",
+    "signwell-document-api-openapi.yml",
+    "signwell-me-api-openapi.yml",
+    "signwell-regional-api-openapi.yml",
+    "signwell-template-api-openapi.yml",
+    "signwell-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "signwell-api-application-api-openapi.yml",
+    "signwell-bulk-send-api-openapi.yml",
+    "signwell-document-api-openapi.yml",
+    "signwell-me-api-openapi.yml",
+    "signwell-regional-api-openapi.yml",
+    "signwell-template-api-openapi.yml",
+    "signwell-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
