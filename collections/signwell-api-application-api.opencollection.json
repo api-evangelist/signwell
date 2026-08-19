@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SignWell Developer API Application API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Application",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/api_applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets the details of a specific API Application within an account. Supply the unique Application ID from either the Create API Application response or the API Application edit page."
+        },
+        {
+          "info": {
+            "name": "Delete API Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.signwell.com/api/v1/api_applications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes an API Application from an account. Supply the unique Application ID from either the Create API Application response or the API Application edit page"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

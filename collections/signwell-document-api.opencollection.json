@@ -1,0 +1,260 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SignWell Developer API Application Document API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Document",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/documents",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of documents for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.signwell.com/api/v1/documents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates and optionally sends a new document for signing. If `draft` is set to true the document will not be sent."
+        },
+        {
+          "info": {
+            "name": "Get Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a document and all associated document data. Supply the unique document ID from either a document creation request or Document page URL."
+        },
+        {
+          "info": {
+            "name": "Delete Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.signwell.com/api/v1/documents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a document. Deleting a document will also cancel document signing (if in progress).  Supply the unique document ID from either a Create Document request or document page URL."
+        },
+        {
+          "info": {
+            "name": "Create Document from Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.signwell.com/api/v1/document_templates/documents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates and optionally sends a new document for signing. If `draft` is set to true the document will not be sent."
+        },
+        {
+          "info": {
+            "name": "Update and Send Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.signwell.com/api/v1/documents/:id/send",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a draft document and sends it to be signed by recipients."
+        },
+        {
+          "info": {
+            "name": "Update Recipients",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://www.signwell.com/api/v1/documents/:id/recipients",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates one or more recipients on a document that has already been sent. Only recipients who have not started signing may be updated. Recipient IDs must be retrieved from the Get Document response. Allowed document statuses: sent, viewed, pending, bounced. For non-embedded documents, updated recipients will receive a new notification email. For embedded signing documents, email behavior follows each recipient's send_email setting."
+        },
+        {
+          "info": {
+            "name": "Send Reminder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.signwell.com/api/v1/documents/:id/remind",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Sends a reminder email to recipients that have not signed yet."
+        },
+        {
+          "info": {
+            "name": "Completed PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/documents/:id/completed_pdf",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "url_only",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "audit_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "file_format",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Gets a completed document PDF or ZIP file. Supply the unique document ID from either a document creation request or document page URL."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

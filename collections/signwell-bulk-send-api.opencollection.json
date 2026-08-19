@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SignWell Developer API Application Bulk Send API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk Send",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Bulk Send",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/bulk_sends/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns information about the Bulk Send."
+        },
+        {
+          "info": {
+            "name": "List Bulk Sendings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/bulk_sends",
+            "params": [
+              {
+                "name": "user_email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "api_application_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns information about the Bulk Send."
+        },
+        {
+          "info": {
+            "name": "Create Bulk Send",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.signwell.com/api/v1/bulk_sends",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a bulk send, and it validates the CSV file before creating the bulk send."
+        },
+        {
+          "info": {
+            "name": "Get Bulk Send CSV Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/bulk_sends/csv_template",
+            "params": [
+              {
+                "name": "template_ids[]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "base64",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches a CSV template that corresponds to the provided document template IDs. CSV templates are blank CSV files that have columns containing required and optional data that can be sent when creating a bulk send. Fields can be referenced by the field label. Example: [placeholder name]_[field label] could be something like customer_address or signer_company_name (if 'Customer' and 'Signer' were placeholder names for templates set up in SignWell)."
+        },
+        {
+          "info": {
+            "name": "Validate Bulk Send CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.signwell.com/api/v1/bulk_sends/validate_csv",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Validates a Bulk Send CSV file before creating the Bulk Send. It will check the structure of the CSV and the data it contains, and return any errors found."
+        },
+        {
+          "info": {
+            "name": "Get Bulk Send Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/bulk_sends/:id/documents",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns information about the Bulk Send."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

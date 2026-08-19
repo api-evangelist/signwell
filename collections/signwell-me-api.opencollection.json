@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SignWell Developer API Application Me API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Me",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.signwell.com/api/v1/me",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Api-Key",
+              "value": "{{X-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves the account information associated with the API key being used."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

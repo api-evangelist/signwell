@@ -1,0 +1,1303 @@
+{
+  "item": [
+    {
+      "id": "068e9474-03ea-430e-9893-3ed8707cd29d",
+      "name": "Template",
+      "description": {
+        "content": "Create and manage reusable document templates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50a2ca01-bf13-4989-b3c1-71408b8523e2",
+          "name": "List Templates",
+          "request": {
+            "name": "List Templates",
+            "description": {
+              "content": "Returns a paginated list of templates for the authenticated account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "document_templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1568c15e-b497-4ec3-9327-d188e1f759a4",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"templates\": [\n    {\n      \"id\": \"bb3c3fba-116f-4b76-8ad8-5469c435f990\",\n      \"archived\": false,\n      \"created_at\": \"2026-03-31T15:47:00Z\",\n      \"embedded_edit_url\": \"https://www.signwell.com/edit/template/33f4447c-bdb2-4d3e-87b1-f57126549715/\",\n      \"language\": \"en\",\n      \"name\": \"miscarriage_branch/pariatur.tiff\",\n      \"requester_email_address\": \"53.tiny.rick@towne.example\",\n      \"status\": \"Created\",\n      \"template_link\": \"https://www.signwell.com/new_doc/y8cjPd25fuSHMBvi/\",\n      \"updated_at\": \"2026-03-31T15:47:00Z\",\n      \"allow_decline\": null,\n      \"allow_reassign\": null,\n      \"api_application_id\": null,\n      \"decline_redirect_url\": null,\n      \"expires_in\": null,\n      \"redirect_url\": null,\n      \"reminders\": null,\n      \"metadata\": null,\n      \"fields\": [],\n      \"files\": [],\n      \"copied_placeholders\": [],\n      \"placeholders\": [],\n      \"checkbox_groups\": []\n    },\n    {\n      \"id\": \"959e6f6a-8a95-47b1-9e86-eb8b1da5a8aa\",\n      \"archived\": false,\n      \"created_at\": \"2026-03-31T15:47:00Z\",\n      \"embedded_edit_url\": \"https://www.signwell.com/edit/template/d5f6572b-bcae-4c48-b187-540e577fb95a/\",\n      \"language\": \"en\",\n      \"name\": \"story_patience/eos.jpg\",\n      \"requester_email_address\": \"53.tiny.rick@towne.example\",\n      \"status\": \"Created\",\n      \"template_link\": \"https://www.signwell.com/new_doc/GfCKlbdBrLhLsHtX/\",\n      \"updated_at\": \"2026-03-31T15:47:00Z\",\n      \"allow_decline\": null,\n      \"allow_reassign\": null,\n      \"api_application_id\": null,\n      \"decline_redirect_url\": null,\n      \"expires_in\": null,\n      \"redirect_url\": null,\n      \"reminders\": null,\n      \"metadata\": null,\n      \"fields\": [],\n      \"files\": [],\n      \"copied_placeholders\": [],\n      \"placeholders\": [],\n      \"checkbox_groups\": []\n    },\n    {\n      \"id\": \"2038bbde-3423-43b1-991b-89e93a679511\",\n      \"archived\": false,\n      \"created_at\": \"2026-03-31T15:47:00Z\",\n      \"embedded_edit_url\": \"https://www.signwell.com/edit/template/e15e7107-498a-49c7-a5b2-4b0815744da1/\",\n      \"language\": \"en\",\n      \"name\": \"book-notebook/iure.mov\",\n      \"requester_email_address\": \"53.tiny.rick@towne.example\",\n      \"status\": \"Created\",\n      \"template_link\": \"https://www.signwell.com/new_doc/Qz2nb9ZeTqpsoBId/\",\n      \"updated_at\": \"2026-03-31T15:47:00Z\",\n      \"allow_decline\": null,\n      \"allow_reassign\": null,\n      \"api_application_id\": null,\n      \"decline_redirect_url\": null,\n      \"expires_in\": null,\n      \"redirect_url\": null,\n      \"reminders\": null,\n      \"metadata\": null,\n      \"fields\": [],\n      \"files\": [],\n      \"copied_placeholders\": [],\n      \"placeholders\": [],\n      \"checkbox_groups\": []\n    }\n  ],\n  \"current_page\": 1,\n  \"next_page\": null,\n  \"previous_page\": null,\n  \"total_count\": 3,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4834c4c4-83dd-4550-911e-5844e3f6032c",
+              "name": "unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33e59b14-e8fa-4224-b7de-06e6bcbbb6b2",
+              "name": "rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "955b19e2-fd1b-412f-88a5-d0762bc8e379",
+          "name": "Create Template",
+          "request": {
+            "name": "Create Template",
+            "description": {
+              "content": "Creates a new template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "document_templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"copied_placeholders\": [\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"text_tags\": false,\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"language\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"fields\": [\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ],\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ]\n  ],\n  \"attachment_requests\": [\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    },\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    }\n  ],\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "984d71a5-a213-41f1-9d94-bed25ea8c7a7",
+              "name": "created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"copied_placeholders\": [\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"text_tags\": false,\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"language\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"fields\": [\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ],\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ]\n  ],\n  \"attachment_requests\": [\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    },\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    }\n  ],\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"751f9aae-cb96-4fbe-805b-0135232823c4\",\n  \"archived\": false,\n  \"created_at\": \"2026-03-31T15:47:02Z\",\n  \"embedded_edit_url\": \"https://www.signwell.com/edit/template/4fe3455d-6434-429f-bcd5-521c76f660f9/\",\n  \"language\": \"en\",\n  \"name\": \"Agreement\",\n  \"requester_email_address\": \"loggins_76@howe-hessel.test\",\n  \"status\": \"Created\",\n  \"template_link\": \"https://www.signwell.com/new_doc/c60LSiR31AhpOqZN/\",\n  \"updated_at\": \"2026-03-31T15:47:02Z\",\n  \"allow_decline\": true,\n  \"allow_reassign\": null,\n  \"api_application_id\": null,\n  \"decline_redirect_url\": \"https://www.domain.com/decline_path/\",\n  \"expires_in\": 365,\n  \"redirect_url\": \"https://www.domain.com/redirect_path/\",\n  \"reminders\": true,\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": \"value2\"\n  },\n  \"apply_signing_order\": false,\n  \"message\": \"Normal Body\",\n  \"subject\": \"Normal subject\",\n  \"labels\": [\n    {\n      \"id\": \"7409f919-0ad1-4b58-90b6-293177798f0a\",\n      \"name\": \"My First Label\"\n    },\n    {\n      \"id\": \"eff4718b-56b2-47e8-9ffa-8b4420937169\",\n      \"name\": \"My Second Label\"\n    },\n    {\n      \"id\": \"29039f21-4b22-44d1-8dfa-5ee0696c7040\",\n      \"name\": \"My Third Label\"\n    }\n  ],\n  \"fields\": [\n    [\n      {\n        \"api_id\": \"DateField_1\",\n        \"height\": \"19.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"date\",\n        \"value\": \"2021/05/06\",\n        \"width\": \"86.0\",\n        \"x\": 230,\n        \"y\": 60,\n        \"date_format\": \"YYYY/MM/DD\",\n        \"formula\": \"\",\n        \"lock_sign_date\": true,\n        \"placeholder_name\": \"Placeholder One\"\n      }\n    ],\n    [\n      {\n        \"api_id\": \"Signature_2\",\n        \"height\": \"32.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"signature\",\n        \"value\": null,\n        \"width\": \"112.0\",\n        \"x\": 260,\n        \"y\": 80,\n        \"placeholder_name\": \"Placeholder 2\"\n      },\n      {\n        \"api_id\": \"CheckBox_3\",\n        \"height\": \"13.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"checkbox\",\n        \"value\": \"t\",\n        \"width\": \"13.0\",\n        \"x\": 260,\n        \"y\": 80,\n        \"name\": null,\n        \"placeholder_name\": \"Placeholder 2\"\n      },\n      {\n        \"api_id\": \"CheckBox_4\",\n        \"height\": \"13.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"checkbox\",\n        \"value\": \"t\",\n        \"width\": \"13.0\",\n        \"x\": 270,\n        \"y\": 80,\n        \"name\": null,\n        \"placeholder_name\": \"Placeholder 2\"\n      },\n      {\n        \"api_id\": \"Initials_4\",\n        \"height\": \"32.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"initials\",\n        \"value\": null,\n        \"width\": \"44.0\",\n        \"x\": 260,\n        \"y\": 80,\n        \"placeholder_name\": \"Placeholder 2\"\n      },\n      {\n        \"api_id\": \"TextField_5\",\n        \"height\": \"19.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"text\",\n        \"value\": \"1\",\n        \"width\": \"86.0\",\n        \"x\": 260,\n        \"y\": 80,\n        \"fixed_width\": true,\n        \"label\": \"label\",\n        \"validation\": \"numbers\",\n        \"placeholder_name\": \"Placeholder 2\"\n      }\n    ]\n  ],\n  \"files\": [\n    {\n      \"name\": \"filename1.pdf\",\n      \"pages_number\": 0\n    },\n    {\n      \"name\": \"filename2.pdf\",\n      \"pages_number\": 0\n    }\n  ],\n  \"copied_placeholders\": [\n    {\n      \"id\": \"1\",\n      \"name\": \"Copied Placeholder 1\",\n      \"subject\": null,\n      \"message\": null\n    },\n    {\n      \"id\": \"2\",\n      \"name\": \"Copied Placeholder 2\",\n      \"subject\": null,\n      \"message\": null,\n      \"preassigned_recipient_name\": \"Nelson Copied 2\",\n      \"preassigned_recipient_email\": \"nelson+copied2@docsketch.com\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"placeholder_id_1\",\n      \"name\": \"Placeholder One\",\n      \"subject\": null,\n      \"message\": null,\n      \"preassigned_recipient_name\": \"recipient 1\",\n      \"preassigned_recipient_email\": \"recipient1@domain.com\",\n      \"signing_order\": 1,\n      \"attachment_requests\": [\n        {\n          \"name\": \"normal name\",\n          \"required\": true,\n          \"url\": \"https://www.signwell.com/document_attachments/GRJPOMRKppHWdGeeXwbefy4EblMb/?access=fa3580f5-3914-447b-8b4c-c5c28b0bc8f2\"\n        }\n      ]\n    },\n    {\n      \"id\": \"placeholder_id_2\",\n      \"name\": \"Placeholder 2\",\n      \"subject\": null,\n      \"message\": null,\n      \"signing_order\": 2,\n      \"attachment_requests\": [\n        {\n          \"name\": \"Driver License\",\n          \"required\": false,\n          \"url\": \"https://www.signwell.com/document_attachments/LRlW8OWw3pUGzP0jqa7Oi8kwJPY/?access=fa3580f5-3914-447b-8b4c-c5c28b0bc8f2\"\n        }\n      ]\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"id\": \"076c3f53-a7a3-4dfa-820b-22cd9c66382a\",\n      \"group_name\": \"Group 1\",\n      \"recipient_id\": null,\n      \"checkbox_ids\": [\n        \"CheckBox_3\",\n        \"CheckBox_4\"\n      ],\n      \"validation\": \"minimum\",\n      \"required\": true,\n      \"min_value\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72b9bfe6-37e2-44c1-b097-081da9fd8803",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"copied_placeholders\": [\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"text_tags\": false,\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"language\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"fields\": [\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ],\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ]\n  ],\n  \"attachment_requests\": [\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    },\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    }\n  ],\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"message\": \"The request contains invalid key values.\",\n    \"invalid_keys\": [\n      \"name\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9de9cbaa-e7db-4e39-a0ce-d589ffaac34d",
+              "name": "unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"copied_placeholders\": [\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"text_tags\": false,\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"language\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"fields\": [\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ],\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ]\n  ],\n  \"attachment_requests\": [\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    },\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    }\n  ],\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"decline_redirect_url\": [\n      \"is not a valid URL\"\n    ],\n    \"redirect_url\": [\n      \"is not a valid URL\"\n    ],\n    \"expires_in\": [\n      \"must be less than or equal to 365\"\n    ],\n    \"metadata\": [\n      \"The key/value pairs must not exceed 50\",\n      \"Check the following keys: [qgtxtpsnyxjwzvbzhnmrjziscxsmgcugpqanuygve], length needs to be less than 40 characters\",\n      \"Check the value of the following keys: [ke50], length needs to be less than 500 characters and must be a string\"\n    ],\n    \"api_application_id\": [\n      \"The provided API application id is invalid\"\n    ],\n    \"message\": [\n      \"is too long (maximum is 4000 characters)\"\n    ],\n    \"placeholders\": {\n      \"duplicated_ids\": \"These ids are duplicated: placeholder_id_1.\",\n      \"placeholder_1\": {\n        \"name\": [\n          \"is too long (maximum is 255 characters)\"\n        ],\n        \"preassigned_recipient_email\": [\n          \"format is invalid.\"\n        ],\n        \"preassigned_recipient_name\": [\n          \"is too long (maximum is 255 characters)\"\n        ]\n      },\n      \"placeholder_2\": {\n        \"preassigned_recipient_email\": [\n          \"format is invalid.\"\n        ]\n      },\n      \"all_preassigned\": \"At least one placeholder should be left unassigned\"\n    },\n    \"attachment_requests\": {\n      \"invalid_ids\": \"These placeholder ids are not present in the placeholders array: [placeholder_id_3]\"\n    },\n    \"fields\": {\n      \"duplicated_api_ids\": \"These api ids are duplicated: CheckBox_2.\",\n      \"invalid_ids\": \"These placeholder ids are not present in the placeholders array: [placeholder_id_2, placeholder_id_3]\",\n      \"file_2\": {\n        \"field_2\": {\n          \"invalid_date_value\": \"DateField value must be in Iso8601 format.\",\n          \"date_format\": [\n            \"Allowed formats for date fields are: MM/DD/YYYY | DD/MM/YYYY | YYYY/MM/DD | Month DD, YYYY | MM/DD/YYYY hh:mm:ss a\"\n          ]\n        }\n      }\n    },\n    \"files\": {\n      \"file_1\": {\n        \"file_data\": [\n          \"At least one of file_url or file_base64 should be present\"\n        ]\n      },\n      \"file_2\": {\n        \"file_data\": [\n          \"Only one of file_url or file_base64 should be present, not both\"\n        ]\n      },\n      \"file_3\": {\n        \"file_url\": [\n          \"is not a valid URL\"\n        ]\n      },\n      \"file_4\": {\n        \"file_base64\": [\n          \"the file type is unsupported, we support the following formats: application/msword, application/pdf, application/octet-stream, application/x-ole-storage, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-iwork-keynote-sffkey, application/x-iwork-numbers-sffnumbers, application/x-iwork-pages-sffpages, image/jpeg, image/png, image/tiff, image/webp, text/html\"\n        ]\n      },\n      \"file_5\": {\n        \"name\": [\n          \"The file extension is invalid.\"\n        ]\n      },\n      \"file_6\": {\n        \"name\": [\n          \"can't be blank\"\n        ]\n      }\n    },\n    \"checkbox_groups\": {\n      \"min_value_negative\": \"The min value must be greater than or equal to 0 in the checkbox group Group 1\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a105fa82-af7f-4c56-8abe-dfa5769b7769",
+              "name": "rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"files\": [\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file_url\": \"<url>\",\n      \"file_base64\": \"<byte>\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"copied_placeholders\": [\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"preassigned_recipient_name\": \"<string>\",\n      \"preassigned_recipient_email\": \"<email>\"\n    }\n  ],\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"text_tags\": false,\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"language\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"fields\": [\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ],\n    [\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      },\n      {\n        \"x\": \"<float>\",\n        \"y\": \"<float>\",\n        \"page\": \"<integer>\",\n        \"placeholder_id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": true,\n        \"label\": \"<string>\",\n        \"value\": \"<string>\",\n        \"api_id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"validation\": \"<string>\",\n        \"fixed_width\": false,\n        \"lock_sign_date\": false,\n        \"date_format\": \"<string>\",\n        \"height\": \"<float>\",\n        \"width\": \"<float>\",\n        \"options\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"default_option\": \"<string>\",\n        \"allow_other\": false\n      }\n    ]\n  ],\n  \"attachment_requests\": [\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    },\n    {\n      \"name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"required\": true\n    }\n  ],\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "762a0675-55a6-4018-995a-c7c6e04cbc23",
+          "name": "Get Template",
+          "request": {
+            "name": "Get Template",
+            "description": {
+              "content": "Returns a template and all associated template data. Supply the unique template ID from either a Create Template request or template page URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "document_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5582fc3a-16a8-4e12-af19-d4be1d6ce950",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"65564a6f-5582-4a3a-ada7-43ec1ceda89f\",\n  \"archived\": false,\n  \"created_at\": \"2026-03-31T15:47:00Z\",\n  \"embedded_edit_url\": \"https://www.signwell.com/edit/template/ce591363-26ef-4e28-9261-4fb74ec9fca3/\",\n  \"language\": \"en\",\n  \"name\": \"conglomerate-glow/sint.mp4\",\n  \"requester_email_address\": \"54.birdperson@oberbrunner.test\",\n  \"status\": \"Available\",\n  \"template_link\": \"https://www.signwell.com/new_doc/04G5HrgwsXPPHFQv/\",\n  \"updated_at\": \"2026-03-31T15:47:00Z\",\n  \"allow_decline\": null,\n  \"allow_reassign\": null,\n  \"api_application_id\": null,\n  \"decline_redirect_url\": null,\n  \"expires_in\": null,\n  \"redirect_url\": null,\n  \"reminders\": null,\n  \"metadata\": null,\n  \"apply_signing_order\": false,\n  \"message\": \"Consequatur possimus delectus officia.\",\n  \"subject\": \"aut\",\n  \"fields\": [\n    [\n      {\n        \"api_id\": \"Signature_43\",\n        \"height\": \"32.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"signature\",\n        \"value\": null,\n        \"width\": \"112.0\",\n        \"x\": 1.1,\n        \"y\": 1.1,\n        \"placeholder_name\": \"Dark Blob Girl 1\"\n      },\n      {\n        \"api_id\": \"Signature_44\",\n        \"height\": \"32.0\",\n        \"page\": 2,\n        \"required\": true,\n        \"type\": \"signature\",\n        \"value\": null,\n        \"width\": \"112.0\",\n        \"x\": 1.1,\n        \"y\": 1.1,\n        \"placeholder_name\": \"Doctor Falcon Strange 2\"\n      }\n    ]\n  ],\n  \"files\": [\n    {\n      \"name\": \"cum.flac\",\n      \"pages_number\": 2\n    }\n  ],\n  \"copied_placeholders\": [\n    {\n      \"id\": \"3\",\n      \"name\": \"Penguin Iii 3\",\n      \"subject\": null,\n      \"message\": null\n    },\n    {\n      \"id\": \"4\",\n      \"name\": \"Red Monarch Skull 4\",\n      \"subject\": null,\n      \"message\": null,\n      \"preassigned_recipient_name\": \"Audrie Romaguera\",\n      \"preassigned_recipient_email\": \"freeman.doyle@kreiger-mclaughlin.example\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"1\",\n      \"name\": \"Dark Blob Girl 1\",\n      \"subject\": null,\n      \"message\": null,\n      \"preassigned_recipient_name\": \"Chung Gerlach\",\n      \"preassigned_recipient_email\": \"danyell_toy@hudson.example\",\n      \"signing_order\": 1,\n      \"attachment_requests\": [\n        {\n          \"name\": \"distant_general/totam.xls\",\n          \"required\": true,\n          \"url\": \"https://www.signwell.com/document_attachments/LG3l69ld2pIRQygpJK8oH56qQYp/?access=49fa240b-cb8b-48e0-ba0e-eda8808457d8\"\n        }\n      ]\n    },\n    {\n      \"id\": \"2\",\n      \"name\": \"Doctor Falcon Strange 2\",\n      \"subject\": null,\n      \"message\": null,\n      \"signing_order\": 2,\n      \"attachment_requests\": []\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"id\": \"48cae2b3-c81d-4e53-a91c-b70def9c01af\",\n      \"group_name\": null,\n      \"recipient_id\": null,\n      \"checkbox_ids\": [\n        \"CheckBox_45\"\n      ],\n      \"validation\": null,\n      \"required\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "520b7a3d-7bac-465c-b741-020aa5bdc2b7",
+              "name": "not_found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not found\",\n  \"meta\": {\n    \"error\": \"record_not_found\",\n    \"message\": \"Couldn't find the template requested\",\n    \"messages\": [\n      \"Couldn't find the template requested\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad297653-ccba-43a2-b9af-e8ce9191e4b5",
+              "name": "rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "440ccbef-8cff-4c99-a2fd-1bcdd619fd51",
+          "name": "Update Template",
+          "request": {
+            "name": "Update Template",
+            "description": {
+              "content": "Updates an existing template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "document_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97f44508-1276-40cb-a53e-0c3a0668545e",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2316597f-56b6-433f-a4a1-8f6356b2a5a5\",\n  \"archived\": false,\n  \"created_at\": \"2026-03-31T15:47:03Z\",\n  \"embedded_edit_url\": \"https://www.signwell.com/edit/template/abbd8d88-9dfe-4a7f-9309-38cc7094a26d/\",\n  \"language\": \"en\",\n  \"name\": \"Broly\",\n  \"requester_email_address\": \"michael_79_jan_vincent@murray-lockman.example\",\n  \"status\": \"Available\",\n  \"template_link\": \"https://www.signwell.com/new_doc/5p8G0m8DiJ0XwNWB/\",\n  \"updated_at\": \"2026-03-31T15:47:04Z\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"api_application_id\": \"cc86d352-f069-44e7-b23f-9a759209e2cd\",\n  \"decline_redirect_url\": \"http://weissnat.example/holly\",\n  \"expires_in\": 1,\n  \"redirect_url\": \"http://williamson.example/patricia.pfeffer\",\n  \"reminders\": true,\n  \"metadata\": {\n    \"some\": \"metadata\"\n  },\n  \"apply_signing_order\": true,\n  \"message\": \"Nisi blanditiis aut ut.\",\n  \"subject\": \"Rem recusandae placeat ut.\",\n  \"fields\": [\n    [\n      {\n        \"api_id\": \"Signature_55\",\n        \"height\": \"32.0\",\n        \"page\": 1,\n        \"required\": true,\n        \"type\": \"signature\",\n        \"value\": null,\n        \"width\": \"112.0\",\n        \"x\": 1.1,\n        \"y\": 1.1,\n        \"placeholder_name\": \"Blink Ix 13\"\n      },\n      {\n        \"api_id\": \"Signature_56\",\n        \"height\": \"32.0\",\n        \"page\": 2,\n        \"required\": true,\n        \"type\": \"signature\",\n        \"value\": null,\n        \"width\": \"112.0\",\n        \"x\": 1.1,\n        \"y\": 1.1,\n        \"placeholder_name\": \"Arclight 14\"\n      }\n    ]\n  ],\n  \"files\": [\n    {\n      \"name\": \"sunt.pptx\",\n      \"pages_number\": 2\n    }\n  ],\n  \"copied_placeholders\": [\n    {\n      \"id\": \"3\",\n      \"name\": \"Bloodwraith 15\",\n      \"subject\": null,\n      \"message\": null\n    },\n    {\n      \"id\": \"4\",\n      \"name\": \"Banshee 16\",\n      \"subject\": null,\n      \"message\": null,\n      \"preassigned_recipient_name\": \"Rev. Sammy Wiza\",\n      \"preassigned_recipient_email\": \"marcus@von.test\"\n    }\n  ],\n  \"placeholders\": [\n    {\n      \"id\": \"1\",\n      \"name\": \"Blink Ix 13\",\n      \"subject\": null,\n      \"message\": null,\n      \"preassigned_recipient_name\": \"Mikaela Legros\",\n      \"preassigned_recipient_email\": \"dexter.hintz@dicki-oberbrunner.example\",\n      \"signing_order\": 1,\n      \"attachment_requests\": [\n        {\n          \"name\": \"fruit-linger/non.js\",\n          \"required\": true,\n          \"url\": \"https://www.signwell.com/document_attachments/5BO4O8z6DDHOqJ04on5OFzAa0e8/?access=ebfcdb81-ce6f-4e6e-b5eb-73495c0691c2\"\n        }\n      ]\n    },\n    {\n      \"id\": \"2\",\n      \"name\": \"Arclight 14\",\n      \"subject\": null,\n      \"message\": null,\n      \"signing_order\": 2,\n      \"attachment_requests\": []\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"id\": \"b5b92745-c30e-462a-80bb-60ae8dab9b2b\",\n      \"group_name\": null,\n      \"recipient_id\": null,\n      \"checkbox_ids\": [\n        \"CheckBox_57\"\n      ],\n      \"validation\": null,\n      \"required\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ceeb7e8-493e-44d4-bf06-a3048862053d",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"message\": \"The request contains invalid key values.\",\n    \"invalid_keys\": [\n      \"name\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94897291-1e52-4b19-89c3-6359ac6fdb0d",
+              "name": "unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"decline_redirect_url\": [\n      \"is not a valid URL\"\n    ],\n    \"redirect_url\": [\n      \"is not a valid URL\"\n    ],\n    \"expires_in\": [\n      \"must be less than or equal to 365\"\n    ],\n    \"metadata\": [\n      \"The key/value pairs must not exceed 50\",\n      \"Check the following keys: [qgtxtpsnyxjwzvbzhnmrjziscxsmgcugpqanuygve], length needs to be less than 40 characters\",\n      \"Check the value of the following keys: [ke50], length needs to be less than 500 characters and must be a string\"\n    ],\n    \"api_application_id\": [\n      \"The provided API application id is invalid\"\n    ],\n    \"message\": [\n      \"is too long (maximum is 4000 characters)\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f876af14-e1a3-4287-96a4-8d46bc1f5c76",
+              "name": "rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"draft\": false,\n  \"expires_in\": \"<integer>\",\n  \"reminders\": true,\n  \"apply_signing_order\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"redirect_url\": \"<url>\",\n  \"allow_decline\": true,\n  \"allow_reassign\": true,\n  \"decline_redirect_url\": \"<url>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"labels\": [\n    {\n      \"name\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\"\n    }\n  ],\n  \"checkbox_groups\": [\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    },\n    {\n      \"group_name\": \"<string>\",\n      \"placeholder_id\": \"<string>\",\n      \"checkbox_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"validation\": \"<string>\",\n      \"required\": false,\n      \"min_value\": \"<integer>\",\n      \"max_value\": \"<integer>\",\n      \"exact_value\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f051a69f-5c11-4d2b-9904-4e8b7f4fefa9",
+          "name": "Delete Template",
+          "request": {
+            "name": "Delete Template",
+            "description": {
+              "content": "Deletes a template. Supply the unique template ID from either a Create Template request or template page URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "document_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9c49b8a2-4f13-45ec-843f-418ae5b0c415",
+              "name": "no content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "902caec0-dc86-42f8-958c-0a4f402e4f12",
+              "name": "not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not found\",\n  \"meta\": {\n    \"error\": \"record_not_found\",\n    \"message\": \"Couldn't find the template requested\",\n    \"messages\": [\n      \"Couldn't find the template requested\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25269913-5bf7-4360-9f55-c6b6803a4605",
+              "name": "rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "document_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.signwell.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3fe538b1-f09e-4bee-864a-0674e7983358",
+    "name": "SignWell Developer API Application Template API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating, managing, and tracking electronic signature workflows.\n\nContact Support:\n Email: support@signwell.com",
+      "type": "text/plain"
+    }
+  }
+}
