@@ -32,6 +32,16 @@ tags:
 - Templates
 - Workflows
 - HIPAA
+- SOC 2
+tags_raw:
+- E-Signature
+- Electronic Signature
+- Documents
+- PDF
+- Signing
+- Templates
+- Workflows
+- HIPAA
 - SOC2
 apis:
 - aid: signwell:signwell-api-application-api
@@ -172,6 +182,8 @@ apis:
   humanURL: https://developers.signwell.com/
   baseURL: https://www.signwell.com/api/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
