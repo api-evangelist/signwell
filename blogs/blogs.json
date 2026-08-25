@@ -13,7 +13,7 @@
       "source": "https://www.signwell.com/resources/feed/",
       "feed_url": "https://www.signwell.com/resources/feed/",
       "title": "",
-      "saved": 2,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -21,8 +21,7 @@
       "feed_url": "https://www.linkedin.com/company/signwellapp",
       "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "fetch_failed: HTTPError"
+      "method": "none"
     },
     {
       "source": "https://www.signwell.com/resources/",
@@ -33,5 +32,5 @@
     }
   ],
   "post_count": 18,
-  "fetched": "2026-08-15T12:11:08Z"
+  "fetched": "2026-08-22T20:20:02Z"
 }
