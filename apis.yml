@@ -107,6 +107,8 @@ apis:
   humanURL: https://developers.signwell.com/
   baseURL: https://www.signwell.com/api/v1
   tags:
+  - Documents
+  tags_raw:
   - Document
   properties:
   - type: OpenAPI
@@ -173,6 +175,8 @@ apis:
   humanURL: https://developers.signwell.com/
   baseURL: https://www.signwell.com/api/v1
   tags:
+  - Templates
+  tags_raw:
   - Template
   properties:
   - type: OpenAPI
