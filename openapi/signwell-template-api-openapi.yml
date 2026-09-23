@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: SignWell Developer API Application Template API
+  title: SignWell Developer Template API
   description: API for creating, managing, and tracking electronic signature workflows.
   version: v1
   termsOfService: https://www.signwell.com/terms/
@@ -699,51 +699,116 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
-    RateLimitErrorResponse:
+    CheckboxValidation:
+      type: string
+      enum:
+      - minimum
+      - maximum
+      - range
+      - exact
+      description: Validation rule for checkbox groups
+    CheckboxGroupInfo:
       type: object
-      description: Rate limit exceeded error response (HTTP 429)
+      description: Checkbox group configuration
       properties:
-        error:
+        id:
           type: string
-          description: Rate limit error message indicating the limit and reset time
-      required:
-      - error
-    AttachmentRequestInfo:
-      type: object
-      description: Attachment request information
-      properties:
-        name:
-          type: string
-          description: Name of the attachment request
-        url:
-          type: string
-          format: url
-          description: URL of the uploaded attachment (when available)
+          format: uuid
+          description: Checkbox group ID
+        group_name:
+          type:
+          - string
+          - 'null'
+          description: Name of the checkbox group
+        recipient_id:
+          type:
+          - string
+          - 'null'
+          description: Recipient ID associated with the group
+        checkbox_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of checkboxes in this group
+        validation:
+          $ref: '#/components/schemas/CheckboxValidation'
         required:
           type: boolean
-          description: Whether the attachment is required
+          description: Whether at least one checkbox must be checked
+        min_value:
+          type: integer
+          description: Minimum number of checkboxes to check
+        max_value:
+          type: integer
+          description: Maximum number of checkboxes to check
+        exact_value:
+          type: integer
+          description: Exact number of checkboxes that must be checked
       required:
-      - name
+      - id
+      - checkbox_ids
       - required
-    Files:
+    LabelsUpdate:
       type: array
-      description: 'Document files can be uploaded by specifying a file URL or base64 string. Either `file_url` or `file_base64` must be present (not both). Valid file types are: .pdf, .doc, .docx, .pages, .ppt, .pptx, .key, .xls, .xlsx, .numbers, .jpg, .jpeg, .png, .tiff, .tif, .webp, .html, and .htm'
+      description: Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell. A document can have multiple labels. Updating labels on a document will replace any existing labels for that document.
       items:
-        type: object
-        properties:
-          name:
-            type: string
-            description: Name of the file that will be uploaded.
-          file_url:
-            type: string
-            format: url
-            description: Publicly available URL of the file to be uploaded.
-          file_base64:
-            type: string
-            format: byte
-            description: A RFC 4648 base64 string of the file to be uploaded.
-        required:
-        - name
+        $ref: '#/components/schemas/LabelRequest'
+    DateFormat:
+      type: string
+      enum:
+      - MM/DD/YYYY
+      - DD/MM/YYYY
+      - YYYY/MM/DD
+      - Month DD, YYYY
+      - MM/DD/YYYY hh:mm:ss a
+      description: 'Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY'
+    TemplateId:
+      type: string
+      format: uuid
+      description: Unique identifier for a template.
+    DocumentTemplateListResponse:
+      type: object
+      description: List of templates with pagination
+      properties:
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentTemplateResponse'
+        current_page:
+          type: integer
+        next_page:
+          type:
+          - integer
+          - 'null'
+        previous_page:
+          type:
+          - integer
+          - 'null'
+        total_count:
+          type: integer
+        total_pages:
+          type: integer
+      required:
+      - templates
+      - current_page
+      - total_count
+      - total_pages
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      properties:
+        errors:
+          type: object
+          additionalProperties: true
+          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+      required:
+      - errors
+    Limit:
+      type: integer
+      minimum: 1
+      maximum: 50
+      default: 10
+      description: The number of documents to fetch. Defaults to 10, max is 50.
     Placeholders:
       type: array
       description: Placeholders are generally job roles that must complete and/or sign the document. For example, a placeholder might be “Client” or “Legal Department”. When a document is created from the template, you assign a person to each placeholder.
@@ -765,6 +830,24 @@ components:
             description: In some cases, it may be necessary to pre-fill the name and email for a placeholder because it will always be the same person for all documents created from this template. This sets the email.
         required:
         - id
+        - name
+    CopiedPlaceholders:
+      type: array
+      description: Copied placeholders are emailed the final document once it has been completed by all recipients.
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the placeholder.
+          preassigned_recipient_name:
+            type: string
+            description: In some cases, it may be necessary to pre-fill the name and email for a placeholder because it will always be the same person for all documents created from this template. This sets the name.
+          preassigned_recipient_email:
+            type: string
+            format: email
+            description: In some cases, it may be necessary to pre-fill the name and email for a placeholder because it will always be the same person for all documents created from this template. This sets the email.
+        required:
         - name
     TemplateFields:
       type: array
@@ -851,44 +934,286 @@ components:
           - page
           - placeholder_id
           - type
-    Page:
-      type: integer
-      minimum: 1
-      default: 1
-      description: The page number for pagination. Defaults to the first page.
-    TemplateAttachmentRequests:
+    DocumentTemplateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        api_application_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        requester_email_address:
+          type: string
+          format: email
+        custom_requester_name:
+          type:
+          - string
+          - 'null'
+        custom_requester_email:
+          type:
+          - string
+          - 'null'
+          format: email
+        name:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        placeholders:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              subject:
+                type:
+                - string
+                - 'null'
+              message:
+                type:
+                - string
+                - 'null'
+              preassigned_recipient_name:
+                type: string
+              preassigned_recipient_email:
+                type: string
+              signing_order:
+                type: integer
+              attachment_requests:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttachmentRequestInfo'
+            required:
+            - name
+        copied_placeholders:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              placeholder_id:
+                type: string
+              name:
+                type: string
+              subject:
+                type:
+                - string
+                - 'null'
+              message:
+                type:
+                - string
+                - 'null'
+              preassigned_recipient_name:
+                type: string
+              preassigned_recipient_email:
+                type: string
+            required:
+            - name
+        status:
+          type: string
+        reminders:
+          type:
+          - boolean
+          - 'null'
+        archived:
+          type: boolean
+        embedded_edit_url:
+          type:
+          - string
+          - 'null'
+          format: url
+        template_link:
+          type: string
+          format: url
+        template_id:
+          type:
+          - string
+          - 'null'
+        apply_signing_order:
+          type: boolean
+        redirect_url:
+          type:
+          - string
+          - 'null'
+          format: url
+        decline_redirect_url:
+          type:
+          - string
+          - 'null'
+          format: url
+        language:
+          type: string
+        expires_in:
+          type:
+          - integer
+          - 'null'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
+        fields:
+          type: array
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                x:
+                  type: number
+                  format: float
+                y:
+                  type: number
+                  format: float
+                page:
+                  type: integer
+                recipient:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    name:
+                      type: string
+                  required:
+                  - email
+                  - name
+                api_id:
+                  type: string
+                  format: uuid
+                name:
+                  type:
+                  - string
+                  - 'null'
+                date_format:
+                  $ref: '#/components/schemas/DateFormat'
+                fixed_width:
+                  type: boolean
+                formula:
+                  type: string
+                label:
+                  type: string
+                lock_sign_date:
+                  type: boolean
+                required:
+                  type: boolean
+                type:
+                  $ref: '#/components/schemas/FieldType'
+                validation:
+                  $ref: '#/components/schemas/TextValidation'
+                value:
+                  oneOf:
+                  - type: string
+                  - type: boolean
+                  - type: number
+                height:
+                  type: string
+                width:
+                  type: string
+                recipient_id:
+                  type:
+                  - string
+                  - 'null'
+                signing_elements_group_id:
+                  type: string
+                  format: uuid
+                placeholder_name:
+                  type: string
+                options:
+                  type: array
+                  description: Dropdown options (for dropdown/select fields)
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      api_id:
+                        type: string
+                      is_other:
+                        type: boolean
+                default_option:
+                  type: string
+                  description: Default selected option
+                allow_other:
+                  type: boolean
+                  description: Whether "Other" option is allowed
+              required:
+              - x
+              - y
+              - page
+        allow_decline:
+          type:
+          - boolean
+          - 'null'
+        allow_reassign:
+          type:
+          - boolean
+          - 'null'
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelInfo'
+        checkbox_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckboxGroupInfo'
+      required:
+      - id
+    TemplateCheckboxGroups:
       type: array
-      description: Attachments that a recipient must upload to complete the signing process. Attachment requests are shown after all document fields have been completed.
+      description: Checkbox fields that are placed on a document can be grouped with selection requirements. At least 2 checkbox fields in an array of fields must be assigned to the same recipient.
       items:
         type: object
         properties:
-          name:
+          group_name:
             type: string
-            description: Name of the requested attachment.
+            description: A unique identifier for the checkbox group.
           placeholder_id:
             type: string
-            description: Unique identifier of the recipient that will view the attachment request.
+            description: The recipient ID associated with the checkbox group.
+          checkbox_ids:
+            type: array
+            items:
+              type: string
+              description: A unique identifier for each checkbox in a group. ID must match the api_id of the checkbox field.
+          validation:
+            $ref: '#/components/schemas/CheckboxValidation'
+            description: 'Set requirements for the group of one or multiple selections by the recipient. Defaults to minimum. Validation values: minimum, maximum, exact, range.'
           required:
             type: boolean
-            default: true
-            description: Whether the recipient will need to upload the attachment to successfully complete/sign the document. Defaults to `true`.
+            default: false
+            description: Whether the group must be completed by the recipient. Defaults to false.
+          min_value:
+            type: integer
+            description: 'The minimum number of checkboxes that must be checked in the group. (Only for validation: minimum and range)'
+          max_value:
+            type: integer
+            description: 'The maximum number of checkboxes that can be checked in the group. (Only for validation: maximum and range)'
+          exact_value:
+            type: integer
+            description: 'The exact number of checkboxes that must be checked in the group. (Only for validation: exact)'
         required:
-        - name
+        - group_name
         - placeholder_id
-    Limit:
-      type: integer
-      minimum: 1
-      maximum: 50
-      default: 10
-      description: The number of documents to fetch. Defaults to 10, max is 50.
-    CheckboxValidation:
-      type: string
-      enum:
-      - minimum
-      - maximum
-      - range
-      - exact
-      description: Validation rule for checkbox groups
+        - checkbox_ids
     TextValidation:
       type: string
       enum:
@@ -904,26 +1229,6 @@ components:
       - us_bank_routing_number
       - us_bank_account_number
       description: Validation rule for text fields
-    Labels:
-      type: array
-      description: Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell. A document can have multiple labels.
-      items:
-        $ref: '#/components/schemas/LabelRequest'
-    LabelInfo:
-      type: object
-      description: Label information
-      properties:
-        id:
-          type: string
-          description: Label ID
-        name:
-          type: string
-          description: Label name
-    LabelsUpdate:
-      type: array
-      description: Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell. A document can have multiple labels. Updating labels on a document will replace any existing labels for that document.
-      items:
-        $ref: '#/components/schemas/LabelRequest'
     DocumentTemplateUpdateRequest:
       type: object
       properties:
@@ -981,98 +1286,30 @@ components:
           $ref: '#/components/schemas/LabelsUpdate'
         checkbox_groups:
           $ref: '#/components/schemas/TemplateCheckboxGroups'
-    FileInfo:
-      type: object
-      description: File information
-      properties:
-        name:
-          type: string
-          description: File name
-        pages_number:
-          type: integer
-          description: Number of pages in the file
-      required:
-      - name
-      - pages_number
-    TemplateId:
-      type: string
-      format: uuid
-      description: Unique identifier for a template.
-    LabelRequest:
-      type: object
-      description: Labels can be used to organize documents and templates in a way that can make it easy to find using the document search/template search in SignWell. Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell.
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    CopiedPlaceholders:
+    Page:
+      type: integer
+      minimum: 1
+      default: 1
+      description: The page number for pagination. Defaults to the first page.
+    TemplateAttachmentRequests:
       type: array
-      description: Copied placeholders are emailed the final document once it has been completed by all recipients.
+      description: Attachments that a recipient must upload to complete the signing process. Attachment requests are shown after all document fields have been completed.
       items:
         type: object
         properties:
           name:
             type: string
-            description: Name of the placeholder.
-          preassigned_recipient_name:
+            description: Name of the requested attachment.
+          placeholder_id:
             type: string
-            description: In some cases, it may be necessary to pre-fill the name and email for a placeholder because it will always be the same person for all documents created from this template. This sets the name.
-          preassigned_recipient_email:
-            type: string
-            format: email
-            description: In some cases, it may be necessary to pre-fill the name and email for a placeholder because it will always be the same person for all documents created from this template. This sets the email.
+            description: Unique identifier of the recipient that will view the attachment request.
+          required:
+            type: boolean
+            default: true
+            description: Whether the recipient will need to upload the attachment to successfully complete/sign the document. Defaults to `true`.
         required:
         - name
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        meta:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error code identifier
-            message:
-              type: string
-              description: Detailed error message
-            messages:
-              type: array
-              items:
-                type: string
-              description: List of error messages
-          required:
-          - error
-          - message
-    DocumentTemplateListResponse:
-      type: object
-      description: List of templates with pagination
-      properties:
-        templates:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentTemplateResponse'
-        current_page:
-          type: integer
-        next_page:
-          type: integer
-          nullable: true
-        previous_page:
-          type: integer
-          nullable: true
-        total_count:
-          type: integer
-        total_pages:
-          type: integer
-      required:
-      - templates
-      - current_page
-      - total_count
-      - total_pages
+        - placeholder_id
     FieldType:
       type: string
       enum:
@@ -1092,6 +1329,25 @@ components:
       - autofill_title
       - autofill_date_signed
       description: Type of signing field
+    Files:
+      type: array
+      description: 'Document files can be uploaded by specifying a file URL or base64 string. Either `file_url` or `file_base64` must be present (not both). Valid file types are: .pdf, .doc, .docx, .pages, .ppt, .pptx, .key, .xls, .xlsx, .numbers, .jpg, .jpeg, .png, .tiff, .tif, .webp, .html, and .htm'
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the file that will be uploaded.
+          file_url:
+            type: string
+            format: url
+            description: Publicly available URL of the file to be uploaded.
+          file_base64:
+            type: string
+            format: byte
+            description: A RFC 4648 base64 string of the file to be uploaded.
+        required:
+        - name
     DropdownOption:
       oneOf:
       - type: string
@@ -1114,269 +1370,19 @@ components:
         required:
         - name
       description: A dropdown option - either a simple string or a detailed object with name and optional api_id
-    DocumentTemplateResponse:
+    LabelRequest:
       type: object
+      description: Labels can be used to organize documents and templates in a way that can make it easy to find using the document search/template search in SignWell. Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell.
       properties:
-        id:
-          type: string
-        api_application_id:
-          type: string
-          format: uuid
-          nullable: true
-        requester_email_address:
-          type: string
-          format: email
-        custom_requester_name:
-          type: string
-          nullable: true
-        custom_requester_email:
-          type: string
-          format: email
-          nullable: true
         name:
           type: string
-        subject:
-          type: string
-        message:
-          type: string
-        metadata:
-          type: object
-          nullable: true
-          additionalProperties:
-            type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        placeholders:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              subject:
-                type: string
-                nullable: true
-              message:
-                type: string
-                nullable: true
-              preassigned_recipient_name:
-                type: string
-              preassigned_recipient_email:
-                type: string
-              signing_order:
-                type: integer
-              attachment_requests:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AttachmentRequestInfo'
-            required:
-            - name
-        copied_placeholders:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              placeholder_id:
-                type: string
-              name:
-                type: string
-              subject:
-                type: string
-                nullable: true
-              message:
-                type: string
-                nullable: true
-              preassigned_recipient_name:
-                type: string
-              preassigned_recipient_email:
-                type: string
-            required:
-            - name
-        status:
-          type: string
-        reminders:
-          type: boolean
-          nullable: true
-        archived:
-          type: boolean
-        embedded_edit_url:
-          type: string
-          format: url
-          nullable: true
-        template_link:
-          type: string
-          format: url
-        template_id:
-          type: string
-          nullable: true
-        apply_signing_order:
-          type: boolean
-        redirect_url:
-          type: string
-          format: url
-          nullable: true
-        decline_redirect_url:
-          type: string
-          format: url
-          nullable: true
-        language:
-          type: string
-        expires_in:
-          type: integer
-          nullable: true
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileInfo'
-        fields:
-          type: array
-          items:
-            type: array
-            items:
-              type: object
-              properties:
-                x:
-                  type: number
-                  format: float
-                y:
-                  type: number
-                  format: float
-                page:
-                  type: integer
-                recipient:
-                  type: object
-                  properties:
-                    email:
-                      type: string
-                      format: email
-                    name:
-                      type: string
-                  required:
-                  - email
-                  - name
-                api_id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-                  nullable: true
-                date_format:
-                  $ref: '#/components/schemas/DateFormat'
-                fixed_width:
-                  type: boolean
-                formula:
-                  type: string
-                label:
-                  type: string
-                lock_sign_date:
-                  type: boolean
-                required:
-                  type: boolean
-                type:
-                  $ref: '#/components/schemas/FieldType'
-                validation:
-                  $ref: '#/components/schemas/TextValidation'
-                value:
-                  oneOf:
-                  - type: string
-                  - type: boolean
-                  - type: number
-                  nullable: true
-                height:
-                  type: string
-                width:
-                  type: string
-                recipient_id:
-                  type: string
-                  nullable: true
-                signing_elements_group_id:
-                  type: string
-                  format: uuid
-                placeholder_name:
-                  type: string
-                options:
-                  type: array
-                  description: Dropdown options (for dropdown/select fields)
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      api_id:
-                        type: string
-                      is_other:
-                        type: boolean
-                default_option:
-                  type: string
-                  description: Default selected option
-                allow_other:
-                  type: boolean
-                  description: Whether "Other" option is allowed
-              required:
-              - x
-              - y
-              - page
-        allow_decline:
-          type: boolean
-          nullable: true
-        allow_reassign:
-          type: boolean
-          nullable: true
-        labels:
-          type: array
-          items:
-            $ref: '#/components/schemas/LabelInfo'
-        checkbox_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/CheckboxGroupInfo'
       required:
-      - id
-    TemplateCheckboxGroups:
+      - name
+    Labels:
       type: array
-      description: Checkbox fields that are placed on a document can be grouped with selection requirements. At least 2 checkbox fields in an array of fields must be assigned to the same recipient.
+      description: Labels can be used to organize documents in a way that can make it easy to find using the document search in SignWell. A document can have multiple labels.
       items:
-        type: object
-        properties:
-          group_name:
-            type: string
-            description: A unique identifier for the checkbox group.
-          placeholder_id:
-            type: string
-            description: The recipient ID associated with the checkbox group.
-          checkbox_ids:
-            type: array
-            items:
-              type: string
-              description: A unique identifier for each checkbox in a group. ID must match the api_id of the checkbox field.
-          validation:
-            $ref: '#/components/schemas/CheckboxValidation'
-            description: 'Set requirements for the group of one or multiple selections by the recipient. Defaults to minimum. Validation values: minimum, maximum, exact, range.'
-          required:
-            type: boolean
-            default: false
-            description: Whether the group must be completed by the recipient. Defaults to false.
-          min_value:
-            type: integer
-            description: 'The minimum number of checkboxes that must be checked in the group. (Only for validation: minimum and range)'
-          max_value:
-            type: integer
-            description: 'The maximum number of checkboxes that can be checked in the group. (Only for validation: maximum and range)'
-          exact_value:
-            type: integer
-            description: 'The exact number of checkboxes that must be checked in the group. (Only for validation: exact)'
-        required:
-        - group_name
-        - placeholder_id
-        - checkbox_ids
+        $ref: '#/components/schemas/LabelRequest'
     DocumentTemplateRequest:
       type: object
       properties:
@@ -1454,65 +1460,79 @@ components:
       required:
       - files
       - placeholders
-    CheckboxGroupInfo:
+    RateLimitErrorResponse:
       type: object
-      description: Checkbox group configuration
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+    AttachmentRequestInfo:
+      type: object
+      description: Attachment request information
+      properties:
+        name:
+          type: string
+          description: Name of the attachment request
+        url:
+          type: string
+          format: url
+          description: URL of the uploaded attachment (when available)
+        required:
+          type: boolean
+          description: Whether the attachment is required
+      required:
+      - name
+      - required
+    FileInfo:
+      type: object
+      description: File information
+      properties:
+        name:
+          type: string
+          description: File name
+        pages_number:
+          type: integer
+          description: Number of pages in the file
+      required:
+      - name
+      - pages_number
+    LabelInfo:
+      type: object
+      description: Label information
       properties:
         id:
           type: string
-          format: uuid
-          description: Checkbox group ID
-        group_name:
+          description: Label ID
+        name:
           type: string
-          nullable: true
-          description: Name of the checkbox group
-        recipient_id:
-          type: string
-          nullable: true
-          description: Recipient ID associated with the group
-        checkbox_ids:
-          type: array
-          items:
-            type: string
-          description: IDs of checkboxes in this group
-        validation:
-          $ref: '#/components/schemas/CheckboxValidation'
-          nullable: true
-        required:
-          type: boolean
-          description: Whether at least one checkbox must be checked
-        min_value:
-          type: integer
-          description: Minimum number of checkboxes to check
-        max_value:
-          type: integer
-          description: Maximum number of checkboxes to check
-        exact_value:
-          type: integer
-          description: Exact number of checkboxes that must be checked
-      required:
-      - id
-      - checkbox_ids
-      - required
-    ValidationErrorResponse:
-      type: object
-      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
-      properties:
-        errors:
-          type: object
-          additionalProperties: true
-          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
-      required:
-      - errors
-    DateFormat:
-      type: string
-      enum:
-      - MM/DD/YYYY
-      - DD/MM/YYYY
-      - YYYY/MM/DD
-      - Month DD, YYYY
-      - MM/DD/YYYY hh:mm:ss a
-      description: 'Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY'
+          description: Label name
   securitySchemes:
     api_key:
       type: apiKey

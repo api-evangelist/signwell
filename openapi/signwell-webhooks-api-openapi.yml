@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: SignWell Developer API Application Webhooks API
+  title: SignWell Developer Webhooks API
   description: API for creating, managing, and tracking electronic signature workflows.
   version: v1
   termsOfService: https://www.signwell.com/terms/
@@ -153,37 +153,6 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
-    WebhookResponse:
-      type: object
-      description: Webhook subscription
-      properties:
-        id:
-          type: string
-          format: uuid
-        callback_url:
-          type: string
-          format: url
-        api_application_id:
-          type: string
-          format: uuid
-          nullable: true
-      required:
-      - id
-      - callback_url
-    WebhookListResponse:
-      type: array
-      description: List of webhook subscriptions
-      items:
-        $ref: '#/components/schemas/WebhookResponse'
-    RateLimitErrorResponse:
-      type: object
-      description: Rate limit exceeded error response (HTTP 429)
-      properties:
-        error:
-          type: string
-          description: Rate limit error message indicating the limit and reset time
-      required:
-      - error
     ErrorResponse:
       type: object
       description: Standard error response
@@ -208,6 +177,38 @@ components:
           required:
           - error
           - message
+    WebhookResponse:
+      type: object
+      description: Webhook subscription
+      properties:
+        id:
+          type: string
+          format: uuid
+        callback_url:
+          type: string
+          format: url
+        api_application_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      required:
+      - id
+      - callback_url
+    WebhookListResponse:
+      type: array
+      description: List of webhook subscriptions
+      items:
+        $ref: '#/components/schemas/WebhookResponse'
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
   securitySchemes:
     api_key:
       type: apiKey

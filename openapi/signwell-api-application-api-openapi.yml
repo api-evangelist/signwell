@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: SignWell Developer API Application API
   description: API for creating, managing, and tracking electronic signature workflows.
@@ -121,6 +121,30 @@ components:
           description: Rate limit error message indicating the limit and reset time
       required:
       - error
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
     ApiApplicationResponse:
       type: object
       description: API application details
@@ -131,10 +155,11 @@ components:
         name:
           type: string
         callback_urls:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
         created_at:
           type: string
           format: date-time
@@ -163,46 +188,26 @@ components:
           type: object
           properties:
             button_text_color:
-              type: string
-              nullable: true
+              type:
+              - string
+              - 'null'
             buttons_border_radius:
               type: integer
             custom_logo_file:
-              type: string
-              nullable: true
+              type:
+              - string
+              - 'null'
             link_text_color:
-              type: string
-              nullable: true
+              type:
+              - string
+              - 'null'
             primary_color:
-              type: string
-              nullable: true
+              type:
+              - string
+              - 'null'
       required:
       - id
       - name
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        meta:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error code identifier
-            message:
-              type: string
-              description: Detailed error message
-            messages:
-              type: array
-              items:
-                type: string
-              description: List of error messages
-          required:
-          - error
-          - message
   securitySchemes:
     api_key:
       type: apiKey

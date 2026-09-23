@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: SignWell Developer API Application Me API
+  title: SignWell Developer Me API
   description: API for creating, managing, and tracking electronic signature workflows.
   version: v1
   termsOfService: https://www.signwell.com/terms/
@@ -95,6 +95,128 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
+    MeResponse:
+      type: object
+      description: Account information associated with the API key
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Membership ID
+        role:
+          type: string
+          description: Role within the account (e.g. owner, admin, member)
+        archived:
+          type: boolean
+        user:
+          type: object
+          description: The authenticated user
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            email:
+              type: string
+              format: email
+            has_google_registration:
+              type: boolean
+            first_name:
+              type: string
+            preferences:
+              type: object
+              properties:
+                sales_document:
+                  type: boolean
+                time_zone:
+                  type: string
+                smart_fields:
+                  type: boolean
+          required:
+          - id
+          - name
+          - email
+        account:
+          $ref: '#/components/schemas/AccountInfoResponse'
+        workspace:
+          $ref: '#/components/schemas/AccountInfoResponse'
+        contact:
+          type: object
+          description: The contact record for the authenticated user
+          properties:
+            id:
+              type: string
+              format: uuid
+            email:
+              type: string
+              format: email
+            name:
+              type: string
+            company_name:
+              type:
+              - string
+              - 'null'
+            phone_number:
+              type:
+              - string
+              - 'null'
+            alt_phone_number:
+              type:
+              - string
+              - 'null'
+            website:
+              type:
+              - string
+              - 'null'
+            initials:
+              type: string
+            archived:
+              type: boolean
+          required:
+          - id
+          - email
+          - name
+      required:
+      - id
+      - role
+      - user
+      - account
+      - workspace
+      - contact
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
     AccountInfoResponse:
       type: object
       description: Account or workspace information
@@ -157,8 +279,9 @@ components:
             mute_branding:
               type: boolean
             redirect_url:
-              type: string
-              nullable: true
+              type:
+              - string
+              - 'null'
             separate_audit_pdf:
               type: boolean
             separate_completed_file:
@@ -169,124 +292,6 @@ components:
       - id
       - name
       - plan_tier
-    MeResponse:
-      type: object
-      description: Account information associated with the API key
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Membership ID
-        role:
-          type: string
-          description: Role within the account (e.g. owner, admin, member)
-        archived:
-          type: boolean
-        user:
-          type: object
-          description: The authenticated user
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            email:
-              type: string
-              format: email
-            has_google_registration:
-              type: boolean
-            first_name:
-              type: string
-            preferences:
-              type: object
-              properties:
-                sales_document:
-                  type: boolean
-                time_zone:
-                  type: string
-                smart_fields:
-                  type: boolean
-          required:
-          - id
-          - name
-          - email
-        account:
-          $ref: '#/components/schemas/AccountInfoResponse'
-        workspace:
-          $ref: '#/components/schemas/AccountInfoResponse'
-        contact:
-          type: object
-          description: The contact record for the authenticated user
-          properties:
-            id:
-              type: string
-              format: uuid
-            email:
-              type: string
-              format: email
-            name:
-              type: string
-            company_name:
-              type: string
-              nullable: true
-            phone_number:
-              type: string
-              nullable: true
-            alt_phone_number:
-              type: string
-              nullable: true
-            website:
-              type: string
-              nullable: true
-            initials:
-              type: string
-            archived:
-              type: boolean
-          required:
-          - id
-          - email
-          - name
-      required:
-      - id
-      - role
-      - user
-      - account
-      - workspace
-      - contact
-    RateLimitErrorResponse:
-      type: object
-      description: Rate limit exceeded error response (HTTP 429)
-      properties:
-        error:
-          type: string
-          description: Rate limit error message indicating the limit and reset time
-      required:
-      - error
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        meta:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error code identifier
-            message:
-              type: string
-              description: Detailed error message
-            messages:
-              type: array
-              items:
-                type: string
-              description: List of error messages
-          required:
-          - error
-          - message
   securitySchemes:
     api_key:
       type: apiKey

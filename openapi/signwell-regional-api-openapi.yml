@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: SignWell Developer API Application Regional API
+  title: SignWell Developer Regional API
   description: API for creating, managing, and tracking electronic signature workflows.
   version: v1
   termsOfService: https://www.signwell.com/terms/
@@ -75,6 +75,20 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
+    CompletedDocumentId:
+      type: string
+      format: uuid
+      description: Unique identifier for a completed document.
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      properties:
+        errors:
+          type: object
+          additionalProperties: true
+          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+      required:
+      - errors
     RateLimitErrorResponse:
       type: object
       description: Rate limit exceeded error response (HTTP 429)
@@ -84,20 +98,10 @@ components:
           description: Rate limit error message indicating the limit and reset time
       required:
       - error
-    UrlOnly:
+    ObjectOnly:
       type: boolean
       default: false
-      description: Whether to return the URL of the completed PDF or the actual PDF content. Defaults to `false`.
-    Nom151UrlResponse:
-      type: object
-      description: NOM-151 download URL returned when url_only=true
-      properties:
-        file_url:
-          type: string
-          format: url
-          description: Public URL to download the certificate ZIP file
-      required:
-      - file_url
+      description: If true, returns raw NOM-151 constancia certificate object as JSON instead of a zip file or URL.
     ErrorResponse:
       type: object
       description: Standard error response
@@ -122,24 +126,20 @@ components:
           required:
           - error
           - message
-    ObjectOnly:
+    Nom151UrlResponse:
+      type: object
+      description: NOM-151 download URL returned when url_only=true
+      properties:
+        file_url:
+          type: string
+          format: url
+          description: Public URL to download the certificate ZIP file
+      required:
+      - file_url
+    UrlOnly:
       type: boolean
       default: false
-      description: If true, returns raw NOM-151 constancia certificate object as JSON instead of a zip file or URL.
-    ValidationErrorResponse:
-      type: object
-      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
-      properties:
-        errors:
-          type: object
-          additionalProperties: true
-          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
-      required:
-      - errors
-    CompletedDocumentId:
-      type: string
-      format: uuid
-      description: Unique identifier for a completed document.
+      description: Whether to return the URL of the completed PDF or the actual PDF content. Defaults to `false`.
   securitySchemes:
     api_key:
       type: apiKey
