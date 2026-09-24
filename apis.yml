@@ -77,8 +77,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - type: GraphQL
-    url: graphql/signwell-graphql.md
 - aid: signwell:signwell-bulk-send-api
   name: SignWell Bulk Send API
   description: Send a document to multiple recipients in batch using templates.
@@ -99,8 +97,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - type: GraphQL
-    url: graphql/signwell-graphql.md
 - aid: signwell:signwell-document-api
   name: SignWell Document API
   description: Create, send, and manage documents for electronic signing.
@@ -123,8 +119,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - type: GraphQL
-    url: graphql/signwell-graphql.md
 - aid: signwell:signwell-me-api
   name: SignWell Me API
   description: Retrieve account information for the authenticated API key.
@@ -145,8 +139,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - type: GraphQL
-    url: graphql/signwell-graphql.md
 - aid: signwell:signwell-regional-api
   name: SignWell Regional API
   description: Access region-specific endpoints for data residency compliance.
@@ -167,8 +159,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - type: GraphQL
-    url: graphql/signwell-graphql.md
 - aid: signwell:signwell-template-api
   name: SignWell Template API
   description: Create and manage reusable document templates.
@@ -191,8 +181,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - type: GraphQL
-    url: graphql/signwell-graphql.md
 - aid: signwell:signwell-webhooks-api
   name: SignWell Webhooks API
   description: Subscribe to document lifecycle events via webhook callbacks.
@@ -215,8 +203,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
-  - type: GraphQL
-    url: graphql/signwell-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/signwell-agentic-access.yml
