@@ -95,6 +95,105 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+    AccountInfoResponse:
+      type: object
+      description: Account or workspace information
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        plan_tier:
+          type: string
+        active_templates:
+          type: integer
+        can_create_template:
+          type: boolean
+        can_create_tracking_document:
+          type: boolean
+        can_create_completion_document:
+          type: boolean
+        active_users:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              email:
+                type: string
+                format: email
+              has_google_registration:
+                type: boolean
+            required:
+            - id
+            - name
+            - email
+        preferences:
+          type: object
+          properties:
+            date_format:
+              type: string
+            days_until_links_expire:
+              type: integer
+            disable_apply_everywhere:
+              type: boolean
+            disable_apply_everywhere_effective:
+              type: boolean
+            disable_drawn_signatures:
+              type: boolean
+            disable_typed_signatures:
+              type: boolean
+            disable_uploaded_signatures:
+              type: boolean
+            enable_redirect:
+              type: boolean
+            hide_document_id_in_audit:
+              type: boolean
+            mute_branding:
+              type: boolean
+            redirect_url:
+              type:
+              - string
+              - 'null'
+            separate_audit_pdf:
+              type: boolean
+            separate_completed_file:
+              type: boolean
+            enable_nom151_compliance:
+              type: boolean
+      required:
+      - id
+      - name
+      - plan_tier
     MeResponse:
       type: object
       description: Account information associated with the API key
@@ -184,30 +283,6 @@ components:
       - account
       - workspace
       - contact
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        meta:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error code identifier
-            message:
-              type: string
-              description: Detailed error message
-            messages:
-              type: array
-              items:
-                type: string
-              description: List of error messages
-          required:
-          - error
-          - message
     RateLimitErrorResponse:
       type: object
       description: Rate limit exceeded error response (HTTP 429)
@@ -217,81 +292,6 @@ components:
           description: Rate limit error message indicating the limit and reset time
       required:
       - error
-    AccountInfoResponse:
-      type: object
-      description: Account or workspace information
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        plan_tier:
-          type: string
-        active_templates:
-          type: integer
-        can_create_template:
-          type: boolean
-        can_create_tracking_document:
-          type: boolean
-        can_create_completion_document:
-          type: boolean
-        active_users:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              name:
-                type: string
-              email:
-                type: string
-                format: email
-              has_google_registration:
-                type: boolean
-            required:
-            - id
-            - name
-            - email
-        preferences:
-          type: object
-          properties:
-            date_format:
-              type: string
-            days_until_links_expire:
-              type: integer
-            disable_apply_everywhere:
-              type: boolean
-            disable_apply_everywhere_effective:
-              type: boolean
-            disable_drawn_signatures:
-              type: boolean
-            disable_typed_signatures:
-              type: boolean
-            disable_uploaded_signatures:
-              type: boolean
-            enable_redirect:
-              type: boolean
-            hide_document_id_in_audit:
-              type: boolean
-            mute_branding:
-              type: boolean
-            redirect_url:
-              type:
-              - string
-              - 'null'
-            separate_audit_pdf:
-              type: boolean
-            separate_completed_file:
-              type: boolean
-            enable_nom151_compliance:
-              type: boolean
-      required:
-      - id
-      - name
-      - plan_tier
   securitySchemes:
     api_key:
       type: apiKey
