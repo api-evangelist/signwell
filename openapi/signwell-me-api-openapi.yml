@@ -95,30 +95,15 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    RateLimitErrorResponse:
       type: object
-      description: Standard error response
+      description: Rate limit exceeded error response (HTTP 429)
       properties:
-        message:
+        error:
           type: string
-          description: Human-readable error message
-        meta:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error code identifier
-            message:
-              type: string
-              description: Detailed error message
-            messages:
-              type: array
-              items:
-                type: string
-              description: List of error messages
-          required:
-          - error
-          - message
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
     AccountInfoResponse:
       type: object
       description: Account or workspace information
@@ -194,6 +179,30 @@ components:
       - id
       - name
       - plan_tier
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
     MeResponse:
       type: object
       description: Account information associated with the API key
@@ -283,15 +292,6 @@ components:
       - account
       - workspace
       - contact
-    RateLimitErrorResponse:
-      type: object
-      description: Rate limit exceeded error response (HTTP 429)
-      properties:
-        error:
-          type: string
-          description: Rate limit error message indicating the limit and reset time
-      required:
-      - error
   securitySchemes:
     api_key:
       type: apiKey

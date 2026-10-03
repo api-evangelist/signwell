@@ -75,28 +75,15 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
-    UrlOnly:
-      type: boolean
-      default: false
-      description: Whether to return the URL of the completed PDF or the actual PDF content. Defaults to `false`.
-    ObjectOnly:
-      type: boolean
-      default: false
-      description: If true, returns raw NOM-151 constancia certificate object as JSON instead of a zip file or URL.
-    ValidationErrorResponse:
+    RateLimitErrorResponse:
       type: object
-      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      description: Rate limit exceeded error response (HTTP 429)
       properties:
-        errors:
-          type: object
-          additionalProperties: true
-          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
       required:
-      - errors
-    CompletedDocumentId:
-      type: string
-      format: uuid
-      description: Unique identifier for a completed document.
+      - error
     Nom151UrlResponse:
       type: object
       description: NOM-151 download URL returned when url_only=true
@@ -107,15 +94,10 @@ components:
           description: Public URL to download the certificate ZIP file
       required:
       - file_url
-    RateLimitErrorResponse:
-      type: object
-      description: Rate limit exceeded error response (HTTP 429)
-      properties:
-        error:
-          type: string
-          description: Rate limit error message indicating the limit and reset time
-      required:
-      - error
+    UrlOnly:
+      type: boolean
+      default: false
+      description: Whether to return the URL of the completed PDF or the actual PDF content. Defaults to `false`.
     ErrorResponse:
       type: object
       description: Standard error response
@@ -140,6 +122,24 @@ components:
           required:
           - error
           - message
+    ObjectOnly:
+      type: boolean
+      default: false
+      description: If true, returns raw NOM-151 constancia certificate object as JSON instead of a zip file or URL.
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      properties:
+        errors:
+          type: object
+          additionalProperties: true
+          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+      required:
+      - errors
+    CompletedDocumentId:
+      type: string
+      format: uuid
+      description: Unique identifier for a completed document.
   securitySchemes:
     api_key:
       type: apiKey

@@ -153,24 +153,15 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
-    WebhookResponse:
+    RateLimitErrorResponse:
       type: object
-      description: Webhook subscription
+      description: Rate limit exceeded error response (HTTP 429)
       properties:
-        id:
+        error:
           type: string
-          format: uuid
-        callback_url:
-          type: string
-          format: url
-        api_application_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
+          description: Rate limit error message indicating the limit and reset time
       required:
-      - id
-      - callback_url
+      - error
     WebhookListResponse:
       type: array
       description: List of webhook subscriptions
@@ -200,15 +191,24 @@ components:
           required:
           - error
           - message
-    RateLimitErrorResponse:
+    WebhookResponse:
       type: object
-      description: Rate limit exceeded error response (HTTP 429)
+      description: Webhook subscription
       properties:
-        error:
+        id:
           type: string
-          description: Rate limit error message indicating the limit and reset time
+          format: uuid
+        callback_url:
+          type: string
+          format: url
+        api_application_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
       required:
-      - error
+      - id
+      - callback_url
   securitySchemes:
     api_key:
       type: apiKey
