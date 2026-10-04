@@ -599,169 +599,12 @@ paths:
                 $ref: '#/components/schemas/RateLimitErrorResponse'
 components:
   schemas:
-    FieldType:
-      type: string
-      enum:
-      - initials
-      - signature
-      - checkbox
-      - date
-      - select
-      - text
-      - dropdown
-      - autofill_company
-      - autofill_email
-      - autofill_first_name
-      - autofill_last_name
-      - autofill_name
-      - autofill_phone
-      - autofill_title
-      - autofill_date_signed
-      description: Type of signing field
-    Base64Flag:
-      type: boolean
-      description: When true, returns the CSV as a base64-encoded string in a JSON response instead of a binary file download.
-    BulkSendValidateCsvResponse:
-      type: object
-      description: Validated bulk send CSV response with defaults applied
-      properties:
-        bulk_send_csv:
-          type: string
-          description: Base64-encoded CSV content
-        template_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        skip_row_errors:
-          type: boolean
-        api_application_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        name:
-          type: string
-        subject:
-          type: string
-        message:
-          type: string
-        apply_signing_order:
-          type: boolean
-      required:
-      - bulk_send_csv
-      - template_ids
-    ValidationErrorResponse:
-      type: object
-      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
-      properties:
-        errors:
-          type: object
-          additionalProperties: true
-          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
-      required:
-      - errors
-    Page:
+    Limit:
       type: integer
       minimum: 1
-      default: 1
-      description: The page number for pagination. Defaults to the first page.
-    FileInfo:
-      type: object
-      description: File information
-      properties:
-        name:
-          type: string
-          description: File name
-        pages_number:
-          type: integer
-          description: Number of pages in the file
-      required:
-      - name
-      - pages_number
-    LabelInfo:
-      type: object
-      description: Label information
-      properties:
-        id:
-          type: string
-          description: Label ID
-        name:
-          type: string
-          description: Label name
-    TextValidation:
-      type: string
-      enum:
-      - no_text_validation
-      - numbers
-      - letters
-      - email_address
-      - us_phone_number
-      - us_zip_code
-      - us_ssn
-      - us_age
-      - alphanumeric
-      - us_bank_routing_number
-      - us_bank_account_number
-      description: Validation rule for text fields
-    BulkSendCsvRequest:
-      type: object
-      properties:
-        template_ids:
-          type: array
-          description: Specify one or more templates to generate a single blank CSV file that will contain available columns for your recipient data. The template_ids[] parameter is an array of template IDs (e.g.,`/?template_ids[]=5a67dbd7-928a-4ea0-a7e2-e476a0eb045f&template_ids[]=d7315111-c671-4b15-8354-c9a19bbaefa0`). Each ID should be a separate parameter in the query string.
-          items:
-            type: string
-            format: uuid
-            example: 00000000-0000-0000-0000-000000000000
-        bulk_send_csv:
-          type: string
-          description: A RFC 4648 base64 string of the template CSV file to be validated.
-          example: bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K
-      required:
-      - template_ids
-      - bulk_send_csv
-    DateFormat:
-      type: string
-      enum:
-      - MM/DD/YYYY
-      - DD/MM/YYYY
-      - YYYY/MM/DD
-      - Month DD, YYYY
-      - MM/DD/YYYY hh:mm:ss a
-      description: 'Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY'
-    BulkSendTemplateIds:
-      type: array
-      description: Specify one or more templates to generate a single blank CSV file that will contain available columns for your recipient data. The template_ids[] parameter is an array of template IDs (e.g.,`/?template_ids[]=5a67dbd7-928a-4ea0-a7e2-e476a0eb045f&template_ids[]=d7315111-c671-4b15-8354-c9a19bbaefa0`). Each ID should be a separate parameter in the query string.
-      items:
-        type: string
-        format: uuid
-    BulkSendCsvTemplateResponse:
-      type: object
-      description: Base64-encoded CSV template
-      properties:
-        data:
-          type: string
-          format: byte
-          description: Base64-encoded CSV content
-      required:
-      - data
-    CopiedContactInfo:
-      type: object
-      description: Copied contact information
-      properties:
-        id:
-          type: string
-          description: Contact ID
-        name:
-          type: string
-          description: Contact name
-        email:
-          type: string
-          format: email
-          description: Contact email
-      required:
-      - email
+      maximum: 50
+      default: 10
+      description: The number of documents to fetch. Defaults to 10, max is 50.
     DocumentResponse:
       type: object
       properties:
@@ -1051,322 +894,6 @@ components:
       required:
       - id
       - test_mode
-    BulkSendDocumentsResponse:
-      type: object
-      description: Paginated list of documents in a bulk send
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        api_application_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        created_at:
-          type: string
-          format: date-time
-        user_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        status:
-          type: string
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentResponse'
-        current_page:
-          type: integer
-        next_page:
-          type:
-          - integer
-          - 'null'
-        previous_page:
-          type:
-          - integer
-          - 'null'
-        total_count:
-          type: integer
-        total_pages:
-          type: integer
-      required:
-      - id
-      - documents
-      - current_page
-      - total_count
-      - total_pages
-    CheckboxValidation:
-      type: string
-      enum:
-      - minimum
-      - maximum
-      - range
-      - exact
-      description: Validation rule for checkbox groups
-    BulkSendCreateResponse:
-      type: object
-      description: Bulk send creation response
-      properties:
-        id:
-          type: string
-          format: uuid
-        template_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        api_application_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        documents_count:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        user_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        status:
-          type: string
-      required:
-      - id
-      - template_ids
-      - documents_count
-      - created_at
-      - status
-    RateLimitErrorResponse:
-      type: object
-      description: Rate limit exceeded error response (HTTP 429)
-      properties:
-        error:
-          type: string
-          description: Rate limit error message indicating the limit and reset time
-      required:
-      - error
-    BulkSendListResponse:
-      type: object
-      description: List of bulk sends with pagination
-      properties:
-        bulk_sends:
-          type: array
-          items:
-            $ref: '#/components/schemas/BulkSendListItem'
-        current_page:
-          type: integer
-        next_page:
-          type:
-          - integer
-          - 'null'
-        previous_page:
-          type:
-          - integer
-          - 'null'
-        total_count:
-          type: integer
-        total_pages:
-          type: integer
-      required:
-      - bulk_sends
-      - current_page
-      - total_count
-      - total_pages
-    BulkSendListItem:
-      type: object
-      description: Bulk send summary in list responses
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        api_application_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        documents_count:
-          type: integer
-        documents_completed:
-          type: integer
-        documents_not_completed:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        user_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        status:
-          type: string
-        template_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - id
-      - name
-      - documents_count
-      - documents_completed
-      - documents_not_completed
-      - created_at
-      - status
-      - template_ids
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        meta:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error code identifier
-            message:
-              type: string
-              description: Detailed error message
-            messages:
-              type: array
-              items:
-                type: string
-              description: List of error messages
-          required:
-          - error
-          - message
-    Limit:
-      type: integer
-      minimum: 1
-      maximum: 50
-      default: 10
-      description: The number of documents to fetch. Defaults to 10, max is 50.
-    CheckboxGroupInfo:
-      type: object
-      description: Checkbox group configuration
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Checkbox group ID
-        group_name:
-          type:
-          - string
-          - 'null'
-          description: Name of the checkbox group
-        recipient_id:
-          type:
-          - string
-          - 'null'
-          description: Recipient ID associated with the group
-        checkbox_ids:
-          type: array
-          items:
-            type: string
-          description: IDs of checkboxes in this group
-        validation:
-          $ref: '#/components/schemas/CheckboxValidation'
-        required:
-          type: boolean
-          description: Whether at least one checkbox must be checked
-        min_value:
-          type: integer
-          description: Minimum number of checkboxes to check
-        max_value:
-          type: integer
-          description: Maximum number of checkboxes to check
-        exact_value:
-          type: integer
-          description: Exact number of checkboxes that must be checked
-      required:
-      - id
-      - checkbox_ids
-      - required
-    CreateBulkSendRequest:
-      type: object
-      properties:
-        template_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-            example: 00000000-0000-0000-0000-000000000000
-          description: Unique identifiers for a list of templates.
-        bulk_send_csv:
-          type: string
-          description: A RFC 4648 base64 string of the template CSV file to be validated.
-          example: bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K
-        skip_row_errors:
-          type: boolean
-          default: false
-          description: Whether to skip errors in the rows. Defaults to `false`.
-        api_application_id:
-          type: string
-          format: uuid
-          description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
-        name:
-          type: string
-          description: The name of the Bulk Send. Will be used as the document name for each of the documents.
-        subject:
-          type: string
-          description: Email subject for the signature request that recipients will see. Defaults to the default system subject or a template subject.
-        message:
-          type: string
-          description: Email message for the signature request that recipients will see. Defaults to the default system message or a template message.
-        apply_signing_order:
-          type: boolean
-          default: false
-          description: When set to `true` recipients will sign one at a time in the order of the `recipients` collection of this request.
-        custom_requester_name:
-          type: string
-          description: Sets the custom requester name for the document. When set, this is the name used for all email communications, signing notifications, and in the audit file.
-        custom_requester_email:
-          type: string
-          format: email
-          description: Sets the custom requester email for the document. When set, this is the email used for all email communications, signing notifications, and in the audit file.
-      required:
-      - template_ids
-      - bulk_send_csv
-    ApiApplicationId:
-      type: string
-      format: uuid
-      description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
-    AttachmentRequestInfo:
-      type: object
-      description: Attachment request information
-      properties:
-        name:
-          type: string
-          description: Name of the attachment request
-        url:
-          type: string
-          format: url
-          description: URL of the uploaded attachment (when available)
-        required:
-          type: boolean
-          description: Whether the attachment is required
-      required:
-      - name
-      - required
-    UserEmail:
-      type: string
-      format: email
-      description: The email address of the user that sent the Bulk Send. Must have the `admin` or `manager` role to view Bulk Sends of other users. Defaults to the user that the API key belongs to.
-    BulkSendId:
-      type: string
-      format: uuid
-      description: Unique identifier for a bulk send.
     BulkSendResponse:
       type: object
       description: Bulk send details
@@ -1415,6 +942,479 @@ components:
       - documents_count
       - created_at
       - status
+    BulkSendListResponse:
+      type: object
+      description: List of bulk sends with pagination
+      properties:
+        bulk_sends:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkSendListItem'
+        current_page:
+          type: integer
+        next_page:
+          type:
+          - integer
+          - 'null'
+        previous_page:
+          type:
+          - integer
+          - 'null'
+        total_count:
+          type: integer
+        total_pages:
+          type: integer
+      required:
+      - bulk_sends
+      - current_page
+      - total_count
+      - total_pages
+    BulkSendCreateResponse:
+      type: object
+      description: Bulk send creation response
+      properties:
+        id:
+          type: string
+          format: uuid
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        api_application_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        documents_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        status:
+          type: string
+      required:
+      - id
+      - template_ids
+      - documents_count
+      - created_at
+      - status
+    CopiedContactInfo:
+      type: object
+      description: Copied contact information
+      properties:
+        id:
+          type: string
+          description: Contact ID
+        name:
+          type: string
+          description: Contact name
+        email:
+          type: string
+          format: email
+          description: Contact email
+      required:
+      - email
+    BulkSendValidateCsvResponse:
+      type: object
+      description: Validated bulk send CSV response with defaults applied
+      properties:
+        bulk_send_csv:
+          type: string
+          description: Base64-encoded CSV content
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        skip_row_errors:
+          type: boolean
+        api_application_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        name:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        apply_signing_order:
+          type: boolean
+      required:
+      - bulk_send_csv
+      - template_ids
+    LabelInfo:
+      type: object
+      description: Label information
+      properties:
+        id:
+          type: string
+          description: Label ID
+        name:
+          type: string
+          description: Label name
+    Base64Flag:
+      type: boolean
+      description: When true, returns the CSV as a base64-encoded string in a JSON response instead of a binary file download.
+    BulkSendTemplateIds:
+      type: array
+      description: Specify one or more templates to generate a single blank CSV file that will contain available columns for your recipient data. The template_ids[] parameter is an array of template IDs (e.g.,`/?template_ids[]=5a67dbd7-928a-4ea0-a7e2-e476a0eb045f&template_ids[]=d7315111-c671-4b15-8354-c9a19bbaefa0`). Each ID should be a separate parameter in the query string.
+      items:
+        type: string
+        format: uuid
+    BulkSendDocumentsResponse:
+      type: object
+      description: Paginated list of documents in a bulk send
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        api_application_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        status:
+          type: string
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentResponse'
+        current_page:
+          type: integer
+        next_page:
+          type:
+          - integer
+          - 'null'
+        previous_page:
+          type:
+          - integer
+          - 'null'
+        total_count:
+          type: integer
+        total_pages:
+          type: integer
+      required:
+      - id
+      - documents
+      - current_page
+      - total_count
+      - total_pages
+    DateFormat:
+      type: string
+      enum:
+      - MM/DD/YYYY
+      - DD/MM/YYYY
+      - YYYY/MM/DD
+      - Month DD, YYYY
+      - MM/DD/YYYY hh:mm:ss a
+      description: 'Date format for date fields. Valid values: MM/DD/YYYY, DD/MM/YYYY, YYYY/MM/DD, Month DD, YYYY, MM/DD/YYYY hh:mm:ss a. Default: MM/DD/YYYY'
+    Page:
+      type: integer
+      minimum: 1
+      default: 1
+      description: The page number for pagination. Defaults to the first page.
+    ApiApplicationId:
+      type: string
+      format: uuid
+      description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
+    BulkSendId:
+      type: string
+      format: uuid
+      description: Unique identifier for a bulk send.
+    BulkSendCsvRequest:
+      type: object
+      properties:
+        template_ids:
+          type: array
+          description: Specify one or more templates to generate a single blank CSV file that will contain available columns for your recipient data. The template_ids[] parameter is an array of template IDs (e.g.,`/?template_ids[]=5a67dbd7-928a-4ea0-a7e2-e476a0eb045f&template_ids[]=d7315111-c671-4b15-8354-c9a19bbaefa0`). Each ID should be a separate parameter in the query string.
+          items:
+            type: string
+            format: uuid
+            example: 00000000-0000-0000-0000-000000000000
+        bulk_send_csv:
+          type: string
+          description: A RFC 4648 base64 string of the template CSV file to be validated.
+          example: bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K
+      required:
+      - template_ids
+      - bulk_send_csv
+    TextValidation:
+      type: string
+      enum:
+      - no_text_validation
+      - numbers
+      - letters
+      - email_address
+      - us_phone_number
+      - us_zip_code
+      - us_ssn
+      - us_age
+      - alphanumeric
+      - us_bank_routing_number
+      - us_bank_account_number
+      description: Validation rule for text fields
+    AttachmentRequestInfo:
+      type: object
+      description: Attachment request information
+      properties:
+        name:
+          type: string
+          description: Name of the attachment request
+        url:
+          type: string
+          format: url
+          description: URL of the uploaded attachment (when available)
+        required:
+          type: boolean
+          description: Whether the attachment is required
+      required:
+      - name
+      - required
+    CreateBulkSendRequest:
+      type: object
+      properties:
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: 00000000-0000-0000-0000-000000000000
+          description: Unique identifiers for a list of templates.
+        bulk_send_csv:
+          type: string
+          description: A RFC 4648 base64 string of the template CSV file to be validated.
+          example: bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K
+        skip_row_errors:
+          type: boolean
+          default: false
+          description: Whether to skip errors in the rows. Defaults to `false`.
+        api_application_id:
+          type: string
+          format: uuid
+          description: Unique identifier for API Application settings to use. API Applications are optional and mainly used when isolating OAuth apps or for more control over embedded API settings
+        name:
+          type: string
+          description: The name of the Bulk Send. Will be used as the document name for each of the documents.
+        subject:
+          type: string
+          description: Email subject for the signature request that recipients will see. Defaults to the default system subject or a template subject.
+        message:
+          type: string
+          description: Email message for the signature request that recipients will see. Defaults to the default system message or a template message.
+        apply_signing_order:
+          type: boolean
+          default: false
+          description: When set to `true` recipients will sign one at a time in the order of the `recipients` collection of this request.
+        custom_requester_name:
+          type: string
+          description: Sets the custom requester name for the document. When set, this is the name used for all email communications, signing notifications, and in the audit file.
+        custom_requester_email:
+          type: string
+          format: email
+          description: Sets the custom requester email for the document. When set, this is the email used for all email communications, signing notifications, and in the audit file.
+      required:
+      - template_ids
+      - bulk_send_csv
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        meta:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Detailed error message
+            messages:
+              type: array
+              items:
+                type: string
+              description: List of error messages
+          required:
+          - error
+          - message
+    FileInfo:
+      type: object
+      description: File information
+      properties:
+        name:
+          type: string
+          description: File name
+        pages_number:
+          type: integer
+          description: Number of pages in the file
+      required:
+      - name
+      - pages_number
+    RateLimitErrorResponse:
+      type: object
+      description: Rate limit exceeded error response (HTTP 429)
+      properties:
+        error:
+          type: string
+          description: Rate limit error message indicating the limit and reset time
+      required:
+      - error
+    UserEmail:
+      type: string
+      format: email
+      description: The email address of the user that sent the Bulk Send. Must have the `admin` or `manager` role to view Bulk Sends of other users. Defaults to the user that the API key belongs to.
+    CheckboxGroupInfo:
+      type: object
+      description: Checkbox group configuration
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Checkbox group ID
+        group_name:
+          type:
+          - string
+          - 'null'
+          description: Name of the checkbox group
+        recipient_id:
+          type:
+          - string
+          - 'null'
+          description: Recipient ID associated with the group
+        checkbox_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of checkboxes in this group
+        validation:
+          $ref: '#/components/schemas/CheckboxValidation'
+        required:
+          type: boolean
+          description: Whether at least one checkbox must be checked
+        min_value:
+          type: integer
+          description: Minimum number of checkboxes to check
+        max_value:
+          type: integer
+          description: Maximum number of checkboxes to check
+        exact_value:
+          type: integer
+          description: Exact number of checkboxes that must be checked
+      required:
+      - id
+      - checkbox_ids
+      - required
+    FieldType:
+      type: string
+      enum:
+      - initials
+      - signature
+      - checkbox
+      - date
+      - select
+      - text
+      - dropdown
+      - autofill_company
+      - autofill_email
+      - autofill_first_name
+      - autofill_last_name
+      - autofill_name
+      - autofill_phone
+      - autofill_title
+      - autofill_date_signed
+      description: Type of signing field
+    BulkSendCsvTemplateResponse:
+      type: object
+      description: Base64-encoded CSV template
+      properties:
+        data:
+          type: string
+          format: byte
+          description: Base64-encoded CSV content
+      required:
+      - data
+    BulkSendListItem:
+      type: object
+      description: Bulk send summary in list responses
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        api_application_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        documents_count:
+          type: integer
+        documents_completed:
+          type: integer
+        documents_not_completed:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        status:
+          type: string
+        template_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - id
+      - name
+      - documents_count
+      - documents_completed
+      - documents_not_completed
+      - created_at
+      - status
+      - template_ids
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response. The errors object contains field-specific error details with dynamic keys.
+      properties:
+        errors:
+          type: object
+          additionalProperties: true
+          description: Field-specific validation errors. Keys are field names (e.g., recipients, fields, files). Values can be strings, arrays of strings, or nested objects with further field-specific errors.
+      required:
+      - errors
+    CheckboxValidation:
+      type: string
+      enum:
+      - minimum
+      - maximum
+      - range
+      - exact
+      description: Validation rule for checkbox groups
   securitySchemes:
     api_key:
       type: apiKey
