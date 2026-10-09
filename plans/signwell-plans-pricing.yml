@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: SignWell Plans and Pricing
 description: Pricing plans for the SignWell e-signature platform covering both web
   application plans and API-specific usage-based pricing.
@@ -129,3 +133,53 @@ plans:
       - All API plan features
     limitations:
       - Contact sales for pricing
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Light
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Business
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: API Free Developer
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: API Pay-As-You-Go
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: API Enterprise
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
