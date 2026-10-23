@@ -203,6 +203,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/signwell/refs/heads/main/vocabulary/signwell-vocabulary.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/signwell/overview
 - type: AgenticAccess
   url: agentic-access/signwell-agentic-access.yml
 - type: TrustCenter
