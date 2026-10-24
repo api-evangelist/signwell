@@ -1,220 +1,232 @@
 {
+  "info": {
+    "_postman_id": "8f810ddc-aee3-43e4-b39b-74121c7e8c4b",
+    "name": "SignWell Developer Me API",
+    "description": "API for creating, managing, and tracking electronic signature workflows.\n\nContact Support:\n Email: support@signwell.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:47:37.000Z",
+    "updatedAt": "2026-10-21T19:47:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8f810ddc-aee3-43e4-b39b-74121c7e8c4b"
+  },
   "item": [
     {
-      "id": "2a4245b7-b57a-46ea-a1c5-153f2daafba3",
-      "name": "Me",
-      "description": {
-        "content": "Retrieve account information for the authenticated API key.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "af768fdd-021a-4947-8a04-8288371a866d",
-          "name": "Get credentials",
-          "request": {
-            "name": "Get credentials",
-            "description": {
-              "content": "Retrieves the account information associated with the API key being used.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "me"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "9e62c90c-c48b-4055-b235-bd07d10a213e",
-              "name": "successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "me"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "me",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get credentials",
+                  "id": "402a040e-be78-467f-a4fa-a75834529d37",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Api-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "me"
+                      ]
+                    },
+                    "description": "Retrieves the account information associated with the API key being used."
+                  },
+                  "response": [
+                    {
+                      "id": "3bdf959d-c449-4327-91c6-7314c48e66e1",
+                      "name": "successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"role\": \"<string>\",\n  \"user\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"has_google_registration\": \"<boolean>\",\n    \"first_name\": \"<string>\",\n    \"preferences\": {\n      \"sales_document\": \"<boolean>\",\n      \"time_zone\": \"<string>\",\n      \"smart_fields\": \"<boolean>\"\n    }\n  },\n  \"account\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"plan_tier\": \"<string>\",\n    \"active_templates\": \"<integer>\",\n    \"can_create_template\": \"<boolean>\",\n    \"can_create_tracking_document\": \"<boolean>\",\n    \"can_create_completion_document\": \"<boolean>\",\n    \"active_users\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"has_google_registration\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"has_google_registration\": \"<boolean>\"\n      }\n    ],\n    \"preferences\": {\n      \"date_format\": \"<string>\",\n      \"days_until_links_expire\": \"<integer>\",\n      \"disable_apply_everywhere\": \"<boolean>\",\n      \"disable_apply_everywhere_effective\": \"<boolean>\",\n      \"disable_drawn_signatures\": \"<boolean>\",\n      \"disable_typed_signatures\": \"<boolean>\",\n      \"disable_uploaded_signatures\": \"<boolean>\",\n      \"enable_redirect\": \"<boolean>\",\n      \"hide_document_id_in_audit\": \"<boolean>\",\n      \"mute_branding\": \"<boolean>\",\n      \"redirect_url\": \"<string,null>\",\n      \"separate_audit_pdf\": \"<boolean>\",\n      \"separate_completed_file\": \"<boolean>\",\n      \"enable_nom151_compliance\": \"<boolean>\"\n    }\n  },\n  \"workspace\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"plan_tier\": \"<string>\",\n    \"active_templates\": \"<integer>\",\n    \"can_create_template\": \"<boolean>\",\n    \"can_create_tracking_document\": \"<boolean>\",\n    \"can_create_completion_document\": \"<boolean>\",\n    \"active_users\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"has_google_registration\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"has_google_registration\": \"<boolean>\"\n      }\n    ],\n    \"preferences\": {\n      \"date_format\": \"<string>\",\n      \"days_until_links_expire\": \"<integer>\",\n      \"disable_apply_everywhere\": \"<boolean>\",\n      \"disable_apply_everywhere_effective\": \"<boolean>\",\n      \"disable_drawn_signatures\": \"<boolean>\",\n      \"disable_typed_signatures\": \"<boolean>\",\n      \"disable_uploaded_signatures\": \"<boolean>\",\n      \"enable_redirect\": \"<boolean>\",\n      \"hide_document_id_in_audit\": \"<boolean>\",\n      \"mute_branding\": \"<boolean>\",\n      \"redirect_url\": \"<string,null>\",\n      \"separate_audit_pdf\": \"<boolean>\",\n      \"separate_completed_file\": \"<boolean>\",\n      \"enable_nom151_compliance\": \"<boolean>\"\n    }\n  },\n  \"contact\": {\n    \"id\": \"<uuid>\",\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"company_name\": \"<string,null>\",\n    \"phone_number\": \"<string,null>\",\n    \"alt_phone_number\": \"<string,null>\",\n    \"website\": \"<string,null>\",\n    \"initials\": \"<string>\",\n    \"archived\": \"<boolean>\"\n  },\n  \"archived\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T19:47:38.000Z",
+                      "updatedAt": "2026-10-21T19:47:38.000Z",
+                      "uid": "35240-3bdf959d-c449-4327-91c6-7314c48e66e1"
+                    },
+                    {
+                      "id": "6ddf0aaf-15c8-412f-b493-55b880ffbac6",
+                      "name": "unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-10-21T19:47:38.000Z",
+                      "updatedAt": "2026-10-21T19:47:38.000Z",
+                      "uid": "35240-6ddf0aaf-15c8-412f-b493-55b880ffbac6"
+                    },
+                    {
+                      "id": "ad05d9c1-2776-4e5b-a75e-00ce4c7bd843",
+                      "name": "rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T19:47:38.000Z",
+                      "updatedAt": "2026-10-21T19:47:38.000Z",
+                      "uid": "35240-ad05d9c1-2776-4e5b-a75e-00ce4c7bd843"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:47:38.000Z",
+                  "updatedAt": "2026-10-21T19:47:38.000Z",
+                  "uid": "35240-402a040e-be78-467f-a4fa-a75834529d37"
                 }
               ],
-              "body": "{\n  \"id\": \"2efeb26c-f151-4ff7-9341-81d5741f5e28\",\n  \"role\": \"owner\",\n  \"archived\": false,\n  \"user\": {\n    \"id\": \"b4905391-fd3b-402c-a8ca-b3201a5549c0\",\n    \"name\": \"Snuffles\",\n    \"email\": \"snuffles_115@hoeger.test\",\n    \"has_google_registration\": false,\n    \"first_name\": \"Snuffles\"\n  },\n  \"account\": {\n    \"id\": \"0bdaab15-ae90-4638-8b43-60b6ca3a5032\",\n    \"name\": \"Gleichner, Kohler and Ruecker\",\n    \"plan_tier\": \"free\",\n    \"active_templates\": 0,\n    \"can_create_template\": true,\n    \"can_create_tracking_document\": true,\n    \"can_create_completion_document\": true,\n    \"active_users\": [\n      {\n        \"id\": \"b4905391-fd3b-402c-a8ca-b3201a5549c0\",\n        \"name\": \"Snuffles\",\n        \"email\": \"snuffles_115@hoeger.test\",\n        \"has_google_registration\": false\n      }\n    ]\n  },\n  \"workspace\": {\n    \"id\": \"0bdaab15-ae90-4638-8b43-60b6ca3a5032\",\n    \"name\": \"Gleichner, Kohler and Ruecker\",\n    \"plan_tier\": \"free\",\n    \"active_templates\": 0,\n    \"can_create_template\": true,\n    \"can_create_tracking_document\": true,\n    \"can_create_completion_document\": true,\n    \"active_users\": [\n      {\n        \"id\": \"b4905391-fd3b-402c-a8ca-b3201a5549c0\",\n        \"name\": \"Snuffles\",\n        \"email\": \"snuffles_115@hoeger.test\",\n        \"has_google_registration\": false\n      }\n    ]\n  },\n  \"contact\": {\n    \"id\": \"bd5ebc93-bfb3-4a0b-ac31-545bd756236b\",\n    \"email\": \"snuffles_115@hoeger.test\",\n    \"name\": \"Snuffles\",\n    \"company_name\": \"Koch Group\",\n    \"phone_number\": \"(956) 121-4217\",\n    \"alt_phone_number\": \"464 603 7752\",\n    \"website\": \"http://mann.test/lorriane\",\n    \"initials\": \"SN\",\n    \"archived\": false\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1c7cf062-6e92-46c6-a6e3-1b6fe5ba593b",
-              "name": "unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "me"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c6799cef-540e-4fbb-b4f8-c1e9dbe55b0c",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "me"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "e50a4c1a-8e74-4610-a2d6-55b9b1c00065",
+              "createdAt": "2026-10-21T19:47:38.000Z",
+              "updatedAt": "2026-10-21T19:47:38.000Z",
+              "uid": "35240-e50a4c1a-8e74-4610-a2d6-55b9b1c00065"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "061b8701-0a33-4ffa-880c-26656c8a1c7e",
+          "createdAt": "2026-10-21T19:47:38.000Z",
+          "updatedAt": "2026-10-21T19:47:38.000Z",
+          "uid": "35240-061b8701-0a33-4ffa-880c-26656c8a1c7e"
         }
       ],
-      "event": []
+      "id": "86eb62c6-85e1-489a-abd5-43057b95bc0a",
+      "createdAt": "2026-10-21T19:47:38.000Z",
+      "updatedAt": "2026-10-21T19:47:38.000Z",
+      "uid": "35240-86eb62c6-85e1-489a-abd5-43057b95bc0a"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://www.signwell.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://www.signwell.com"
     }
-  ],
-  "info": {
-    "_postman_id": "e7f2b899-7c39-4acb-9719-1481dc59e8c0",
-    "name": "SignWell Developer API Application Me API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "API for creating, managing, and tracking electronic signature workflows.\n\nContact Support:\n Email: support@signwell.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

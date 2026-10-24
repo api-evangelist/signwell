@@ -1,620 +1,641 @@
 {
+  "info": {
+    "_postman_id": "4f3179cd-0aec-4845-8210-2d40716a0cc5",
+    "name": "SignWell Developer Webhooks API",
+    "description": "API for creating, managing, and tracking electronic signature workflows.\n\nContact Support:\n Email: support@signwell.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:48:00.000Z",
+    "updatedAt": "2026-10-21T19:48:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4f3179cd-0aec-4845-8210-2d40716a0cc5"
+  },
   "item": [
     {
-      "id": "8cb523ca-b3d9-45b3-98ae-38d398e5ff18",
-      "name": "Webhooks",
-      "description": {
-        "content": "Subscribe to document lifecycle events via webhook callbacks.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "175d85f9-6fd9-47f8-abeb-b7c91c7a2e10",
-          "name": "List Webhooks",
-          "request": {
-            "name": "List Webhooks",
-            "description": {
-              "content": "List all the webhooks in the account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "hooks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "a858f02c-79fe-470c-9b66-32f6e3b64c38",
-              "name": "ok",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "hooks",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Delete Webhook",
+                      "id": "a0d7bfac-b9d8-4735-b276-584ced9c22a9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "X-Api-Key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/hooks/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "hooks",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0eddf1dc-7380-4be8-bd0b-638bb83275e8",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Deletes a registered callback URL that we are posting document events to."
+                      },
+                      "response": [
+                        {
+                          "id": "abf967be-74d8-4fc1-950d-300739e39bdf",
+                          "name": "no content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/hooks/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "hooks",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:48:01.000Z",
+                          "updatedAt": "2026-10-21T19:48:01.000Z",
+                          "uid": "35240-abf967be-74d8-4fc1-950d-300739e39bdf"
+                        },
+                        {
+                          "id": "2c7a1666-b255-45b7-9ce3-85730003998c",
+                          "name": "not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/hooks/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "hooks",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-10-21T19:48:01.000Z",
+                          "updatedAt": "2026-10-21T19:48:01.000Z",
+                          "uid": "35240-2c7a1666-b255-45b7-9ce3-85730003998c"
+                        },
+                        {
+                          "id": "1bed20fc-ffd2-442d-8a64-ff02b8bf557d",
+                          "name": "rate limit exceeded",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/hooks/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "hooks",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T19:48:01.000Z",
+                          "updatedAt": "2026-10-21T19:48:01.000Z",
+                          "uid": "35240-1bed20fc-ffd2-442d-8a64-ff02b8bf557d"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:48:01.000Z",
+                      "updatedAt": "2026-10-21T19:48:01.000Z",
+                      "uid": "35240-a0d7bfac-b9d8-4735-b276-584ced9c22a9"
+                    }
+                  ],
+                  "id": "06570f43-dbc5-4219-bb86-86cfd55128d4",
+                  "createdAt": "2026-10-21T19:48:01.000Z",
+                  "updatedAt": "2026-10-21T19:48:01.000Z",
+                  "uid": "35240-06570f43-dbc5-4219-bb86-86cfd55128d4"
+                },
+                {
+                  "name": "List Webhooks",
+                  "id": "9f2fabe5-f7b1-410c-ab04-bfcb57e70397",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Api-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/hooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "hooks"
+                      ]
+                    },
+                    "description": "List all the webhooks in the account."
+                  },
+                  "response": [
+                    {
+                      "id": "7a51cec6-8078-4f3a-a372-c074450a9468",
+                      "name": "ok",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/hooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "hooks"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"callback_url\": \"<string>\",\n    \"api_application_id\": \"<string,null-uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"callback_url\": \"<string>\",\n    \"api_application_id\": \"<string,null-uuid>\"\n  }\n]",
+                      "createdAt": "2026-10-21T19:48:01.000Z",
+                      "updatedAt": "2026-10-21T19:48:01.000Z",
+                      "uid": "35240-7a51cec6-8078-4f3a-a372-c074450a9468"
+                    },
+                    {
+                      "id": "86646d28-8bb6-4d1b-af5e-2e95b6686baf",
+                      "name": "rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/hooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "hooks"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T19:48:01.000Z",
+                      "updatedAt": "2026-10-21T19:48:01.000Z",
+                      "uid": "35240-86646d28-8bb6-4d1b-af5e-2e95b6686baf"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:48:01.000Z",
+                  "updatedAt": "2026-10-21T19:48:01.000Z",
+                  "uid": "35240-9f2fabe5-f7b1-410c-ab04-bfcb57e70397"
+                },
+                {
+                  "name": "Create Webhook",
+                  "id": "718b5adf-672e-496a-a459-a7428e9a671f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Api-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"callback_url\": \"<string>\",\n  \"api_application_id\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/hooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "hooks"
+                      ]
+                    },
+                    "description": "Register a callback URL that we will post document events to."
+                  },
+                  "response": [
+                    {
+                      "id": "71335beb-8959-448c-8939-3abb00d8f4ed",
+                      "name": "created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"callback_url\": \"<string>\",\n  \"api_application_id\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/hooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "hooks"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"callback_url\": \"<string>\",\n  \"api_application_id\": \"<string,null-uuid>\"\n}",
+                      "createdAt": "2026-10-21T19:48:01.000Z",
+                      "updatedAt": "2026-10-21T19:48:01.000Z",
+                      "uid": "35240-71335beb-8959-448c-8939-3abb00d8f4ed"
+                    },
+                    {
+                      "id": "33b5e9fc-1d8d-4b4c-bca3-b7c74a735aa8",
+                      "name": "bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"callback_url\": \"<string>\",\n  \"api_application_id\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/hooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "hooks"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-10-21T19:48:01.000Z",
+                      "updatedAt": "2026-10-21T19:48:01.000Z",
+                      "uid": "35240-33b5e9fc-1d8d-4b4c-bca3-b7c74a735aa8"
+                    },
+                    {
+                      "id": "2528c603-5f79-4c7e-9865-608e8ff512b5",
+                      "name": "rate limit exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"callback_url\": \"<string>\",\n  \"api_application_id\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/hooks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "hooks"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T19:48:01.000Z",
+                      "updatedAt": "2026-10-21T19:48:01.000Z",
+                      "uid": "35240-2528c603-5f79-4c7e-9865-608e8ff512b5"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:48:01.000Z",
+                  "updatedAt": "2026-10-21T19:48:01.000Z",
+                  "uid": "35240-718b5adf-672e-496a-a459-a7428e9a671f"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"a6b55a29-218d-4766-ad94-8d418c5bda98\",\n    \"callback_url\": \"http://greenfelder.example/ngoc\"\n  },\n  {\n    \"id\": \"1afbb05a-42e4-4304-8c11-ec3978c00056\",\n    \"callback_url\": \"http://olson-ledner.example/mack\"\n  },\n  {\n    \"id\": \"b9b5527b-d2ce-4816-bde0-c0942b5c9d66\",\n    \"callback_url\": \"http://wyman.test/quintin\"\n  },\n  {\n    \"id\": \"2677e7fa-de5f-4de0-8e40-c4706923889f\",\n    \"callback_url\": \"http://spinka.test/athena.gerlach\",\n    \"api_application_id\": \"5e544e05-56db-48f5-9b47-061dd985b2c6\"\n  },\n  {\n    \"id\": \"f6be99fa-1dac-487d-a352-994d48c8a158\",\n    \"callback_url\": \"http://schmidt.example/nanci\",\n    \"api_application_id\": \"5e544e05-56db-48f5-9b47-061dd985b2c6\"\n  },\n  {\n    \"id\": \"84491f67-989d-485d-b46c-44e022fac543\",\n    \"callback_url\": \"http://cassin-walker.test/kaley\",\n    \"api_application_id\": \"5e544e05-56db-48f5-9b47-061dd985b2c6\"\n  },\n  {\n    \"id\": \"c2f3cbd5-7277-42c8-ba99-56436870e9f7\",\n    \"callback_url\": \"http://schiller-sauer.test/sybil\",\n    \"api_application_id\": \"5e544e05-56db-48f5-9b47-061dd985b2c6\"\n  },\n  {\n    \"id\": \"af0e3552-8116-4fc6-80d1-beb8f8e13d1a\",\n    \"callback_url\": \"http://greenfelder-conroy.example/carmelo.stokes\",\n    \"api_application_id\": \"5e544e05-56db-48f5-9b47-061dd985b2c6\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8ab84bd3-0cd2-4900-b87f-cdbc70c7b246",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "40725d2e-a95f-4947-b7a5-b64a7233b8f2",
+              "createdAt": "2026-10-21T19:48:01.000Z",
+              "updatedAt": "2026-10-21T19:48:01.000Z",
+              "uid": "35240-40725d2e-a95f-4947-b7a5-b64a7233b8f2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9e65e9d8-9013-44fb-b136-b571d202ddac",
-          "name": "Create Webhook",
-          "request": {
-            "name": "Create Webhook",
-            "description": {
-              "content": "Register a callback URL that we will post document events to.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "hooks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"callback_url\": \"<url>\",\n  \"api_application_id\": \"<uuid>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "4016798d-6a74-4160-95ac-7e28158d24d9",
-              "name": "created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"callback_url\": \"https://example.com/webhook\",\n  \"api_application_id\": \"<uuid>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"782111c8-f182-4067-8fc0-d7ba8d3e87ae\",\n  \"callback_url\": \"http://prohaska.test/della\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bc287ad8-4697-4dc9-8030-8d39c42f9e60",
-              "name": "bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"callback_url\": \"https://example.com/webhook\",\n  \"api_application_id\": \"<uuid>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Bad request (bad request data)\",\n  \"meta\": {\n    \"error\": \"invalid_parameter\",\n    \"message\": \"Invalid parameter: callback_url must be present\",\n    \"messages\": [\n      \"Invalid parameter: callback_url must be present\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "21f8b129-b978-4a59-bb99-2417e15a34aa",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"callback_url\": \"https://example.com/webhook\",\n  \"api_application_id\": \"<uuid>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4bce2621-cc61-4372-b9ec-9b9ec580a708",
-          "name": "Delete Webhook",
-          "request": {
-            "name": "Delete Webhook",
-            "description": {
-              "content": "Deletes a registered callback URL that we are posting document events to.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "hooks",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "f74a6422-7b83-4155-95f9-1cea8b0ef749",
-              "name": "no content",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6c588239-a474-4706-8f94-9b1e9770cbed",
-              "name": "not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Not found\",\n  \"meta\": {\n    \"error\": \"record_not_found\",\n    \"message\": \"Couldn't find the hook requested\",\n    \"messages\": [\n      \"Couldn't find the hook requested\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a81557d6-ddd3-4d50-9625-076bccb24cc8",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "hooks",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "30598742-c50d-4571-8fcd-87036afeea6a",
+          "createdAt": "2026-10-21T19:48:01.000Z",
+          "updatedAt": "2026-10-21T19:48:01.000Z",
+          "uid": "35240-30598742-c50d-4571-8fcd-87036afeea6a"
         }
       ],
-      "event": []
+      "id": "1ab45d99-46a6-4093-be5c-c3f5eb97f189",
+      "createdAt": "2026-10-21T19:48:01.000Z",
+      "updatedAt": "2026-10-21T19:48:01.000Z",
+      "uid": "35240-1ab45d99-46a6-4093-be5c-c3f5eb97f189"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://www.signwell.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://www.signwell.com"
     }
-  ],
-  "info": {
-    "_postman_id": "2d18b149-2a91-4178-b305-67a614d66ea1",
-    "name": "SignWell Developer API Application Webhooks API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "API for creating, managing, and tracking electronic signature workflows.\n\nContact Support:\n Email: support@signwell.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

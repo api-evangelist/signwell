@@ -1,1769 +1,1816 @@
 {
+  "info": {
+    "_postman_id": "784afc4f-8ea5-47c0-b204-951db43ca135",
+    "name": "SignWell Developer Bulk Send API",
+    "description": "API for creating, managing, and tracking electronic signature workflows.\n\nContact Support:\n Email: support@signwell.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:47:19.000Z",
+    "updatedAt": "2026-10-21T19:47:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-784afc4f-8ea5-47c0-b204-951db43ca135"
+  },
   "item": [
     {
-      "id": "df8cf2d3-edc8-4bbb-8482-7db5aa481220",
-      "name": "Bulk Send",
-      "description": {
-        "content": "Send a document to multiple recipients in batch using templates.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "ae99f5a1-77f0-421c-a474-b5851460eec3",
-          "name": "Get Bulk Send",
-          "request": {
-            "name": "Get Bulk Send",
-            "description": {
-              "content": "Returns information about the Bulk Send.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bulk_sends",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "26431666-3014-43ff-922b-d09c0aaee43c",
-              "name": "successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "bulk_sends",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "documents",
+                      "item": [
+                        {
+                          "name": "Get Bulk Send Documents",
+                          "id": "c6a02533-5f13-4efb-b8fb-22ff377f73f3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "X-Api-Key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/:id/documents?limit=10&page=1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                ":id",
+                                "documents"
+                              ],
+                              "query": [
+                                {
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "key": "page",
+                                  "value": "1"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b7e751ea-53f7-4c12-9405-19b56095c2c9",
+                                  "key": "id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Returns information about the Bulk Send."
+                          },
+                          "response": [
+                            {
+                              "id": "94724349-78ec-45a8-8cdf-d2530dcb8bfc",
+                              "name": "successful",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/bulk_sends/:id/documents?limit=10&page=1",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "bulk_sends",
+                                    ":id",
+                                    "documents"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "limit",
+                                      "value": "10"
+                                    },
+                                    {
+                                      "key": "page",
+                                      "value": "1"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<uuid>\",\n  \"documents\": [\n    {\n      \"id\": \"<string>\",\n      \"test_mode\": \"<boolean>\",\n      \"api_application_id\": \"<string,null-uuid>\",\n      \"requester_email_address\": \"<email>\",\n      \"custom_requester_name\": \"<string,null>\",\n      \"custom_requester_email\": \"<string,null-email>\",\n      \"name\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"message\": \"<string>\",\n      \"metadata\": \"<object,null>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"recipients\": [\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"id\": \"<string>\",\n          \"body\": \"<string>\",\n          \"message\": \"<string,null>\",\n          \"subject\": \"<string,null>\",\n          \"send_email\": \"<boolean,null>\",\n          \"send_email_delay\": \"<integer,null>\",\n          \"signing_order\": \"<integer>\",\n          \"signing_url\": \"<string,null>\",\n          \"embedded_signing_url\": \"<string,null>\",\n          \"bounced\": \"<boolean,null>\",\n          \"bounced_details\": \"<string,null>\",\n          \"attachment_requests\": [\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"passcode\": \"<string,null>\",\n          \"status\": \"<string,null>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"id\": \"<string>\",\n          \"body\": \"<string>\",\n          \"message\": \"<string,null>\",\n          \"subject\": \"<string,null>\",\n          \"send_email\": \"<boolean,null>\",\n          \"send_email_delay\": \"<integer,null>\",\n          \"signing_order\": \"<integer>\",\n          \"signing_url\": \"<string,null>\",\n          \"embedded_signing_url\": \"<string,null>\",\n          \"bounced\": \"<boolean,null>\",\n          \"bounced_details\": \"<string,null>\",\n          \"attachment_requests\": [\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"passcode\": \"<string,null>\",\n          \"status\": \"<string,null>\"\n        }\n      ],\n      \"status\": \"<string>\",\n      \"reminders\": \"<boolean>\",\n      \"archived\": \"<boolean>\",\n      \"embedded_signing\": \"<boolean>\",\n      \"embedded_edit_url\": \"<string,null>\",\n      \"embedded_preview_url\": \"<string,null>\",\n      \"apply_signing_order\": \"<boolean>\",\n      \"redirect_url\": \"<string,null>\",\n      \"decline_redirect_url\": \"<string,null>\",\n      \"language\": \"<string>\",\n      \"expires_in\": \"<integer>\",\n      \"decline_message\": \"<string,null>\",\n      \"error_message\": \"<string,null>\",\n      \"template_id\": \"<string,null>\",\n      \"template_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"embedded_signing_notifications\": \"<boolean>\",\n      \"attachment_requests\": [\n        {\n          \"name\": \"<string>\",\n          \"recipient_id\": \"<string>\",\n          \"required\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"recipient_id\": \"<string>\",\n          \"required\": \"<boolean>\"\n        }\n      ],\n      \"files\": [\n        {\n          \"name\": \"<string>\",\n          \"pages_number\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"pages_number\": \"<integer>\"\n        }\n      ],\n      \"copied_contacts\": [\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"fields\": [\n        [\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"Month DD, YYYY\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"dropdown\",\n            \"validation\": \"letters\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          },\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"MM/DD/YYYY hh:mm:ss a\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"date\",\n            \"validation\": \"no_text_validation\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          }\n        ],\n        [\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"Month DD, YYYY\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"signature\",\n            \"validation\": \"us_zip_code\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          },\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"YYYY/MM/DD\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"autofill_company\",\n            \"validation\": \"alphanumeric\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          }\n        ]\n      ],\n      \"allow_decline\": \"<boolean,null>\",\n      \"allow_reassign\": \"<boolean,null>\",\n      \"labels\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"checkbox_groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"checkbox_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"required\": \"<boolean>\",\n          \"group_name\": \"<string,null>\",\n          \"recipient_id\": \"<string,null>\",\n          \"validation\": \"exact\",\n          \"min_value\": \"<integer>\",\n          \"max_value\": \"<integer>\",\n          \"exact_value\": \"<integer>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"checkbox_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"required\": \"<boolean>\",\n          \"group_name\": \"<string,null>\",\n          \"recipient_id\": \"<string,null>\",\n          \"validation\": \"maximum\",\n          \"min_value\": \"<integer>\",\n          \"max_value\": \"<integer>\",\n          \"exact_value\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"test_mode\": \"<boolean>\",\n      \"api_application_id\": \"<string,null-uuid>\",\n      \"requester_email_address\": \"<email>\",\n      \"custom_requester_name\": \"<string,null>\",\n      \"custom_requester_email\": \"<string,null-email>\",\n      \"name\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"message\": \"<string>\",\n      \"metadata\": \"<object,null>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"recipients\": [\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"id\": \"<string>\",\n          \"body\": \"<string>\",\n          \"message\": \"<string,null>\",\n          \"subject\": \"<string,null>\",\n          \"send_email\": \"<boolean,null>\",\n          \"send_email_delay\": \"<integer,null>\",\n          \"signing_order\": \"<integer>\",\n          \"signing_url\": \"<string,null>\",\n          \"embedded_signing_url\": \"<string,null>\",\n          \"bounced\": \"<boolean,null>\",\n          \"bounced_details\": \"<string,null>\",\n          \"attachment_requests\": [\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"passcode\": \"<string,null>\",\n          \"status\": \"<string,null>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"id\": \"<string>\",\n          \"body\": \"<string>\",\n          \"message\": \"<string,null>\",\n          \"subject\": \"<string,null>\",\n          \"send_email\": \"<boolean,null>\",\n          \"send_email_delay\": \"<integer,null>\",\n          \"signing_order\": \"<integer>\",\n          \"signing_url\": \"<string,null>\",\n          \"embedded_signing_url\": \"<string,null>\",\n          \"bounced\": \"<boolean,null>\",\n          \"bounced_details\": \"<string,null>\",\n          \"attachment_requests\": [\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"passcode\": \"<string,null>\",\n          \"status\": \"<string,null>\"\n        }\n      ],\n      \"status\": \"<string>\",\n      \"reminders\": \"<boolean>\",\n      \"archived\": \"<boolean>\",\n      \"embedded_signing\": \"<boolean>\",\n      \"embedded_edit_url\": \"<string,null>\",\n      \"embedded_preview_url\": \"<string,null>\",\n      \"apply_signing_order\": \"<boolean>\",\n      \"redirect_url\": \"<string,null>\",\n      \"decline_redirect_url\": \"<string,null>\",\n      \"language\": \"<string>\",\n      \"expires_in\": \"<integer>\",\n      \"decline_message\": \"<string,null>\",\n      \"error_message\": \"<string,null>\",\n      \"template_id\": \"<string,null>\",\n      \"template_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"embedded_signing_notifications\": \"<boolean>\",\n      \"attachment_requests\": [\n        {\n          \"name\": \"<string>\",\n          \"recipient_id\": \"<string>\",\n          \"required\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"recipient_id\": \"<string>\",\n          \"required\": \"<boolean>\"\n        }\n      ],\n      \"files\": [\n        {\n          \"name\": \"<string>\",\n          \"pages_number\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"pages_number\": \"<integer>\"\n        }\n      ],\n      \"copied_contacts\": [\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<email>\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"fields\": [\n        [\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"MM/DD/YYYY\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"initials\",\n            \"validation\": \"us_zip_code\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          },\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"MM/DD/YYYY hh:mm:ss a\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"autofill_phone\",\n            \"validation\": \"email_address\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          }\n        ],\n        [\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"MM/DD/YYYY\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"autofill_first_name\",\n            \"validation\": \"us_age\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          },\n          {\n            \"x\": \"<float>\",\n            \"y\": \"<float>\",\n            \"page\": \"<integer>\",\n            \"recipient\": {\n              \"email\": \"<email>\",\n              \"name\": \"<string>\"\n            },\n            \"api_id\": \"<uuid>\",\n            \"name\": \"<string,null>\",\n            \"date_format\": \"MM/DD/YYYY\",\n            \"fixed_width\": \"<boolean>\",\n            \"formula\": \"<string>\",\n            \"label\": \"<string>\",\n            \"lock_sign_date\": \"<boolean>\",\n            \"required\": \"<boolean>\",\n            \"type\": \"autofill_last_name\",\n            \"validation\": \"us_phone_number\",\n            \"value\": \"<string>\",\n            \"height\": \"<string>\",\n            \"width\": \"<string>\",\n            \"recipient_id\": \"<string,null>\",\n            \"signing_elements_group_id\": \"<uuid>\",\n            \"placeholder_name\": \"<string>\",\n            \"options\": [\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"api_id\": \"<string>\",\n                \"is_other\": \"<boolean>\"\n              }\n            ],\n            \"default_option\": \"<string>\",\n            \"allow_other\": \"<boolean>\"\n          }\n        ]\n      ],\n      \"allow_decline\": \"<boolean,null>\",\n      \"allow_reassign\": \"<boolean,null>\",\n      \"labels\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"checkbox_groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"checkbox_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"required\": \"<boolean>\",\n          \"group_name\": \"<string,null>\",\n          \"recipient_id\": \"<string,null>\",\n          \"validation\": \"maximum\",\n          \"min_value\": \"<integer>\",\n          \"max_value\": \"<integer>\",\n          \"exact_value\": \"<integer>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"checkbox_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"required\": \"<boolean>\",\n          \"group_name\": \"<string,null>\",\n          \"recipient_id\": \"<string,null>\",\n          \"validation\": \"maximum\",\n          \"min_value\": \"<integer>\",\n          \"max_value\": \"<integer>\",\n          \"exact_value\": \"<integer>\"\n        }\n      ]\n    }\n  ],\n  \"current_page\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"api_application_id\": \"<string,null-uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"user_id\": \"<string,null-uuid>\",\n  \"status\": \"<string>\",\n  \"next_page\": \"<integer,null>\",\n  \"previous_page\": \"<integer,null>\"\n}",
+                              "createdAt": "2026-10-21T19:47:19.000Z",
+                              "updatedAt": "2026-10-21T19:47:19.000Z",
+                              "uid": "35240-94724349-78ec-45a8-8cdf-d2530dcb8bfc"
+                            },
+                            {
+                              "id": "23fb1294-cebd-41ec-84f9-44d6d533f1a7",
+                              "name": "unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/bulk_sends/:id/documents?limit=10&page=1",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "bulk_sends",
+                                    ":id",
+                                    "documents"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "limit",
+                                      "value": "10"
+                                    },
+                                    {
+                                      "key": "page",
+                                      "value": "1"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                              "createdAt": "2026-10-21T19:47:19.000Z",
+                              "updatedAt": "2026-10-21T19:47:19.000Z",
+                              "uid": "35240-23fb1294-cebd-41ec-84f9-44d6d533f1a7"
+                            },
+                            {
+                              "id": "2883030a-0a7b-44da-86a9-f9c18b460bb0",
+                              "name": "not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/bulk_sends/:id/documents?limit=10&page=1",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "bulk_sends",
+                                    ":id",
+                                    "documents"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "limit",
+                                      "value": "10"
+                                    },
+                                    {
+                                      "key": "page",
+                                      "value": "1"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                              "createdAt": "2026-10-21T19:47:19.000Z",
+                              "updatedAt": "2026-10-21T19:47:19.000Z",
+                              "uid": "35240-2883030a-0a7b-44da-86a9-f9c18b460bb0"
+                            },
+                            {
+                              "id": "7dc50e8b-8b43-40c8-9d53-17bb84bf6a51",
+                              "name": "rate limit exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Api-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/bulk_sends/:id/documents?limit=10&page=1",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "bulk_sends",
+                                    ":id",
+                                    "documents"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "limit",
+                                      "value": "10"
+                                    },
+                                    {
+                                      "key": "page",
+                                      "value": "1"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T19:47:19.000Z",
+                              "updatedAt": "2026-10-21T19:47:19.000Z",
+                              "uid": "35240-7dc50e8b-8b43-40c8-9d53-17bb84bf6a51"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-c6a02533-5f13-4efb-b8fb-22ff377f73f3"
+                        }
+                      ],
+                      "id": "c1df7d82-664f-4a77-ad37-fb1beb2b5133",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-c1df7d82-664f-4a77-ad37-fb1beb2b5133"
+                    },
+                    {
+                      "name": "Get Bulk Send",
+                      "id": "7abbab26-a747-4e30-b378-b396720734e5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "X-Api-Key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fdf14b29-4e4a-40c4-b5b0-02ef51c254fb",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns information about the Bulk Send."
+                      },
+                      "response": [
+                        {
+                          "id": "4774bba6-831d-4e44-b53a-693aec0103af",
+                          "name": "successful",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<uuid>\",\n  \"documents_count\": \"<integer>\",\n  \"created_at\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"api_application_id\": \"<string,null-uuid>\",\n  \"documents_completed\": \"<integer>\",\n  \"documents_not_completed\": \"<integer>\",\n  \"user_id\": \"<string,null-uuid>\",\n  \"templates\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-4774bba6-831d-4e44-b53a-693aec0103af"
+                        },
+                        {
+                          "id": "2c42511e-4961-414b-ad99-894fd2197daf",
+                          "name": "unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-2c42511e-4961-414b-ad99-894fd2197daf"
+                        },
+                        {
+                          "id": "a672f684-ad24-49dd-8219-04964ae2bb7d",
+                          "name": "not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-a672f684-ad24-49dd-8219-04964ae2bb7d"
+                        },
+                        {
+                          "id": "af1adce8-b812-4d94-9d60-d8f7f821c3f0",
+                          "name": "rate limit exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-af1adce8-b812-4d94-9d60-d8f7f821c3f0"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-7abbab26-a747-4e30-b378-b396720734e5"
+                    }
+                  ],
+                  "id": "531fd6d1-6a97-4d2e-ad1b-b6426943b53a",
+                  "createdAt": "2026-10-21T19:47:19.000Z",
+                  "updatedAt": "2026-10-21T19:47:19.000Z",
+                  "uid": "35240-531fd6d1-6a97-4d2e-ad1b-b6426943b53a"
+                },
+                {
+                  "name": "csv_template",
+                  "item": [
+                    {
+                      "name": "Get Bulk Send CSV Template",
+                      "id": "54629217-f14c-48bf-b80e-dfb34d989789",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "X-Api-Key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/octet-stream"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends/csv_template?template_ids[]=<uuid>&template_ids[]=<uuid>&base64=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends",
+                            "csv_template"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "template_ids[]",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "template_ids[]",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "key": "base64",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "description": "Fetches a CSV template that corresponds to the provided document template IDs. CSV templates are blank CSV files that have columns containing required and optional data that can be sent when creating a bulk send. Fields can be referenced by the field label. Example: [placeholder name]_[field label] could be something like customer_address or signer_company_name (if 'Customer' and 'Signer' were placeholder names for templates set up in SignWell)."
+                      },
+                      "response": [
+                        {
+                          "id": "6af3c137-c4e6-4be3-bcaf-50538704c9a2",
+                          "name": "successful",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/octet-stream"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/csv_template?template_ids[]=<uuid>&base64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "csv_template"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "template_ids[]",
+                                  "value": "<uuid>"
+                                },
+                                {
+                                  "key": "base64",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-6af3c137-c4e6-4be3-bcaf-50538704c9a2"
+                        },
+                        {
+                          "id": "79ec7ecb-6f21-49ea-9e7f-1dd12f4def93",
+                          "name": "unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/csv_template?template_ids[]=<uuid>&base64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "csv_template"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "template_ids[]",
+                                  "value": "<uuid>"
+                                },
+                                {
+                                  "key": "base64",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-79ec7ecb-6f21-49ea-9e7f-1dd12f4def93"
+                        },
+                        {
+                          "id": "895cf413-aacc-47a7-85f0-da319808f207",
+                          "name": "not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/csv_template?template_ids[]=<uuid>&base64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "csv_template"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "template_ids[]",
+                                  "value": "<uuid>"
+                                },
+                                {
+                                  "key": "base64",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-895cf413-aacc-47a7-85f0-da319808f207"
+                        },
+                        {
+                          "id": "0d9ee100-e05b-433e-a2e9-fdbba9c7d577",
+                          "name": "rate limit exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/csv_template?template_ids[]=<uuid>&base64=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "csv_template"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "template_ids[]",
+                                  "value": "<uuid>"
+                                },
+                                {
+                                  "key": "base64",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-0d9ee100-e05b-433e-a2e9-fdbba9c7d577"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-54629217-f14c-48bf-b80e-dfb34d989789"
+                    }
+                  ],
+                  "id": "b6b209aa-0012-4243-9cbd-89fd72c35298",
+                  "createdAt": "2026-10-21T19:47:19.000Z",
+                  "updatedAt": "2026-10-21T19:47:19.000Z",
+                  "uid": "35240-b6b209aa-0012-4243-9cbd-89fd72c35298"
+                },
+                {
+                  "name": "validate_csv",
+                  "item": [
+                    {
+                      "name": "Validate Bulk Send CSV",
+                      "id": "2978ad00-32d7-41aa-b9ba-4cdd25b98eb4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "X-Api-Key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends/validate_csv",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends",
+                            "validate_csv"
+                          ]
+                        },
+                        "description": "Validates a Bulk Send CSV file before creating the Bulk Send. It will check the structure of the CSV and the data it contains, and return any errors found."
+                      },
+                      "response": [
+                        {
+                          "id": "6f1b9737-c70f-4d82-9636-2394ad06b172",
+                          "name": "successful",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/validate_csv",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "validate_csv"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"bulk_send_csv\": \"<string>\",\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"skip_row_errors\": \"<boolean>\",\n  \"api_application_id\": \"<string,null-uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": \"<boolean>\"\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-6f1b9737-c70f-4d82-9636-2394ad06b172"
+                        },
+                        {
+                          "id": "5676702b-6b54-4062-a71d-12788290c26a",
+                          "name": "unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/validate_csv",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "validate_csv"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-5676702b-6b54-4062-a71d-12788290c26a"
+                        },
+                        {
+                          "id": "495bcf14-fe1e-4301-bf58-270454c3f348",
+                          "name": "unprocessable entity",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/validate_csv",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "validate_csv"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": {\n    \"magna_e\": true,\n    \"qui_de\": 62922629.65091893,\n    \"aliquaa5\": \"aliqua quis nisi ut non\"\n  }\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-495bcf14-fe1e-4301-bf58-270454c3f348"
+                        },
+                        {
+                          "id": "ca2478b8-4370-4d9c-9f7b-a5fbbf779954",
+                          "name": "rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-Api-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bulk_sends/validate_csv",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bulk_sends",
+                                "validate_csv"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T19:47:19.000Z",
+                          "updatedAt": "2026-10-21T19:47:19.000Z",
+                          "uid": "35240-ca2478b8-4370-4d9c-9f7b-a5fbbf779954"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-2978ad00-32d7-41aa-b9ba-4cdd25b98eb4"
+                    }
+                  ],
+                  "id": "6cb4053e-474f-41c2-852f-d5f300c4c662",
+                  "createdAt": "2026-10-21T19:47:19.000Z",
+                  "updatedAt": "2026-10-21T19:47:19.000Z",
+                  "uid": "35240-6cb4053e-474f-41c2-852f-d5f300c4c662"
+                },
+                {
+                  "name": "List Bulk Sendings",
+                  "id": "d0cc28c3-ee11-4822-9975-0ff185d80ea3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Api-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/bulk_sends?user_email=<email>&limit=10&page=1&api_application_id=<uuid>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "bulk_sends"
+                      ],
+                      "query": [
+                        {
+                          "key": "user_email",
+                          "value": "<email>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "api_application_id",
+                          "value": "<uuid>"
+                        }
+                      ]
+                    },
+                    "description": "Returns information about the Bulk Send."
+                  },
+                  "response": [
+                    {
+                      "id": "6e2d380d-d605-4596-a7d7-39b1cb24f9ca",
+                      "name": "successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends?user_email=<email>&limit=10&page=1&api_application_id=<uuid>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends"
+                          ],
+                          "query": [
+                            {
+                              "key": "user_email",
+                              "value": "<email>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "api_application_id",
+                              "value": "<uuid>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"bulk_sends\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"documents_count\": \"<integer>\",\n      \"documents_completed\": \"<integer>\",\n      \"documents_not_completed\": \"<integer>\",\n      \"created_at\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"template_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"api_application_id\": \"<string,null-uuid>\",\n      \"user_id\": \"<string,null-uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"documents_count\": \"<integer>\",\n      \"documents_completed\": \"<integer>\",\n      \"documents_not_completed\": \"<integer>\",\n      \"created_at\": \"<dateTime>\",\n      \"status\": \"<string>\",\n      \"template_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"api_application_id\": \"<string,null-uuid>\",\n      \"user_id\": \"<string,null-uuid>\"\n    }\n  ],\n  \"current_page\": \"<integer>\",\n  \"total_count\": \"<integer>\",\n  \"total_pages\": \"<integer>\",\n  \"next_page\": \"<integer,null>\",\n  \"previous_page\": \"<integer,null>\"\n}",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-6e2d380d-d605-4596-a7d7-39b1cb24f9ca"
+                    },
+                    {
+                      "id": "dda4fd54-f008-4ca5-8ae6-df5efd39a210",
+                      "name": "unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends?user_email=<email>&limit=10&page=1&api_application_id=<uuid>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends"
+                          ],
+                          "query": [
+                            {
+                              "key": "user_email",
+                              "value": "<email>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "api_application_id",
+                              "value": "<uuid>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-dda4fd54-f008-4ca5-8ae6-df5efd39a210"
+                    },
+                    {
+                      "id": "03bf914a-2673-4f0d-b3c2-941f7e3ee56e",
+                      "name": "rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends?user_email=<email>&limit=10&page=1&api_application_id=<uuid>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends"
+                          ],
+                          "query": [
+                            {
+                              "key": "user_email",
+                              "value": "<email>"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "api_application_id",
+                              "value": "<uuid>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-03bf914a-2673-4f0d-b3c2-941f7e3ee56e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:47:19.000Z",
+                  "updatedAt": "2026-10-21T19:47:19.000Z",
+                  "uid": "35240-d0cc28c3-ee11-4822-9975-0ff185d80ea3"
+                },
+                {
+                  "name": "Create Bulk Send",
+                  "id": "5832e4ad-e73d-428d-86f2-6e81d0d26835",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Api-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/bulk_sends",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "bulk_sends"
+                      ]
+                    },
+                    "description": "Creates a bulk send, and it validates the CSV file before creating the bulk send."
+                  },
+                  "response": [
+                    {
+                      "id": "0b77f8b4-189a-4859-aa5b-dd52253096e8",
+                      "name": "successful",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"documents_count\": \"<integer>\",\n  \"created_at\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"api_application_id\": \"<string,null-uuid>\",\n  \"user_id\": \"<string,null-uuid>\"\n}",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-0b77f8b4-189a-4859-aa5b-dd52253096e8"
+                    },
+                    {
+                      "id": "e2bf9daf-e487-46ba-8f95-6c18198512af",
+                      "name": "unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"meta\": {\n    \"error\": \"<string>\",\n    \"message\": \"<string>\",\n    \"messages\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-e2bf9daf-e487-46ba-8f95-6c18198512af"
+                    },
+                    {
+                      "id": "18091d74-d962-4a58-856e-5d3b34a0c17b",
+                      "name": "unprocessable entity",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": {\n    \"magna_e\": true,\n    \"qui_de\": 62922629.65091893,\n    \"aliquaa5\": \"aliqua quis nisi ut non\"\n  }\n}",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-18091d74-d962-4a58-856e-5d3b34a0c17b"
+                    },
+                    {
+                      "id": "e7c9a03d-9c17-4cb2-829d-116ddbcd7765",
+                      "name": "rate limit exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Api-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bulk_sends",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bulk_sends"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T19:47:19.000Z",
+                      "updatedAt": "2026-10-21T19:47:19.000Z",
+                      "uid": "35240-e7c9a03d-9c17-4cb2-829d-116ddbcd7765"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T19:47:19.000Z",
+                  "updatedAt": "2026-10-21T19:47:19.000Z",
+                  "uid": "35240-5832e4ad-e73d-428d-86f2-6e81d0d26835"
                 }
               ],
-              "body": "{\n  \"id\": \"3a337429-7411-4796-9d1c-bd68cfe0d256\",\n  \"name\": \"Parth Galen\",\n  \"api_application_id\": null,\n  \"documents_count\": 0,\n  \"documents_completed\": 0,\n  \"documents_not_completed\": 0,\n  \"created_at\": \"2026-03-31T15:47:08Z\",\n  \"user_id\": null,\n  \"status\": \"Created\",\n  \"templates\": [\n    {\n      \"id\": \"b985f6f9-579a-485b-96c1-35d16dc8c8bf\",\n      \"name\": \"scale_nursery/totam.key\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7d10bf58-6b9b-4fd9-ac5d-a50957a474fd",
-              "name": "unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "60655ccb-93b4-400a-8402-1de726f55876",
-              "name": "not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Not found\",\n  \"meta\": {\n    \"error\": \"record_not_found\",\n    \"message\": \"Couldn't find the bulk_send requested\",\n    \"messages\": [\n      \"Couldn't find the bulk_send requested\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3a5f5c0a-0fa4-4d20-975a-14ba70d1d334",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "6e3ea619-8a8d-4cd7-a4b0-2dae731a8478",
+              "createdAt": "2026-10-21T19:47:19.000Z",
+              "updatedAt": "2026-10-21T19:47:19.000Z",
+              "uid": "35240-6e3ea619-8a8d-4cd7-a4b0-2dae731a8478"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6b9e8cc7-c5cd-4dec-956a-8a120d417648",
-          "name": "List Bulk Sendings",
-          "request": {
-            "name": "List Bulk Sendings",
-            "description": {
-              "content": "Returns information about the Bulk Send.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bulk_sends"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "user_email",
-                  "value": "<email>"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10"
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "1"
-                },
-                {
-                  "disabled": false,
-                  "key": "api_application_id",
-                  "value": "<uuid>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "ad236cfa-8c7c-4743-9bf0-5a66d0dd622d",
-              "name": "successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "user_email",
-                      "value": "<email>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "api_application_id",
-                      "value": "<uuid>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"bulk_sends\": [\n    {\n      \"id\": \"81c057c3-8569-4b1d-9a7b-d46f584d815d\",\n      \"name\": \"Argonath\",\n      \"api_application_id\": null,\n      \"documents_count\": 0,\n      \"documents_completed\": 0,\n      \"documents_not_completed\": 0,\n      \"created_at\": \"2026-03-31T15:47:09Z\",\n      \"user_id\": null,\n      \"status\": \"Created\",\n      \"template_ids\": [\n        \"a3a6b56e-7d5c-4531-843a-047de9ae1a1e\"\n      ]\n    },\n    {\n      \"id\": \"087c6e94-528f-462c-9601-db6b1741a7e9\",\n      \"name\": \"Nargothrond\",\n      \"api_application_id\": null,\n      \"documents_count\": 0,\n      \"documents_completed\": 0,\n      \"documents_not_completed\": 0,\n      \"created_at\": \"2026-03-31T15:47:09Z\",\n      \"user_id\": null,\n      \"status\": \"Created\",\n      \"template_ids\": [\n        \"a3a6b56e-7d5c-4531-843a-047de9ae1a1e\"\n      ]\n    },\n    {\n      \"id\": \"7544ffc3-6d1a-4328-9e97-c6882e6f2e6b\",\n      \"name\": \"Luthany\",\n      \"api_application_id\": null,\n      \"documents_count\": 0,\n      \"documents_completed\": 0,\n      \"documents_not_completed\": 0,\n      \"created_at\": \"2026-03-31T15:47:09Z\",\n      \"user_id\": null,\n      \"status\": \"Created\",\n      \"template_ids\": [\n        \"a3a6b56e-7d5c-4531-843a-047de9ae1a1e\"\n      ]\n    },\n    {\n      \"id\": \"5d9cbb3e-f517-4dea-b13f-351866a8f9e7\",\n      \"name\": \"Tol-in-Gaurhoth\",\n      \"api_application_id\": null,\n      \"documents_count\": 0,\n      \"documents_completed\": 0,\n      \"documents_not_completed\": 0,\n      \"created_at\": \"2026-03-31T15:47:09Z\",\n      \"user_id\": null,\n      \"status\": \"Created\",\n      \"template_ids\": [\n        \"a3a6b56e-7d5c-4531-843a-047de9ae1a1e\"\n      ]\n    },\n    {\n      \"id\": \"f515d01f-a50f-4633-b604-58a0cfd84ace\",\n      \"name\": \"Marish\",\n      \"api_application_id\": null,\n      \"documents_count\": 0,\n      \"documents_completed\": 0,\n      \"documents_not_completed\": 0,\n      \"created_at\": \"2026-03-31T15:47:09Z\",\n      \"user_id\": null,\n      \"status\": \"Created\",\n      \"template_ids\": [\n        \"a3a6b56e-7d5c-4531-843a-047de9ae1a1e\"\n      ]\n    }\n  ],\n  \"current_page\": 1,\n  \"next_page\": null,\n  \"previous_page\": null,\n  \"total_count\": 5,\n  \"total_pages\": 1\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b260b878-583f-4395-ba87-29662f3feb0a",
-              "name": "unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "user_email",
-                      "value": "<email>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "api_application_id",
-                      "value": "<uuid>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fc77d733-7256-457a-9dfa-d3bc2074a5ea",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "user_email",
-                      "value": "<email>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "api_application_id",
-                      "value": "<uuid>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "29d74ea3-1def-41ee-94f7-7bd2fd7d0263",
-          "name": "Create Bulk Send",
-          "request": {
-            "name": "Create Bulk Send",
-            "description": {
-              "content": "Creates a bulk send, and it validates the CSV file before creating the bulk send.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bulk_sends"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "19705b85-c806-417d-9ddc-891820f51b88",
-              "name": "successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"6a287375-c151-435c-9bbe-856074348b25\",\n  \"template_ids\": [\n    \"3f0cead6-c915-4119-99a1-06ad11f1f684\"\n  ],\n  \"api_application_id\": \"38916d06-bdf2-4cf7-b97c-c2fb72b8c1a8\",\n  \"documents_count\": 0,\n  \"created_at\": \"2026-03-31T15:47:10Z\",\n  \"user_id\": \"810157d0-83c5-4309-8d75-830d4464379e\",\n  \"status\": \"Enqueuing\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "811ae130-253c-4e37-8fb4-ec3fc88fa8b7",
-              "name": "unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8caefdbc-a20e-434e-9944-041a33c117c7",
-              "name": "unprocessable entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": {\n    \"bulk_send_csv\": [\n      {\n        \"row\": 2,\n        \"data\": {\n          \"document_sender_email\": \"not an email\",\n          \"document_sender_name\": \"email@signwell.com\",\n          \"document_sender_label\": \"Label\",\n          \"recipient_email\": \"recipient@signwell.com\",\n          \"recipient_name\": \"Recipient\",\n          \"recipient_label\": \"Recipient\"\n        },\n        \"errors\": [\n          \"The following columns have an email address invalid: document_sender_email.\"\n        ]\n      }\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "07974268-2b00-4a85-befe-fed3cddd23a8",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\",\n  \"skip_row_errors\": false,\n  \"api_application_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"message\": \"<string>\",\n  \"apply_signing_order\": false,\n  \"custom_requester_name\": \"<string>\",\n  \"custom_requester_email\": \"<email>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c47bd362-7a4c-46b3-ad7f-ebcef7caec52",
-          "name": "Get Bulk Send CSV Template",
-          "request": {
-            "name": "Get Bulk Send CSV Template",
-            "description": {
-              "content": "Fetches a CSV template that corresponds to the provided document template IDs. CSV templates are blank CSV files that have columns containing required and optional data that can be sent when creating a bulk send. Fields can be referenced by the field label. Example: [placeholder name]_[field label] could be something like customer_address or signer_company_name (if 'Customer' and 'Signer' were placeholder names for templates set up in SignWell).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bulk_sends",
-                "csv_template"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "template_ids[]",
-                  "value": "<uuid>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "template_ids[]",
-                  "value": "<uuid>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "base64",
-                  "value": "<boolean>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/octet-stream"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "96bd6b1e-5e1f-4a57-a869-704dd7fe53f8",
-              "name": "successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "csv_template"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "base64",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/octet-stream"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": \"ZG9jdW1lbnRfc2VuZGVyX2VtYWlsLGRvY3VtZW50X3NlbmRlcl9uYW1lCnRlcnJ5X3NjYXJ5XzE0MkBuaWNvbGFzLnRlc3QsU2NhcnkgVGVycnkK\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9862b162-6086-4144-981c-429562a08c9a",
-              "name": "unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "csv_template"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "base64",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "de03e28c-f39d-4005-bce7-4fec37414e72",
-              "name": "not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "csv_template"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "base64",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Not found\",\n  \"meta\": {\n    \"error\": \"record_not_found\",\n    \"message\": \"Couldn't find the template requested\",\n    \"messages\": [\n      \"Couldn't find the template requested\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "62d1482c-972d-43a9-bd8f-1b926395ef1d",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "csv_template"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "template_ids[]",
-                      "value": "<uuid>"
-                    },
-                    {
-                      "key": "base64",
-                      "value": "<boolean>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d7828a38-cb91-4b35-b719-5b39d68f664c",
-          "name": "Validate Bulk Send CSV",
-          "request": {
-            "name": "Validate Bulk Send CSV",
-            "description": {
-              "content": "Validates a Bulk Send CSV file before creating the Bulk Send. It will check the structure of the CSV and the data it contains, and return any errors found.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bulk_sends",
-                "validate_csv"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"template_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"bulk_send_csv\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f6371908-b415-4777-a008-28b8f446f07f",
-              "name": "successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "validate_csv"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"bulk_send_csv\": \"IkRvY3VtZW50IFNlbmRlciBFbWFpbCIsJ0RvY3VtZW50IFNlbmRlciBOYW1lJywvXERvY3VtZW50LSBTZW5kZXIgPUxhYmVsLEBSZWNpcGllbnRfIEVtYWlsLFJlY2lwaWVudCAqTmFtZSxgUmVjaXBpZW50fiFAIyQlXiYqKCl7fVtdPD4uPyBMYWJlbGAKc2VuZGVyQHNpZ253ZWxsLmNvbSxTZW5kZXIsU2VuZGVyLHJlY2lwaWVudEBzaWdud2VsbC5jb20sUmVjaXBpZW50LFJlY2lwaWVudAplbWFpbEBzb21lLmNvbSwsLGVtYWlsMkBzb21lLmNvbQo=\",\n  \"template_ids\": [\n    \"a80001a0-2936-44ae-b0a2-4eb4e70ef3ef\"\n  ],\n  \"skip_row_errors\": false,\n  \"api_application_id\": null,\n  \"name\": \"arena_linger/in.css\",\n  \"subject\": \"Please complete arena_linger/in.css\",\n  \"message\": \"<p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>\",\n  \"apply_signing_order\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e0656079-917d-4e12-a671-341afae8a2a8",
-              "name": "unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "validate_csv"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6115bb0c-a9bc-4fb5-ae2f-ae42609d58fa",
-              "name": "unprocessable entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "validate_csv"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": {\n    \"bulk_send_csv\": [\n      {\n        \"row\": 2,\n        \"data\": {\n          \"document_sender_email\": \"not an email\",\n          \"document_sender_name\": \"email@signwell.com\",\n          \"document_sender_label\": \"Label\",\n          \"recipient_email\": \"recipient@signwell.com\",\n          \"recipient_name\": \"Recipient\",\n          \"recipient_label\": \"Recipient\"\n        },\n        \"errors\": [\n          \"The following columns have an email address invalid: document_sender_email.\"\n        ]\n      }\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a8474c70-1d4f-4e54-983b-bb9aed57d2a6",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    "validate_csv"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"template_ids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"bulk_send_csv\": \"bmFtZSxlbWFpbApUZXN0LHRlc3RAZXhhbXBsZS5jb20K\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6fc030c7-a58b-4e34-9d18-b2af133a0f04",
-          "name": "Get Bulk Send Documents",
-          "request": {
-            "name": "Get Bulk Send Documents",
-            "description": {
-              "content": "Returns information about the Bulk Send.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bulk_sends",
-                ":id",
-                "documents"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10"
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "1"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Api-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "15bdbaf5-4854-4ff6-970c-54440e425689",
-              "name": "successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id",
-                    "documents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "page",
-                      "value": "1"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"5d88cabc-9352-458a-b19c-80991c4a8255\",\n  \"name\": \"Minas Tirith\",\n  \"api_application_id\": null,\n  \"created_at\": \"2026-03-31T15:47:14Z\",\n  \"user_id\": null,\n  \"status\": \"Created\",\n  \"documents\": [\n    {\n      \"id\": \"66891ea4-616f-4ecc-ada9-80e5283273f6\",\n      \"archived\": false,\n      \"created_at\": \"2026-03-31T15:47:13Z\",\n      \"decline_message\": null,\n      \"embedded_edit_url\": \"https://www.signwell.com/edit/document/5153b085-19b0-4688-9694-100eff33b4e3/\",\n      \"error_message\": null,\n      \"embedded_preview_url\": null,\n      \"language\": \"en\",\n      \"name\": \"cruelty_notebook/sint.flac\",\n      \"requester_email_address\": \"158_terry_scary@von.example\",\n      \"status\": \"Created\",\n      \"test_mode\": false,\n      \"updated_at\": \"2026-03-31T15:47:13Z\",\n      \"allow_decline\": true,\n      \"allow_reassign\": true,\n      \"api_application_id\": null,\n      \"custom_requester_email\": \"carolynn_okuneva@predovic.test\",\n      \"custom_requester_name\": \"Kylo Ren\",\n      \"decline_redirect_url\": \"http://aufderhar-shanahan.test/mira\",\n      \"embedded_signing\": false,\n      \"expires_in\": 10,\n      \"metadata\": {\n        \"et\": \"numquam\",\n        \"molestias\": \"dolores\"\n      },\n      \"redirect_url\": \"http://emard.example/preston_heathcote\",\n      \"reminders\": false,\n      \"apply_signing_order\": false,\n      \"message\": \"<p>Hey there,</p><p>&nbsp;</p><p>Please review and complete this document. You can click on the document below to get started.</p>\",\n      \"subject\": \"Please complete cruelty_notebook/sint.flac\",\n      \"labels\": [\n        {\n          \"id\": \"e980859e-f839-404c-8f0d-b4808fec2821\",\n          \"name\": \"Malcom Thompson\"\n        },\n        {\n          \"id\": \"ce0ee7ec-ceb4-43cc-881e-35bf56c5a901\",\n          \"name\": \"Melony Stracke\"\n        }\n      ],\n      \"fields\": [\n        [\n          {\n            \"api_id\": \"CheckBox_71\",\n            \"height\": \"13.0\",\n            \"page\": 1,\n            \"required\": true,\n            \"type\": \"checkbox\",\n            \"value\": null,\n            \"width\": \"13.0\",\n            \"x\": 1.1,\n            \"y\": 1.1,\n            \"name\": null,\n            \"recipient_id\": null,\n            \"signing_elements_group_id\": \"d6b47015-754d-417f-8c53-9ffa43cba00a\"\n          },\n          {\n            \"api_id\": \"CheckBox_72\",\n            \"height\": \"13.0\",\n            \"page\": 1,\n            \"required\": true,\n            \"type\": \"checkbox\",\n            \"value\": null,\n            \"width\": \"13.0\",\n            \"x\": 1.1,\n            \"y\": 1.1,\n            \"name\": null,\n            \"recipient_id\": null\n          },\n          {\n            \"api_id\": \"Signature_70\",\n            \"height\": \"32.0\",\n            \"page\": 1,\n            \"required\": true,\n            \"type\": \"signature\",\n            \"value\": null,\n            \"width\": \"112.0\",\n            \"x\": 1.1,\n            \"y\": 1.1,\n            \"recipient_id\": \"afc00701-d0db-4cad-9fee-f3f12e9d513e\"\n          }\n        ]\n      ],\n      \"files\": [\n        {\n          \"name\": \"eveniet.doc\",\n          \"pages_number\": 1\n        }\n      ],\n      \"copied_contacts\": [\n        {\n          \"name\": \"The Hon. Noel Schowalter\",\n          \"email\": \"benjamin@turner-witting.example\"\n        }\n      ],\n      \"recipients\": [\n        {\n          \"email\": \"lloyd@krajcik-gottlieb.test\",\n          \"id\": \"afc00701-d0db-4cad-9fee-f3f12e9d513e\",\n          \"message\": null,\n          \"name\": \"Pres. Syreeta Kreiger\",\n          \"passcode\": null,\n          \"send_email\": null,\n          \"send_email_delay\": null,\n          \"status\": \"created\",\n          \"subject\": null,\n          \"signing_order\": 46,\n          \"signing_url\": \"https://www.signwell.com/docs/ba8dcb6e10/\",\n          \"bounced\": null,\n          \"bounced_details\": null,\n          \"attachment_requests\": [\n            {\n              \"name\": \"arena-corn/nostrum.jpeg\",\n              \"required\": true,\n              \"url\": \"https://www.signwell.com/document_attachments/D98kY33DQZcn6N0OjW6Di615KBLw/?access=f5b4e237-bad0-46b1-864c-225debae311f\"\n            }\n          ]\n        },\n        {\n          \"email\": \"caterina@lesch-rolfson.example\",\n          \"id\": \"65ef4984-18b1-4b19-9ca0-258c607c5acd\",\n          \"message\": null,\n          \"name\": \"Napoleon Schuster\",\n          \"passcode\": null,\n          \"send_email\": null,\n          \"send_email_delay\": null,\n          \"status\": \"created\",\n          \"subject\": null,\n          \"signing_order\": 47,\n          \"signing_url\": \"https://www.signwell.com/docs/f82f345105/\",\n          \"bounced\": null,\n          \"bounced_details\": null,\n          \"attachment_requests\": []\n        }\n      ],\n      \"checkbox_groups\": [\n        {\n          \"id\": \"d6b47015-754d-417f-8c53-9ffa43cba00a\",\n          \"group_name\": null,\n          \"recipient_id\": null,\n          \"checkbox_ids\": [\n            \"CheckBox_71\"\n          ],\n          \"validation\": null,\n          \"required\": false\n        }\n      ]\n    }\n  ],\n  \"current_page\": 1,\n  \"next_page\": null,\n  \"previous_page\": null,\n  \"total_count\": 1,\n  \"total_pages\": 1\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "88d308be-96a9-4089-9585-c1713e9a9cbd",
-              "name": "unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id",
-                    "documents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "page",
-                      "value": "1"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Missing or invalid authorization key\",\n  \"meta\": {\n    \"error\": \"api_key_unauthorized_error\",\n    \"message\": \"Not valid authorization token\",\n    \"messages\": [\n      \"Not valid authorization token\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "acb50fca-f070-4e6f-8b3e-0f042f62fa44",
-              "name": "not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id",
-                    "documents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "page",
-                      "value": "1"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Not found\",\n  \"meta\": {\n    \"error\": \"record_not_found\",\n    \"message\": \"Couldn't find the bulk_send requested\",\n    \"messages\": [\n      \"Couldn't find the bulk_send requested\"\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "93c893ac-97f6-457c-8356-32025dbbf982",
-              "name": "rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bulk_sends",
-                    ":id",
-                    "documents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "page",
-                      "value": "1"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Api-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "4b77e85c-f342-4631-ac6b-2c02bdcca70d",
+          "createdAt": "2026-10-21T19:47:19.000Z",
+          "updatedAt": "2026-10-21T19:47:19.000Z",
+          "uid": "35240-4b77e85c-f342-4631-ac6b-2c02bdcca70d"
         }
       ],
-      "event": []
+      "id": "1f2b7ca5-dd90-4a18-bd4a-5fe61bb1e3b9",
+      "createdAt": "2026-10-21T19:47:19.000Z",
+      "updatedAt": "2026-10-21T19:47:19.000Z",
+      "uid": "35240-1f2b7ca5-dd90-4a18-bd4a-5fe61bb1e3b9"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://www.signwell.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://www.signwell.com"
     }
-  ],
-  "info": {
-    "_postman_id": "2ba44ccb-c56c-4689-b387-17cc6f75ec61",
-    "name": "SignWell Developer API Application Bulk Send API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "API for creating, managing, and tracking electronic signature workflows.\n\nContact Support:\n Email: support@signwell.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
